@@ -1,0 +1,46 @@
+** About the format : **
+
+When I started to work on tilem 2, I firstly decided to use the old tilem format (4 pixs around a lcd).
+But that's not a good idea, and the new skin creation is too hard like this ... :(
+
+Finally, we (with Benjamin) have choosen the Tiemu skin format:
+This format consists in a binary file containing skin information (author, name, model, size etc...) and in the second part :the image data.
+With this format, it becomes really simple and fun to create a skin.
+Tiemu Skinedit works perfectly for tilem 2 (how do you think I 've created these "officials skins :P).
+I hope this new format will pleased to you.
+
+Thank you Julien Blache for his help and his authorization to use Tiemu skin format and skinops.c/skinops.h files.
+Thank you Romain Lievin too.
+
+
+
+** About the image source : **
+
+To find free files to generate skins is not so easy :|
+A part was found on wikimedia (god bless wikimedia)
+Some other are created and donated by tilem2 users :)
+Some other are just my own calc.
+
+For the source of the pictures :
+ti81.skn = GFDL wikimedia.commons
+ti82.skn = GFDL wikimedia.commons
+TI82stats.skn = GFDL wikimedia.commons
+ti83.skn = My TI83 !!!
+ti83p.skn = GFDL wikimedia.commons
+ti83pfr.skn = GPL v3+ given by Claude Clerc (aka claudiux). It's his calc. Thanks to him !!!
+ti83pfr2.skn = GPL v3+ given Olivier Jeulin. Thanks a lot. This skin is wonderful.
+ti84p.skn = My TI84plus !!!
+ti84p2.skn = Mine.
+ti86.skn = LGPL v2.1. Picture given by Danilo Segan. I've resized with the gimp and I've done the skin (the skin given by Danilo was perfect but too big).Thanks to him !!!
+...
+...
+Your contribution ...
+Your contribution ...
+Your contribution ...
+...
+...
+...
+
+Have fun with tilem 2 ;)
+
+Thibault Duponchelle (aka contra-sh)

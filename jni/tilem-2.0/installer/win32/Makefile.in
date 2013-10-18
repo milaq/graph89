@@ -1,0 +1,214 @@
+MAKENSIS = @MAKENSIS@
+STRIP = @STRIP@
+OBJDUMP = @OBJDUMP@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+SHELL = @SHELL@
+LN_S = @LN_S@
+
+abs_builddir = @abs_builddir@
+top_builddir = @top_builddir@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+VPATH = @srcdir@
+@SET_MAKE@
+
+main_program = tilem2.exe
+
+docs = README KEYS NEWS COPYING CHANGELOG THANKS
+extra_docs = COPYING-PIXMAN COPYING-ZLIB
+
+install_files = *.txt
+install_subdirs = bin etc lib share
+
+extra_gtk_files = lib/gtk-2.0/2.10.0/engines/libwimp.dll
+extra_dlls =
+
+LINGUAS = @LINGUAS@
+extra_gettext_packages = glib20 gtk20 gdk-pixbuf libticalcs2 libticables2 libtifiles2
+
+GTK_BINDIR = @GTK_BINDIR@
+TICALCS_BINDIR = @TICALCS_BINDIR@
+DLLPATH = @DLLPATH@
+PATH_SEPARATOR = @PATH_SEPARATOR@
+
+system_dlls = advapi32.dll cfgmgr32.dll comctl32.dll comdlg32.dll dnsapi.dll \
+	      gdi32.dll gdiplus.dll imm32.dll kernel32.dll msimg32.dll \
+	      msvcrt.dll ole32.dll setupapi.dll shell32.dll shlwapi.dll \
+	      user32.dll usp10.dll winmm.dll winspool.drv ws2_32.dll wsock32.dll
+
+all: install
+
+#### Build the installer
+
+dist: install installer.nsi
+	rm -f files.nsi rmfiles.nsi rmdirs.nsi
+	set -e ; for file in $(install_files) ; do \
+	  name=`echo "$$file" | sed 's,/,\\\\,g'` ; \
+	  echo "File \"$$name\"" >> files.nsi ; \
+	  echo "Delete \"\$$INSTDIR\\$$name\"" >> rmfiles.nsi ; \
+	done
+	set -e ; for dir in $(install_subdirs) ; do \
+	  if [ -d $$dir ] ; then \
+	    echo "File /r \"$$dir\"" >> files.nsi ; \
+	  fi ; \
+	done
+	set -e ; LC_ALL=C ; export LC_ALL ; \
+	for file in `find -L $(install_subdirs) | sort -r` ; do \
+	  name=`echo "$$file" | sed 's,/,\\\\,g'` ; \
+	  if [ -d $$file ] ; then \
+	    echo "RmDir \"\$$INSTDIR\\$$name\"" >> rmdirs.nsi ; \
+	  else \
+	    echo "Delete \"\$$INSTDIR\\$$name\"" >> rmfiles.nsi ; \
+	  fi ; \
+	done
+	$(MAKENSIS) installer.nsi
+
+installer.nsi: installer.nsi.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status installer/win32/installer.nsi
+
+#### Install files into this directory
+
+install: install-bin install-data install-config install-extra install-libs
+
+# Install the program itself and data files
+
+install-bin: bin/$(main_program)
+
+bin/$(main_program): $(top_builddir)/gui/$(main_program)
+	cd $(top_builddir)/gui && $(MAKE) install prefix=$(abs_builddir)
+	$(STRIP) bin/$(main_program)
+
+install-data:
+	cd $(top_builddir)/data && $(MAKE) install prefix=$(abs_builddir)
+	cd $(top_builddir)/po && $(MAKE) install prefix=$(abs_builddir) \
+	 localedir=$(abs_builddir)/share/locale \
+	 gnulocaledir=$(abs_builddir)/share/locale
+	rm -rf share/mime
+	rm -rf share/applications
+	rm -rf share/icons
+	set -e ; for file in $(docs) ; do \
+	 sed 's/\r*$$/\r/' < $(top_srcdir)/$$file > $$file.txt ; \
+	done
+	set -e ; for file in $(extra_docs) ; do \
+	 sed 's/\r*$$/\r/' < $(srcdir)/$$file > $$file.txt ; \
+	done
+
+# Install GTK+ configuration
+
+install-config:
+	$(INSTALL) -d -m 755 etc/gtk-2.0
+	$(INSTALL_DATA) $(srcdir)/gtkrc etc/gtk-2.0
+
+# Install additional files
+
+install-extra: install-extra-stamp
+
+install-extra-stamp:
+	set -e ; for file in $(extra_gtk_files) ; do \
+	  rm -f $$file ; \
+	  $(INSTALL) -d -m 755 `dirname $$file` ; \
+	  for dir in `echo $(DLLPATH) | tr $(PATH_SEPARATOR) ' '` ; do \
+	    if [ -d $$dir ] && [ -f $$dir/../$$file ] ; then \
+	      $(LN_S) $$dir/../$$file $$file ; \
+	      break ; \
+	    fi ; \
+	  done ; \
+	  if ! [ -f $$file ] ; then \
+	    echo "** Cannot find $$file **" ; \
+	    echo ; \
+	    echo "  Directories searched: $(DLLPATH)" ; \
+	    echo ; \
+	    exit 1 ; \
+	  fi ; \
+	done
+	set -e ; for lang in $(LINGUAS) ; do \
+	  subdir=locale/$$lang/LC_MESSAGES ; \
+	  for pkg in $(extra_gettext_packages) ; do \
+	    rm -f */$$subdir/$$pkg.mo ; \
+	    for dir in `echo $(DLLPATH) | tr $(PATH_SEPARATOR) ' '` ; do \
+	      if [ -f $$dir/../share/$$subdir/$$pkg.mo ] ; then \
+	        $(INSTALL) -d -m 755 share/$$subdir ; \
+	        $(LN_S) $$dir/../share/$$subdir/$$pkg.mo \
+	                share/$$subdir/$$pkg.mo ; \
+	        break ; \
+	      elif [ -f $$dir/../lib/$$subdir/$$pkg.mo ] ; then \
+	        $(INSTALL) -d -m 755 lib/$$subdir ; \
+	        $(LN_S) $$dir/../lib/$$subdir/$$pkg.mo \
+	                lib/$$subdir/$$pkg.mo ; \
+	        break ; \
+	      fi ; \
+	    done ; \
+	    if ! [ -f share/$$subdir/$$pkg.mo ] && ! [ -f lib/$$subdir/$$pkg.mo ] ; then \
+	      echo ; \
+	      echo "** Warning: cannot find message catalog for $$lang/$$pkg **" ; \
+	      echo ; \
+	    fi ; \
+	  done ; \
+	done
+	touch install-extra-stamp
+
+# Install required libraries
+
+install-libs: install-libs-stamp
+
+install-libs-stamp: bin/$(main_program) install-extra-stamp
+	rm -f dlls missing-dlls
+	echo bin/$(main_program) > binfiles
+	ls $(extra_gtk_files) | grep 'dll$$' >> binfiles
+	echo $(extra_dlls) > dlls
+	set -e ; LC_ALL=C ; export LC_ALL ; \
+	while [ -s binfiles ] ; do \
+	  for bin in `cat binfiles` ; do \
+	    $(OBJDUMP) -p $$bin | \
+	      sed -n '/DLL Name:/{s/.*DLL Name: *\([^ ]*\).*/\1/;p}' | \
+	      tr A-Z a-z >> dlls ; \
+	  done ; \
+	  rm -f binfiles ; \
+	  for lib in `cat dlls` ; do \
+	    if ! [ -f bin/$$lib ] && ! echo $(system_dlls) | grep -q $$lib ; then \
+	      for dir in `echo $(DLLPATH) | tr $(PATH_SEPARATOR) ' '` ; do \
+	        if [ -d $$dir ] && [ -f $$dir/$$lib ] ; then \
+	          $(LN_S) $$dir/$$lib bin/$$lib ; \
+	          echo bin/$$lib >> binfiles ; \
+	          break ; \
+	        fi ; \
+	      done ; \
+	      if ! [ -f bin/$$lib ] ; then \
+	        echo $$lib >> missing-dlls ; \
+	      fi ; \
+	    fi ; \
+	  done ; \
+	  rm -f dlls ; \
+	done
+	@if [ -s missing-dlls ] ; then \
+	  echo "** Cannot find the following libraries **" ; \
+	  cat missing-dlls ; \
+	  echo ; \
+	  echo "  If these libraries are part of a standard Windows" ; \
+	  echo "  installation, add them to the list of 'system_dlls'" ; \
+	  echo "  in Makefile.in." ; \
+	  echo ; \
+	  echo "  Directories searched: $(DLLPATH)" ; \
+	  echo ; \
+	  exit 1 ; \
+	fi
+	touch install-libs-stamp
+
+
+clean:
+	rm -f install-libs-stamp install-extra-stamp
+	rm -f $(install_files)
+	rm -rf $(install_subdirs)
+	rm -f dlls missing-dlls binfiles
+	rm -f files.nsi rmfiles.nsi rmdirs.nsi
+
+
+Makefile: Makefile.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status
+
+$(top_builddir)/config.status: $(top_srcdir)/configure
+	cd $(top_builddir) && $(SHELL) ./config.status --recheck
+
+.PRECIOUS: Makefile $(top_builddir)/config.status
+.PHONY: all clean install install-bin install-data install-config install-libraries install-extra

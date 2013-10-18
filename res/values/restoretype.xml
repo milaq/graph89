@@ -1,0 +1,8 @@
+<resources>
+
+    <string-array name="restoreTypeArray">
+        <item>Merge with existing</item>
+        <item>Create new instances</item>
+    </string-array>
+
+</resources>

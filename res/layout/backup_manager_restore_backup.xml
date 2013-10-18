@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backup_manager_restore_backup_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/backup_manager_restore_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Restore Type:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+       android:id="@+id/backup_manager_restore_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/backup_manager_restore_type_text"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/backup_manager_restore_type_text"
+        android:entries="@array/restoreTypeArray" />
+
+    <TextView
+        android:id="@+id/backup_manager_restore_instances_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Select instances to restore:"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:layout_below="@id/backup_manager_restore_type_text"/>
+
+    <ListView
+        android:id="@+id/backup_manager_restore_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/backup_manager_restore_instances_text"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp" >
+
+    </ListView>
+
+</RelativeLayout>

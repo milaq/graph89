@@ -1,0 +1,51 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.Bisha.TI89EmuDonation"
+    android:installLocation="auto"
+    android:versionCode="1133"
+    android:versionName="1.1.3c" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="Graph 89"
+        android:theme="@style/Graph89Theme" android:allowBackup="true">
+        <activity
+            android:name="com.graph89.emulationcore.EmulatorActivity"
+            android:label="Graph 89">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.graph89.emulationcore.RomManagerActivity"
+            android:label="ROM Manager" />
+        <activity
+            android:name="com.graph89.controls.FilePickerActivity"
+            android:label="Add ROM" />
+        <activity
+            android:name="com.graph89.emulationcore.ConfigurationPage"
+            android:label="Settings" />
+        <activity
+            android:name="com.graph89.emulationcore.BackupManager"
+            android:label="Backup Manager" />
+    </application>
+
+</manifest>

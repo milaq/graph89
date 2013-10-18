@@ -1,0 +1,32 @@
+#include <winver.h>
+
+101 ICON "@srcdir@/tilem2.ico"
+
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION     BUILD_VERSION
+    PRODUCTVERSION  BUILD_VERSION
+    FILEFLAGSMASK   0
+    FILEFLAGS       0
+    FILEOS          VOS__WINDOWS32
+    FILETYPE        VFT_APP
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+            BLOCK "040904E4"
+            BEGIN
+                VALUE "CompanyName",      "Linux Programmer Group"
+                VALUE "FileDescription",  "TilEm"
+                VALUE "FileVersion",      "@PACKAGE_VERSION@"
+                VALUE "InternalName",     "tilem2"
+                VALUE "LegalCopyright",   "Copyright \xa9 2012 The TilEm Project"
+                VALUE "OriginalFilename", "tilem2.exe"
+                VALUE "ProductName",      "@PACKAGE_NAME@"
+                VALUE "ProductVersion",   "@PACKAGE_VERSION@"
+                VALUE "Comments",         "Licensed under the GNU GPLv3+ (see http://www.gnu.org/licenses/.)"
+            END
+        END
+        BLOCK "VarFileInfo"
+        BEGIN
+            VALUE "Translation", 0x0409, 1252
+        END
+    END

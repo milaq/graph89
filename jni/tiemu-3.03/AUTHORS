@@ -1,0 +1,73 @@
+The TiEmu project is managed by the TiEmu team.
+The TiEmu team includes the following people:
+
+!!! For problems, questions, ... use the TiEmu mailing list:
+<gtktiemu-users@lists.sf.net>. Don't mail authors directly !!!
+
+Romain Lievin (roms): main developer, Win32 port
+================================================
+
+web: http://lpg.ticalc.org
+mail: roms@lievin.net
+
+
+Julien Blache (jb): GTK2 upgrade of TiEmu-I
+===========================================
+
+web: http://jblache.org
+mail: jb@jblache.org
+
+
+Kevin Kofler (kkofler): gdb integration, fixed and patches
+==========================================================
+
+web: http://tigcc.ticalc.org
+mail: Kevin@tigcc.ticalc.org
+
+
+Christian Walther (cw): Mac OS-X port
+=====================================
+
+web: ??
+mail: cwalther@gmx.ch
+
+
+Jaime Fernando Meza Meza (jf): icon & skin design
+=================================================
+
+web: ?
+mail: jaimezacalcs@yahoo.com
+
+
+Packagers:
+==========
+
+- Julien Blache <jb@jblache.org>: Linux/Debian
+- Romain Lievin <roms@lievin.net>: Win32
+- Kevin Kofler <Kevin@tigcc.ticalc.org>: Linux/Fedora ?
+
+
+All the others who have contributed to
+======================================
+
+Some contributions have been brought about this software by people:
+- code: Kevin Kofler
+- help: Olivier Armand and Lionel Debroux
+- pedrom: Patrick Pelissier
+- logo: hibou (real name ?)
+
+
+*------------ Previous releases ----------------*
+
+Roms aka Romain Lievin
+web: http://www.lievin.net
+mail: roms@lievin.net
+
+Tom aka Thomas Corvazier
+web: http://lpg.ticalc.org/prj_tiemu
+mail: corvazier@yahoo.com
+
+The libti68k library is based on the Jonas Minnberg's emulator 
+named (X)Tiger. He has recently released its emulator under GPL licence.
+
+See the LICENSES file for more informations.

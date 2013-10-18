@@ -1,0 +1,114 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+datarootdir = @datarootdir@
+bindir = @bindir@
+datadir = @datadir@
+pkgdatadir = @datadir@/tilem2
+mandir = @mandir@
+icondir = @datadir@/icons
+applicationsdir = @datadir@/applications
+mimedir = @datadir@/mime
+
+top_builddir = @top_builddir@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+VPATH = @srcdir@
+@SET_MAKE@
+
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+SHELL = @SHELL@
+UPDATE_DESKTOP_DATABASE = @UPDATE_DESKTOP_DATABASE@
+UPDATE_MIME_DATABASE = @UPDATE_MIME_DATABASE@
+
+# Custom action and status icons go in these directories.  These icons
+# are only used by TilEm, so they are installed in DATADIR/tilem2/icons.
+pkg_icondirs = hicolor/16x16/actions \
+	       hicolor/16x16/status \
+	       hicolor/24x24/actions
+
+# Application icons go in these directories; these icons will be
+# installed in DATADIR/icons so they are visible to other programs
+# (e.g. desktop application menus.)
+shared_icondirs = hicolor/16x16/apps \
+		  hicolor/22x22/apps \
+		  hicolor/24x24/apps \
+		  hicolor/32x32/apps \
+		  hicolor/48x48/apps
+
+all:
+	@echo 'Nothing to do'
+
+install:
+	$(INSTALL) -d -m 755 $(DESTDIR)$(pkgdatadir)
+	$(INSTALL_DATA) $(srcdir)/keybindings.ini $(DESTDIR)$(pkgdatadir)
+	$(INSTALL) -d -m 755 $(DESTDIR)$(pkgdatadir)/symbols
+	set -e ; for i in $(srcdir)/symbols/*.sym ; do \
+	 $(INSTALL_DATA) $$i $(DESTDIR)$(pkgdatadir)/symbols ; \
+	done
+	$(INSTALL) -d -m 755 $(DESTDIR)$(pkgdatadir)/skins
+	set -e ; for i in $(srcdir)/skins/*.skn ; do \
+	 $(INSTALL_DATA) $$i $(DESTDIR)$(pkgdatadir)/skins ; \
+	done
+	set -e ; for i in $(pkg_icondirs) ; do \
+	 $(INSTALL) -d -m 755 $(DESTDIR)$(pkgdatadir)/icons/$$i ; \
+	 for j in $(srcdir)/icons/$$i/*.png ; do \
+	  $(INSTALL_DATA) $$j $(DESTDIR)$(pkgdatadir)/icons/$$i ; \
+	 done ; \
+	done
+	set -e ; for i in $(shared_icondirs) ; do \
+	 $(INSTALL) -d -m 755 $(DESTDIR)$(icondir)/$$i ; \
+	 for j in $(srcdir)/icons/$$i/*.png ; do \
+	  $(INSTALL_DATA) $$j $(DESTDIR)$(icondir)/$$i ; \
+	 done ; \
+	done
+	$(INSTALL_DATA) $(srcdir)/icons/hicolor/index.theme $(DESTDIR)$(pkgdatadir)/icons/hicolor
+	$(INSTALL) -d -m 755 $(DESTDIR)$(applicationsdir)
+	$(INSTALL_DATA) $(srcdir)/desktop/tilem2.desktop $(DESTDIR)$(applicationsdir)
+	$(INSTALL) -d -m 755 $(DESTDIR)$(mimedir)/packages
+	$(INSTALL_DATA) $(srcdir)/desktop/tilem2.xml $(DESTDIR)$(mimedir)/packages
+	[ -n "$(DESTDIR)" ] || $(UPDATE_DESKTOP_DATABASE) $(applicationsdir)
+	[ -n "$(DESTDIR)" ] || $(UPDATE_MIME_DATABASE) $(mimedir)
+
+uninstall:
+	rm -f $(DESTDIR)$(pkgdatadir)/keybindings.ini
+	set -e ; for i in $(srcdir)/symbols/*.sym ; do \
+	 rm -f $(DESTDIR)$(pkgdatadir)/symbols/`basename $$i` ; \
+	done
+	set -e ; for i in $(srcdir)/skins/*.skn ; do \
+	 rm -f $(DESTDIR)$(pkgdatadir)/skins/`basename $$i` ; \
+	done
+	set -e ; for i in $(pkg_icondirs) ; do \
+	 for j in $(srcdir)/icons/$$i/*.png ; do \
+	  rm -f $(DESTDIR)$(pkgdatadir)/icons/$$i/`basename $$j` ; \
+	 done ; \
+	done
+	set -e ; for i in $(shared_icondirs) ; do \
+	 for j in $(srcdir)/icons/$$i/*.png ; do \
+	  rm -f $(DESTDIR)$(icondir)/$$i/`basename $$j` ; \
+	 done ; \
+	done
+	-for i in $(pkg_icondirs) ; do \
+	 rmdir $(DESTDIR)$(pkgdatadir)/icons/$$i ; \
+	done
+	-rmdir $(DESTDIR)$(pkgdatadir)/icons/hicolor/16x16
+	-rmdir $(DESTDIR)$(pkgdatadir)/icons/hicolor/24x24
+	rm -f $(DESTDIR)$(pkgdatadir)/icons/hicolor/index.theme
+	-rmdir $(DESTDIR)$(pkgdatadir)/icons/hicolor
+	-rmdir $(DESTDIR)$(pkgdatadir)/icons
+	-rmdir $(DESTDIR)$(pkgdatadir)/symbols
+	-rmdir $(DESTDIR)$(pkgdatadir)/skins
+	-rmdir $(DESTDIR)$(pkgdatadir)
+	rm -f $(DESTDIR)$(applicationsdir)/tilem2.desktop
+	rm -f $(DESTDIR)$(mimedir)/packages/tilem2.xml
+	[ -n "$(DESTDIR)" ] || $(UPDATE_DESKTOP_DATABASE) $(applicationsdir)
+	[ -n "$(DESTDIR)" ] || $(UPDATE_MIME_DATABASE) $(mimedir)
+
+Makefile: Makefile.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status
+
+$(top_builddir)/config.status: $(top_srcdir)/configure
+	cd $(top_builddir) && $(SHELL) ./config.status --recheck
+
+.PRECIOUS: Makefile $(top_builddir)/config.status
+.PHONY: all install uninstall

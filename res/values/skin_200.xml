@@ -1,0 +1,11 @@
+<resources>
+    <string-array name="skin200Array">
+        <item>Classic V200</item>
+        <item>Classic 92 Plus</item>
+    </string-array>
+
+    <string-array name="skin200Values">
+        <item>Classic V200</item>
+        <item>Classic 92 Plus</item>
+    </string-array>
+</resources>

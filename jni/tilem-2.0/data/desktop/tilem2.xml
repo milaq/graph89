@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-tigroup">
+    <sub-class-of type="application/zip" />
+    <comment>TI calculator group file</comment>
+    <glob pattern="*.tig" />
+  </mime-type>
+
+  <mime-type type="application/x-ti73-variables">
+    <comment>TI-73 variable</comment>
+    <glob pattern="*.73g" />
+    <glob pattern="*.73n" />
+    <glob pattern="*.73l" />
+    <glob pattern="*.73m" />
+    <glob pattern="*.73y" />
+    <glob pattern="*.73e" />
+    <glob pattern="*.73s" />
+    <glob pattern="*.73i" />
+    <glob pattern="*.73d" />
+    <glob pattern="*.73w" />
+    <glob pattern="*.73z" />
+    <glob pattern="*.73t" />
+    <glob pattern="*.73v" />
+    <magic>
+      <match type="string" offset="0" value="**TI73**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti73-program">
+    <sub-class-of type="application/x-ti73-variables" />
+    <comment>TI-73 program</comment>
+    <glob pattern="*.73p" />
+    <magic>
+      <match type="string" offset="0" value="**TI73**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b">
+          <match type="byte" offset="59" value="0x05" />
+          <match type="byte" offset="59" value="0x06" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti73-backup">
+    <comment>TI-73 memory backup</comment>
+    <glob pattern="*.73b" />
+    <magic>
+      <match type="string" offset="0" value="**TI73**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x0009">
+          <match type="byte" offset="59" value="0x13" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti73-app">
+    <comment>TI-73 Flash application</comment>
+    <glob pattern="*.73k" />
+    <magic>
+      <match type="string" offset="0" value="**TIFL**">
+        <match type="big16" offset="48" value="0x7424" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti73-os">
+    <comment>TI-73 operating system</comment>
+    <glob pattern="*.73u" />
+    <magic>
+      <match type="string" offset="0" value="**TIFL**">
+        <match type="big16" offset="48" value="0x7423" />
+      </match>
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti81-program">
+    <comment>TI-81 program</comment>
+    <glob pattern="*.prg" />
+    <magic>
+      <match type="string" offset="0" value="**TI81**\x00\x6e" />
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti82-variables">
+    <comment>TI-82 variable</comment>
+    <glob pattern="*.82g" />
+    <glob pattern="*.82n" />
+    <glob pattern="*.82l" />
+    <glob pattern="*.82y" />
+    <glob pattern="*.82e" />
+    <glob pattern="*.82s" />
+    <glob pattern="*.82i" />
+    <glob pattern="*.82d" />
+    <glob pattern="*.82w" />
+    <glob pattern="*.82z" />
+    <glob pattern="*.82t" />
+    <magic>
+      <match type="string" offset="0" value="**TI82**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti82-program">
+    <sub-class-of type="application/x-ti82-variables" />
+    <comment>TI-82 program</comment>
+    <glob pattern="*.82p" />
+    <magic>
+      <match type="string" offset="0" value="**TI82**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b">
+          <match type="byte" offset="59" value="0x05" />
+          <match type="byte" offset="59" value="0x06" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti82-backup">
+    <comment>TI-82 memory backup</comment>
+    <glob pattern="*.82b" />
+    <magic>
+      <match type="string" offset="0" value="**TI82**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x0009">
+          <match type="byte" offset="59" value="0x0f" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti83-variables">
+    <comment>TI-83 variable</comment>
+    <glob pattern="*.83g" />
+    <glob pattern="*.83n" />
+    <glob pattern="*.83l" />
+    <glob pattern="*.83m" />
+    <glob pattern="*.83y" />
+    <glob pattern="*.83e" />
+    <glob pattern="*.83s" />
+    <glob pattern="*.83i" />
+    <glob pattern="*.83d" />
+    <glob pattern="*.83c" />
+    <glob pattern="*.83w" />
+    <glob pattern="*.83z" />
+    <glob pattern="*.83t" />
+    <magic>
+      <match type="string" offset="0" value="**TI83**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti83-program">
+    <sub-class-of type="application/x-ti83-variables" />
+    <comment>TI-83 program</comment>
+    <glob pattern="*.83p" />
+    <magic>
+      <match type="string" offset="0" value="**TI83**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000b">
+          <match type="byte" offset="59" value="0x05" />
+          <match type="byte" offset="59" value="0x06" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti83-backup">
+    <comment>TI-83 memory backup</comment>
+    <glob pattern="*.83b" />
+    <magic>
+      <match type="string" offset="0" value="**TI83**\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x0009">
+          <match type="byte" offset="59" value="0x13" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti83plus-variables">
+    <comment>TI-83/84 Plus variable</comment>
+    <glob pattern="*.8xg" />
+    <glob pattern="*.8xn" />
+    <glob pattern="*.8xl" />
+    <glob pattern="*.8xm" />
+    <glob pattern="*.8xy" />
+    <glob pattern="*.8xe" />
+    <glob pattern="*.8xs" />
+    <glob pattern="*.8xi" />
+    <glob pattern="*.8xd" />
+    <glob pattern="*.8xc" />
+    <glob pattern="*.8xw" />
+    <glob pattern="*.8xz" />
+    <glob pattern="*.8xt" />
+    <glob pattern="*.8xv" />
+    <glob pattern="*.8xo" />
+    <glob pattern="*.8xgrp" />
+    <magic>
+      <match type="string" offset="0" value="**TI83F*\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000d" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti83plus-program">
+    <sub-class-of type="application/x-ti83plus-variables" />
+    <comment>TI-83/84 Plus program</comment>
+    <glob pattern="*.8xp" />
+    <magic>
+      <match type="string" offset="0" value="**TI83F*\x1a\x0a\x00">
+        <match type="little16" offset="55" value="0x000d">
+          <match type="byte" offset="59" value="0x05" />
+          <match type="byte" offset="59" value="0x06" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti83plus-app">
+    <comment>TI-83/84 Plus Flash application</comment>
+    <glob pattern="*.8xk" />
+    <magic>
+      <match type="string" offset="0" value="**TIFL**">
+        <match type="big16" offset="48" value="0x7324" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti83plus-os">
+    <comment>TI-83/84 Plus operating system</comment>
+    <glob pattern="*.8xu" />
+    <magic>
+      <match type="string" offset="0" value="**TIFL**">
+        <match type="big16" offset="48" value="0x7323" />
+      </match>
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti85-variables">
+    <comment>TI-85 variable</comment>
+    <glob pattern="*.85g" />
+    <glob pattern="*.85n" />
+    <glob pattern="*.85v" />
+    <glob pattern="*.85l" />
+    <glob pattern="*.85m" />
+    <glob pattern="*.85k" />
+    <glob pattern="*.85c" />
+    <glob pattern="*.85y" />
+    <glob pattern="*.85s" />
+    <glob pattern="*.85d" />
+    <glob pattern="*.85i" />
+    <glob pattern="*.85r" />
+    <glob pattern="*.85w" />
+    <glob pattern="*.85z" />
+    <magic>
+      <match type="string" offset="0" value="**TI85**\x1a\x0c\x00">
+        <match type="little16" offset="55" value="0x0004" mask="0xfffc" />
+        <match type="little16" offset="55" value="0x0008" mask="0xfff8" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti85-program">
+    <sub-class-of type="application/x-ti85-variables" />
+    <comment>TI-85 program</comment>
+    <glob pattern="*.85p" />
+    <magic>
+      <match type="string" offset="0" value="**TI85**\x1a\x0c\x00">
+        <match type="byte" offset="59" value="0x12">
+          <match type="little16" offset="55" value="0x0004" mask="0xfffc" />
+          <match type="little16" offset="55" value="0x0008" mask="0xfff8" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti85-backup">
+    <comment>TI-85 memory backup</comment>
+    <glob pattern="*.85b" />
+    <magic>
+      <match type="string" offset="0" value="**TI85**\x1a\x0c\x00">
+        <match type="little16" offset="55" value="0x0009">
+          <match type="byte" offset="59" value="0x1d" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+
+  <mime-type type="application/x-ti86-variables">
+    <comment>TI-86 variable</comment>
+    <glob pattern="*.86g" />
+    <glob pattern="*.86n" />
+    <glob pattern="*.86v" />
+    <glob pattern="*.86l" />
+    <glob pattern="*.86m" />
+    <glob pattern="*.86k" />
+    <glob pattern="*.86c" />
+    <glob pattern="*.86y" />
+    <glob pattern="*.86s" />
+    <glob pattern="*.86d" />
+    <glob pattern="*.86i" />
+    <glob pattern="*.86r" />
+    <glob pattern="*.86w" />
+    <glob pattern="*.86z" />
+    <magic>
+      <match type="string" offset="0" value="**TI86**\x1a\x0c\x00">
+        <match type="little16" offset="55" value="0x0004" mask="0xfffc" />
+        <match type="little16" offset="55" value="0x0008" mask="0xfff8" />
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti86-program">
+    <sub-class-of type="application/x-ti86-variables" />
+    <comment>TI-86 program</comment>
+    <glob pattern="*.86p" />
+    <magic>
+      <match type="string" offset="0" value="**TI86**\x1a\x0c\x00">
+        <match type="byte" offset="59" value="0x12">
+          <match type="little16" offset="55" value="0x0004" mask="0xfffc" />
+          <match type="little16" offset="55" value="0x0008" mask="0xfff8" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/x-ti86-backup">
+    <comment>TI-86 memory backup</comment>
+    <glob pattern="*.86b" />
+    <magic>
+      <match type="string" offset="0" value="**TI86**\x1a\x0c\x00">
+        <match type="little16" offset="55" value="0x0009">
+          <match type="byte" offset="59" value="0x1d" />
+        </match>
+      </match>
+    </magic>
+  </mime-type>
+</mime-info>

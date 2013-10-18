@@ -1,0 +1,1261 @@
+SubVersion: $Id: ChangeLog 2842 2009-05-29 14:04:35Z roms $
+
+- 12/02/2008, version 3.03:
+	- [kevin] $2765: fixed crash when debugging TIGCC program with GDB with low-level debugger in dock mode
+	- [kevin] $2766: fixed dock window enabling/disabling not to keep the engine running across the restart
+	- [roms]  $2768: fixed InnoSetup installer for use with GTK>=2.10.x
+	- [roms]  $2771: don't allow deleting of last RAM tab to avoid resizing of code/dock window
+	- [kevin] $2773: fixed build with GCC 4.3
+	- [roms]  $2781: don't shutdown screen when reading battery status (lionel)
+	- [roms]  $2782: don't resize code windows whenever cycle counter change
+	- [roms]  $2783: fixed disassembling of some FLINE instructions like 0xf800 (lionel)
+	- [roms]  $2784: fixed disassembling of BTST instruction (replaced by BRA)
+	- [kevin] $2793: fixed keynames.c build on OS X
+	- [kevin] $2794: link with g++ if --with-kde (fixes --with-kde build on OS X)
+	- [kevin] $2797: fixed use of wrong free function (g_free where gtk_tree_path_free is required) causing crash with GTK+ 2.14
+	- [kevin] $2798: fixed builtin Tk not working when built against the latest X.Org X11 (Tk bug 2010422)
+	- [roms]  $2815: merged Lionel's patch about link logging: adding CR/LF every 16 chars; take into account buffer overflow
+	- [roms]  $2816: really clears link logging buffer when clicking the 'Clear' button
+	- [roms]  $2820: removed obsolete virtual link cable
+	- [roms]  $2821: merged Lionel's patch: allow mix-up of images created by TiEmu 32-bits and TiEmu 64-bits 
+		due to a bug in IMG_INFO structure
+	- [roms]  $2824: fixed Lionel's logging problem (missing values on linkport output due to a bad use of External Activity flag
+		in linkport support)
+	- [roms]  $2826: added i18n support to some strings
+	- [roms]  $2827: fixed "libticables2 access violation" which appears when changing the link cable under some circumstances; due to
+		random access on uninitialized dbus function pointers
+	- [roms]  $2829: allow automatic changing of link cable setting when requesting a direct file transfer
+	- [roms]  $2832: don't allow launching of debugger if preloading has not finished yet
+	- [kevin] $2833: fix the "Default" button when importing a Titanium 89u (default to HW3 until we sort out HW4's actual speed, not HW2)
+	- [roms]  $2836: upgraded deprecated GTK+ code
+	- [roms]  $2838: if link cable reconfiguring fails, fallback to null cable & port
+	- [roms]  $2839: merged Lionel's patch: fix buffer overflow in the disasm routine
+
+- 16/09/2007, version 3.02:
+	- [roms]  $2646: screenshots can be copied into the clipboard
+	- [roms]  $2649: use fixed fonts for release and manpage dboxes
+	- [roms]  $2652: removed old GTK file selector because being deprecated with GTK+ 2.12
+	- [roms]  $2653: added accelerator key: F6 in code window
+	- [roms]  $2654: added accelerator key: +/- in memory window
+	- [kevin] $2656: fixed dirname+filename concatenation for KDE file selector
+	- [kevin] $2657: fixed build with GTK+ 2.12
+	- [roms]  $2658: dual-click in register window select the whole register value now;
+		re-enabled popup menu (go to address).
+	- [roms]  $2659: mapped both CTRL keys to Diamond & both SHIFT keys to 2nd
+	- [roms]  $2660: added a popup menu with "View _memory" on any debugger window
+	- [roms]  $2661: unified displaying of hexadecimal values (removed '$' and ''0x' heading chars) in boxes
+	- [roms]  $2662: suppress leading zeros like VTi does
+	- [roms]  $2663: some instructions (trap, rts, reset...) was suffixed with .L which is not needed
+	- [roms]  $2664: fixed wrong disassembly offset of MOVEM.L instruction
+	- [roms]  $2665: fixed disassembly of MOVEP instruction
+	- [roms]  $2666: fixed disassembly of MOVEQ instruction
+	- [roms]  $2667: fixed disassembly of ori/andi/eori, addi/subi/cmpi, lea/rts instructions
+	- [roms]  $2668: fixed disassembly of BT<tab>.W and changed BT into BRA
+	- [roms]  $2669: added accelerator keys (F1..F8) in memory window
+	- [roms]  $2670: map numerical ENTER key to TIKEY_ENTER on ti89, too
+	- [roms]  $2672: moved UAE disassembler into disasm.c file
+	- [roms]  $2673: unified displaying of hexadecimal values in the disassembler('$', '[' and '==' heading chars);
+		displayed offset as signed values
+	- [roms]  $2674: display "($42,a3),a3" instead of "(a3,$42),a3)" in disassembler
+	- [roms]  $2675: reject computed value [%lX] at end of line rather than in the middle of the instruction
+	- [roms]  $2676: in the bkpts window, the fifth toolbar button (go to address) is not restricted to code
+		breakpoint any longer; it works on any breakpoint type.
+	- [roms]  $2678: replaced currently selected instruction in code windows by an icon (arrow)
+	- [roms]  $2679: reverted back rev. $2672 (disasm => UAE) and rev. $2668 (BRA => BT)
+	- [roms]  $2680: allow to change the font used in every debugger windows
+	- [roms]  $2681: fixed disassembly of ori/andi/eori, addi/subi/cmpi, moveq/addq/subq instructions in the UAE engine itself
+	- [roms]  $2682: optimized m68k-disasm front-end
+	- [roms]  $2683: fixed "movem.l #$unreadable_mask"
+	- [kevin] $2685: fixed makeinfo version check in GDB
+	- [kevin] $2686: fixed longjmp out of gtk_main in the engine in the GDB-enabled version which triggered an assert with GLib 2.14
+	- [kevin] $2689: fixed relocation of debugging information for kernel-based programs
+	- [roms]  $2704-2710: added debugging dock and option to choose between multi-window and dock
+	- [roms]  $2712: fixed one-shot breakpoints which was not displayed any longer
+	- [roms]  $2713: fixed old bug: the bkpt context displayed in the status bar is not erased when the debugger exits
+	- [roms]  $2718: fixed bug: one-shot breakpoint was never raised
+	- [roms]  $2719: fixed bug: gtk warning when opening popup menu while being in debugger
+	- [kevin] $2721: don't show Insight's GDB console by default
+	- [roms]  $2722: decreased vertical space between cells to make window more compact
+	- [roms]  $2724: fixed keeping of previous folder with the multiple file selector (e.g. Send File)
+	- [roms]  $2728: removed ugly hack(s) in the code window (no V scrollbar any longer but shrinking allowed now)
+	- [roms]  $2729: fixed calculator window aspect ratio when used with no skin
+	- [roms]  $2730: fixed reloading of aspect ratio from tiemu.ini file
+	- [roms]  $2731: removed annoying tooltip in the calculator window
+	- [kevin] $2733: fixed pclog_ptr handling not to overflow (fixes buffer underflow crashing TiEmu during long sessions)
+	- [roms]  $2734: memory window uses courier font when no font is selected (restored previous behaviour)
+	- [roms]  $2735: commit font change to all of the debugger windows
+	- [roms]  $2737: added accelerator keys to toggle sr flags in the regs window
+	- [roms]  $2738: register window uses courier font when no font is selected (restored previous behaviour)
+	- [roms]  $2744: (try and) fix bug about management of AI3 on HW2 under TiEmu
+	- [kevin] $2750: made the "Clear RAM?" dialog box for "Reset calc" more intuitive
+	- [kevin] $2753: added support for the alternate (KDE/M$) button order
+		=> released on 10/01/2008
+	
+- 07/09/2007, version 3.01b:
+  - re-released due to missing USB drivers (libusb0.dll)
+  				=> released on 07/09/2007
+
+- 03/09/2007, version 3.01a:
+	- re-released due to missing file in Windows Installer (dhahelper.sys)
+	- includes latest ticables2 library with USB polling support
+	- [kevin] $2642: fixed bit toggling in register window
+	        => released on 04/09/2007
+	
+- 20/06/2007, version 3.01:
+	$2556: Merged changes from tiemu-3-sound branch:
+	- [hypersonic] $2509-2513: implemented low-level SDL code for sound emulation
+	- [kevin] $2515: added configure checks for SDL and --disable-sound configure option
+	- [kevin] $2520: added "Emulate sound" checkbox to the popup menu
+	- [kevin] $2527: cleaned up time handling (using gettimeofday everywhere, Win32 implementation taken from kdewin32,
+	                 not incorrectly attempting to measure wall clock time with clock() anymore)
+	- [kevin] $2531: filter out yet another junk parameter (LIBS=...) passed to subdir configure from yet another autoconf
+	                 version upgrade (2.61) (fixes MinGW build with regenerated configure)
+	- [kevin] $2537: implemented sound emulation in the CPU emulation loop
+	- [kevin] $2538: only define _GNU_SOURCE in src/core/uae/sysdeps.h if not already defined
+	Note: trunk forked into tiemu-3-sound branch at rev. $2507
+	- [roms]  $2571: changed some function names (sound emulation) to follow TiEmu function naming scheme
+	- [roms]  $2572: changed one function in dbus.c to follow ticonv API changes. Major number requirements updated consequently.
+	- [roms]  $2591: speed-up displaying of code window by populating ROM calls early
+	- [kevin] $2596: fixed coordinate saving for Win32 multi-monitor case
+	- [kevin] $2598: fixed KDE path detection for multilib systems with both 32-bit and 64-bit libraries installed
+	- [roms]  $2600: clear _all_ bkpts in ti68k_bkpt_clear_all
+	- [roms]  $2601: added support for breakpoints on bit changes
+	- [roms]  $2602: data/bit change breakpoint is raised after instruction execution so fixed disassembly window 
+		to show one line before current PC.
+	- [roms]  $2603: fixed wrong disassembly offset of MOVEM.W instruction
+	- [roms]  $2604: optimized some refreshing parts of debugging windows; added refresh of heap window
+	- [roms]  $2611: optimized displaying of code window by refreshing ROM calls just once
+	- [kevin] $2620: made zlib non-optional now that libtifiles2 requires it anyway
+	- [roms]  $2624: allow double-clicking of a ROM instead of selecting + pressing OK button
+	- [kevin] $2629: fixed GDB build with the upcoming glibc 2.7 (patch from Fedora GDB by Jan Kratochvil)
+	- [roms]  $2630: added ability to send file from command line
+		=> released on 29/08/2007
+
+- 16/03/2007, version 3.00
+	- [kevin] $2389: don't use \n in the breakpoint window status bar
+	- [kevin] $2390: fixed default hardware version for Voyage 200
+	- [roms]  $2409: added KDE desktop files & associations
+	- [roms]  $2415: allow to load saved states by DnD
+	- [roms]  $2417: allow to directly load ROM/TIB/SAV files from command line; maintained compatibility with older switches
+	- [roms]  $2420: fixed bug introduced in $2417
+	- [roms]  $2421: fixed double-free when DnD files to send
+	- [kevin] $2422: fixed errors (wrong case) in ROM_CALL list and added 2 new entries from TIGCC
+	- [kevin] $2424: don't disassemble instructions invalid for the 68000
+	- [kevin] $2425: fixed handling of 4-byte F-Line jumps
+	- [roms]  $2431: added memory map menu to the memory window
+	- [roms]  $2434: added key press recording/playing
+	- [roms]  $2440: fixed bug in the Infos box: display skin version according to SkinInfos structure
+	- [kevin] $2451: fixed aliasing violations in Win32 file dialog code
+	- [kevin] $2456: detect *-apple-darwin* as OS X, not just powerpc-apple-darwin*
+	- [kevin] $2457: fixed --disable-gdb builds failing due to missing intl/Makefile
+	- [kevin] $2459: fixed Win32 file dialogs not setting fname to NULL when returning NULL
+	- [kevin] $2462: filter -s from CFLAGS/CXXFLAGS/LDFLAGS on Darwin
+	- [kevin] $2485: OLE Automation: set ret to NULL if IUnknown::QueryInterface fails
+		=> released on 14/05/2007
+
+- 09/02/2007, version 2.81e
+	- [kevin] $2348: delete the temporary file instead of erroring if the user cancels the receive file dialog
+	- [kevin] $2349: fixed progress bar refresh referencing freed memory (#1529247)
+	- [roms]  $2350: send a group file as group, not as backup (bug #1529247)
+	- [kevin] $2356: imported Insight 6.6 and merged TiEmu changes
+	- [kevin] $2360: regenerated oleaut_i.c with WIDL again, this time fixing the include directives so it actually
+	                 compiles
+	- [roms]  $2363: added and enabled i18n support
+	- [roms]  $2368: replaced unused/deprecated printl system by GLib logging functions (part 1/2)
+	- [roms]  $2372: replaced any occurence of printl by a tiemu_warning() call (part 2/2)
+		=> released on 13/03/2007
+
+- 11/12/2006, version 2.81d
+	- [roms]  $2321: store *.sav files in the images folder rather than polluting the application top folder
+	- [roms]  $2322: updated to use API changes of tifiles2 v1.0.3 
+	- [kevin] $2335: fixed the Tcl/Tk code in Insight so it can be debugged with the TclPro debugger
+	- [kevin] $2337: add xdg-open in front of the list of browsers
+
+- 07/08/2006, version 2.81c
+	- [kevin] $2202: fixed g_free of invalid pointers in state.c (#1471709)
+	- [kevin] $2203: fixed ticalcs_cable_detach of NULL calc_handle when exiting TiEmu early (reported by hypersonic)
+	- [kevin] $2211: imported Insight 6.5 and intl directory from Binutils 2.17 and merged TiEmu changes
+	                 quote file name for add_symbol_file properly for the new add_symbol_file command parser in GDB 6.5
+	- [roms]  $2216: replaced some hand-made GTK+ user boxes by standard GTK+ ones (look better)
+	- [kevin] $2219: regenerated oleaut_i.c with WIDL now that this is supported
+	- [kevin] $2223: force serial make in src/Makefile.in because the weirdness of the gdb subdir make breaks parallel make
+	- [roms]  $2224: reverted back OLE changes in oleaut_i.c: break MSVC compilation
+	- [roms]  $2225: fixed signed/unsigned warnings with MSVC
+	- [kevin] $2231: fixed get_folder_list_handle failing
+	- [kevin] $2232: fixed canceling KDE file dialog causing an "invalid file" error
+	- [roms]  $2233: new feature: 'Link Log' dialog box (part 1/3)
+	- [roms]  $2234: factorized code: PC logging has been moved from Ti68kBreakpoints structure 
+		to Ti68kLogging one. Please note this doesn't affect the SAV_REVISION flag (part 2/3).
+	- [roms]  $2235: fill dialog box with log and save to file(part 3/3)
+	- [roms]  $2236: improved link logger (print data blocks rather than single bytes)
+	- [kevin] $2243: created a D-Bus interface
+	- [kevin] $2245: register a service name for the D-Bus interface
+	- [kevin] $2246: don't check for unneeded aRts and KDE documentation generation executables (request from Gentoo #112985)
+	- [kevin] $2250: don't call CoInitialize and CoUninitialize in oleaut.cpp, GTK+ already does this (to use input methods)
+	- [kevin] $2251: reverted changes to support 8 MB FlashROM, as HW4 actually only has 4 MB
+	- [roms]  $2254: display handle id as hex and dec (O. Armand feature request)
+	- [tyler] $2256: fixed title in the Image Creation Wizard (was titled TiEmu II, actually TiEmu 3)
+	- [kevin] $2257: reenabled OLE interface (tested by Tyler) (NOTE: does NOT work in WINE)
+	- [kevin] $2262: don't crash when attempting to load 8 MB images from old TiEmu
+	- [kevin] $2264: use kde-config to locate KDE instead of hardcoded directories which were missing /usr/lib64
+	- [kevin] $2265: fix --enable-shared-itcl so the shared libitcl and libitk are built with -fPIC
+	- [kevin] $2269: remove special-casing of __MACOSX__ from some include paths which shouldn't be needed
+	- [kevin] $2270: fixed memory leaks in config file handling
+	- [kevin] $2271: fixed about dialog not closing when Close is clicked with GTK+ 2.10
+	- [kevin] $2274: don't proceed to ROM image wizard step 3 if importing the image failed
+	- [roms]  $2276: GDK_WINDOW_TYPE_HINT_ was set to NORMAL instead of DIALOG. Very annoying because this makes the window appears in the top of all others.
+	- [roms]  $2278: fixed window resizing which was disabled (but note that Windows resizing is an ugly hack because
+			gtk_window_set_hints does not work properly under Windows).
+	- [roms]  $2280: set 'Debug file with TiEmu' unsensitive when build in no-gdb mode
+	- [roms]  $2282: added 'quick send' feature in -gdb version. This allows to by-pass the file selection box.
+	- [roms]  $2298: fixed memory leak in scroptions (folder name was not freed)
+	- [roms]  $2299: make 'quick send' options persistent
+	- [roms]  $2300: make 'quick send' feature available in both versions. Popup menu reworked.
+	- [roms]  $2303: output a message about OLE (un)registration
+	- [roms]  $2308: added DnD support for changing skin, sending files and importing images
+		=> Released on 08/12/2006
+
+- 07/07/2006, version 2.81b
+	- [kevin] $2128: HW4 has 8 MB of FlashROM
+	- [kevin] $2130: complete HW4 images to 8 MB
+	- [kevin] $2136: fixed NULL dereference in filesel.c
+	- [roms]  $2140: added TiGroup file support (in sending only)
+	- [roms]  $2142: fixed wrong timeout value (2 variables, 1 (mis-)used)
+	- [roms]  $2143: clean-up and overhaul in the progress bars
+	- [roms]  $2144: updated to rely on ticalcs2 progress bars data-base
+	- [roms]  $2146: fixed updating of third pbar counter. Fixed use of ticalcs2 pbar database.
+	- [kevin] $2147: don't crash DCOP client program when running reset_calc through DCOP with the debugger running
+	- [kevin] $2153: fixed warnings in TiEmu patches to GDB
+	- [kevin] $2154: fixed warnings, fixed UAE to detect 64-bit integer types under glibc, fixed is_varname
+	- [kevin] $2155: fixed warnings in the assembly-level debugger
+	- [kevin] $2156: fixed more warnings and a few file descriptor leaks
+	- [kevin] $2159: fixed "TIGCC" and "ticalc.org" bookmarks to use the respective official spelling
+	- [kevin] $2162: only run Qt event hook (processing GTK+ events) when currently displaying a modal dialog
+	                 (fixes DCOP hang after reset_calc with debugger running, due to the infinite loop protection)
+	- [kevin] $2162: disable "Debug file with TiEmu" when the debugger is running
+	- [kevin] $2162: added Seamonkey to the browser list, suggest Firefox instead of the obsolete Mozilla Suite
+	- [kevin] $2163: clear command line in execute_command
+	- [kevin] $2164: changed DCOP/OLE ready_for_transfers to really check if the emulated calculator is ready
+	- [kevin] $2166: fixed FlashROM identifiers so the HW4 8 MB FlashROM gets detected properly by AMS 3.10
+	- [kevin] $2168: fixed recfile crash when receiving something which is not a valid variable
+	- [kevin] $2168: fixed ti68k_linkport_ready to reset the link so TiEmu doesn't try to receive a "file" sometimes
+	- [roms]  $2177: fixed invalid keyval mask in keyboard press event routine
+					 removed Gdk_Caps_Lock capture (already capture by TI keyboard)
+					 added accelator key: Pause => Screenshot Now!
+	- [roms]  $2178: allow to select target folder for screenshots
+	- [roms]  $2179: fixed bug #1435183 (Error window when closing TI emu)
+	- [roms]  $2190: added BMP screenshot support and fixed frame spacing
+	- [roms]  $2191: reworked screenshot option dbox and prepared next step
+	- [roms]  $2194: added ability to take several screenshots (burst mode)
+		=> Released on ???
+
+- 10/05/2006, version 2.81:
+	- [roms] $2059: renamed 'code/source' window into 'disassembly'
+	- [roms] $2052: build a tiemu2-like release when NO_GDB is enabled	
+	- [roms] $2053: enable and use UAE disassembler when NO_GDB is enabled
+	- [roms] $2060: modified UAE disassembler to follow Motorola syntax
+		Used to provide a replacement of the tiemu2 disassembler (license issues).
+	- [kevin] $2081: removed excess spaces in disassemblers
+	- [kevin] $2090: added --disable-gdb configure option
+	- [roms]  $2096: fixed bug #1490859 (enable OK button when selecting an image)
+	- [roms]  $2097: fixed bug #1471709 (crash on old state image)
+	- [kevin] $2102: increased buffer size for the RELEASE viewer
+	- [kevin] $2115: fixed splash.c saying "TiLP" instead of "TiEmu", updated version in configure.ac
+	- [kevin] $2116: allocate metadata properly in send_file_and_debug_info
+	- [kevin] $2118: fixed Insight preferences dialogs
+	- [roms]  $2119: fixed linking with NO_GDB (missing xmalloc)
+	- [roms]  $2121: fixed return value in engine_func for NO_GDB mode (stop engine)
+	- [kevin] $2123: reset source ID when stopping the engine from engine_func (NO_GDB)
+		=> Released on 28/05/2006.
+
+- 25/08/2005, version 2.80:
+	- [roms] $1689: fixed Titanium skin loading and fixed bug in skin loader
+	- [roms] $1692: re-enabled transient mode for windows
+	- [roms] $1694: set transient mode as option
+	- [kevin] $1695: merge changes from tigcc-debugging-branch:
+		* integrate the GDB source debugger (command-line interface)
+		* fix include paths for systems without BFD and readline installed
+		* reenable the debugger if it has previously been disabled (by GDB)
+		* integrate Insight, a graphical frontend for GDB
+		* enable and fix Insight for MinGW (Win32) and Darwin (OS X)
+		* force static linking for TCL-related stuff on OS X
+		* don't chdir to $HOME (fixes Insight's path detection when running TiEmu using
+		  a relative path)
+		* allow .dbg files with spaces in the pathname and/or filename
+		* fix libintl detection (fixes --enable-nls builds on OS X at least)
+		* don't allow resetting while the debugger is busy
+		* new Windows installer based on NSIS: GTK+ is downloaded and installed
+		  automatically (after user confirmation) if needed
+		* new Fedora (Core 4) RPMs
+		* add XPM version (48x48) of Jaime Fernando Meza Meza's icon and use it for the
+		  Fedora .desktop file.
+		* support for BSS section debugging (_nostub only at the moment, TIGCC 0.96 Beta
+		  5 required)
+		* avoid link port access when browsing memory in the Insight memory window as well
+		  (see $1588 below)
+		* disable fvisibility support if --enable-shared or --enable-shared-* because it
+		  is currently broken
+	- [kevin] $1705: import PedroM (ld-tigcc build) 0.81 RC8
+	- [kevin] $1707: fix handling of handles (don't interpret NULL as end of heap table, don't
+	                 dereference H_NULL in loops)
+	- [kevin] $1708: disable window grouping (transient mode) by default
+	- [kevin] $1710: fix size of archived handles under PedroM
+	- [kevin] $1711: bump version number (2.00->2.80) and GTK+ requirement in configure.ac
+	                 (2.4.0->2.6.0, GTK+ 2.4 won't work since the addition of the new about window)
+	- [kevin] $1712: install prebuilt Manpage.txt if groff is not available
+	- [kevin] $1713: fix RELEASE window (MinGW path, say "TiEmu" instead of "TiLP", not
+	                 automatically shown so don't say it is)
+	- [kevin] $1717: fix RELEASE file to display properly (use ASCII, not Latin1 which is not
+	                 valid UTF-8)
+	- [kevin] $1718: don't remove last 2 bytes of RELEASE and COPYING (only Manpage.txt needs that)
+	- [kevin] $1719: fix patch to install prebuilt Manpage.txt without groff so it also works with
+	                 groff available (can't put conditional around install-data-local)
+	- [roms] $1727: fix bug in direct link access
+	- [roms] $1739: update HTML manual
+	- [kevin] $1741: update version number in popup-2.glade
+	- [kevin] $1742: fix FlashROM writes: can't set bits from 0 to 1
+	- [roms]  $1744: fixed FlashReadLong & FlashWriteLong (long access is just 2 word accesses)
+	- [roms]  $1748: don't allow operations on state while the debugger is opened (bug item #1250175).
+	- [roms]  $1757: fixed v200 skin (blank LCD)
+	- [kevin] $1763: fix HeapTable detection on PedroM 0.81 RC9 (use ROM_CALL instead of hack for
+	                 PedroM >=0.81)
+	- [kevin] $1764: import PedroM (ld-tigcc build) 0.81 RC9
+	- [roms]  $1768: merge changes from tiemu-3-libti2 branch:
+		* switched to the TiLP-II framework
+		* updated the communication/device dialog box
+		* added a new pseudo-cable (internal linkport)
+		* modified tiemu.ini parser consequently
+		* changed getw/putw into get_w/put_w due to name conflict with stdio.h.		
+		* SilverLink cable is now working for both Linux & Windows.
+	- [kevin] $1771: update NSIS installer, tarball script and Fedora RPM specs, require GTK+ 2.6.10
+	                 in the NSIS installer
+	- [roms]  $1781: loading of ??u upgrades was broken: fixed.
+	- [kevin] $1785: import PedroM (ld-tigcc build) 0.81 RC10
+	- [roms]  $1788: don't overwrite file received from TiEmu.
+		Raises a overwrite/rename/skip box for now (imported TiLP-II file management unit).
+	- [kevin] $1792: allow closing the debugger by closing the Insight window ("X" button)
+	- [roms]  $1793: fixed bug: timeout can be up to 600 on win32 but the glade file allows up to 60.
+					 fixed timeout issues with the device dbox: internal linkport timeout is now displayed/changed fine.
+	- [roms]  $1796: fixed bad memory allocation in the GTK+ 2.6 multiple
+	        file selector (bug #1294628). 
+	- [roms] $1801: fixed bug #1304338 (doesn't save skinless mode in .ini file)
+	- [roms] $1803: fixed #1305054 (doesn't refresh vector bkpt state)
+	- [kevin] $1811: optimized grayscale movem detection and added support for dirty-coded HW2/3 grayscale interrupts
+	                 abusing the stack pointer to hold data (currently only the latest Grib is known to do that)
+	- [kevin] $1812: import PedroM (ld-tigcc build) 0.81 release
+	- [kevin] $1813: fix install-without-tcl-tk omitting the "misc" directory
+	- [kevin] $1819: import Insight 6.4 and merge TiEmu changes
+	- [kevin] $1826: improve configure argument filtering to make Fedora->MinGW cross builds work
+	- [kevin] $1827: override C_INCLUDE_PATH and LIBRARY_PATH for UAE host object compilation
+	- [kevin] $1828: set CFLAGS_FOR_BUILD to CFLAGS without the arch-specific defines
+	- [kevin] $1832: allow setting $RC to something other than windres
+	- [kevin] $1833: override C_INCLUDE_PATH and LIBRARY_PATH for cleaner.c compilation
+	- [kevin] $1835: add .exe extension properly for MinGW (especially cross-MinGW) builds
+	- [kevin] $1843: add install-without-tcl-tk-itcl make target
+	- [roms] $1852: updated manpage
+	- [kevin] $1855: fixed unclosed tag and ISO 8859-1 (non-ASCII, non-UTF-8) character in manpage
+	                 changed manpage to Unix line endings so it displays properly in Konqueror
+	- [kevin] $1857: by default, KDE-enabled builds now use the KDE file selector only when running KDE
+	- [kevin] $1858: enable KDE support by default (except on MinGW)
+	- [kevin] $1870: fix libtifiles2 0.0.5 charset problem on Win32
+	- [kevin] $1871: fix GDB crash when single-stepping
+	- [kevin] $1872: adjust to libtifiles2 reversion to file names in locale charset
+	                 actually honor locale for file names throughout
+	- [kevin] $1875: plug Qt event loop into GTK+ main loop so we will actually be able to receive/process DCOP messages
+	- [kevin] $1876: created a DCOP interface (currently empty)
+	- [kevin] $1879: implemented image queries and file sending in the DCOP interface
+	- [kevin] $1880: handle engine state properly when sending files through DCOP
+	- [kevin] $1881: added ready_for_transfers() boolean query to the DCOP interface
+	- [kevin] $1882: added reset_calc(bool clearmem) command to the DCOP interface
+	                 DCOP operations now return true if TiEmu was ready and false if it wasn't (and rejected the operation)
+	- [kevin] $1883: implemented execute_command in the DCOP interface
+	- [kevin] $1886: added turn_calculator_on command to the DCOP interface
+	- [kevin] $1889: adjust to libtifiles2 re-reversion to file names in glib filename charset
+	- [kevin] $1890: implemented widechar versions of Win32 file dialogs
+	- [kevin] $1891: partial implementation of OLE automation interface (no instances created yet)
+	- [kevin] $1907: initialize and uninitialize OLE automation interface
+	- [kevin] $1913: added 1 ms timeout to Qt processEvents to ensure 4% max CPU consumption
+	- [kevin] $1914: slowed down typing (execute_command) a bit so the CHAR menu works properly
+	- [kevin] $1915: fixed keycode of SIGMA on TI-89
+	- [roms] $1931: fixed segfault in the Win32 file selector when varname contains non-ASCII chars.
+	- [roms] $1932: enabled tifiles2 library as UTF-8 for varnames. This allow good handling of non-ASCII chars.
+	- [roms] $1933: added conversion of varnames with greek chars into useable filenames for disks with locale encoding.
+	- [kevin] $1935: added OLE self registration support (/RegServer, /UnregServer)
+	- [kevin] $1936: also filter CXX in the configure argument filtering (fixes MinGW build again)
+	- [kevin] $1938: cleaned up OLE self registration support, fixing Win32 link failure
+	- [kevin] $1943: register the TLB file during OLE self registration
+	                 don't abuse assert for error checking in registry.cpp
+	- [kevin] $1945: add regsvr makefile target for native MinGW compilations (using MSYS)
+	- [kevin] $1953: experimental support for building tiemups.dll with MinGW
+	- [roms]  $1955: the '/RegServer' and '/UnregServer' must be case-unsensitive. Fixed compilation under MSVC.
+	- [roms]  $1957: added VB script for testing OLE/Automation.
+	- [kevin] $1959: use RegisterActiveObject, not CoRegisterClassObject, for our singleton
+	                 don't delete the singleton if the refcount reaches 0, let the cleanup on exit do it
+	- [kevin] $1961: pass --disable-werror to the GDB configury
+	- [roms]  $1962: added MSVC project to oleautsdk and modified oletest to compile with a C90 compiler.
+	- [kevin] $1964: moved initialization of buffer[2048] back down
+	                 restored 2 spaces/level indentation in oletest.c
+	- [roms]  $1968: request #1430263: "better error handling"
+	- [roms]  $1972: bug #1388306 fixed: "can't send FLASH app"
+	- [roms]  $1978: skin is now scaled directly from JPEG image => no resolution lost
+	- [kevin] $1980: added enter_debugger command to the DCOP interface
+	- [kevin] $1981: added enter_debugger command to the OLE interface
+	- [roms]  $1987: fixing bug #1434625: display a better error message when attempting to load a state image targeted for another hand-held model (backported changes from TiEmu2 rev. 1986).
+	- [roms]  $1989: fixed bug #1434625: allow direct loading of a state image and associated image.
+	- [roms]  $1993: fixed bug in the single Win32 file selector (default folder was not properly set)
+	- [roms]  $1994: switched to ticonv library
+	- [roms]  $1999: fixed #1436138: V200 screen bigger than the skin
+	- [kevin] $2003: fixed set_window->on_drawingarea1_configure_event->set_window feedback loop (see bugs #1227433, #1249087)
+	- [roms]  $2004: replaced gtk_idle_add (deprecated) by g_idle_add
+	- [roms]  $2007: accept TI92 files on Titanium and others
+	- [kevin] $2009: imported UAE 0.8.25
+	- [roms]  $2012: bug #1434600 => goes to HOME when calc is not ready
+	- [kevin] $2021: fixed stray quotes breaking Insight build with latest bash (by Pavel Roskin, from http://sources.redhat.com/ml/insight/2006-q1/msg00043.html)
+	- [roms]  $2031: can load VTi skins
+	- [kevin] $2033: commented out OLE installation in tiemu*.nsi and OLE initialization/cleanup in oleaut.cpp - OLE support will be reenabled when it will actually work
+	- [roms]  $2037: fixed to follow ticalcs2 API changes
+	- [kevin] $2038: HW4 runs at 16 MHz
+	- [roms]  $2040: added HW4 support (user can choose imported FLASH upgrade as HW3 or HW4 for Titanium (like TI89/92+))
+	- [roms]  $2048: fixed edition of values in the memory dbox
+	
+	Note: trunk forked into tiemu-debugging-branch at rev. $983 and has been merged back 
+		into the trunk at rev. $1695.	
+	For changes made in the tiemu-debugging-branch, see the RELEASE file starting at '20050806'.
+	
+	Note2: trunk forked into tiemu-3-libti2 branch at rev. $1720 and has been merged back
+		into the trunk at rev. $1768.
+
+- 19/08/2005, version 2.00:
+	- [kevin] $1662/1663: import V200 updates as HW2, not HW1 (and default TI-89/92+ updates to HW2)
+	- [roms] $1666: use Titanium and V200 skins when available (else fallbacks)
+	- [roms] $1667: fixed large column in the I/O port view
+	- [roms] $1668: new function in the mem window (read address and dis-assemble at)
+	- [roms] $1672: fixed 'Set PC to selection' command by adding a call to fill_prefetch_slow()
+	- [roms] $1673: update ASCII column (dbg wnd) after cell editing
+	- [roms] $1676: ask for 'Clear RAM' when reseting calc (O. Armand request)
+	- [kevin] $1680/1681: fix buffer underflow in iodefs.c
+
+- 03/08/2005, version 2.00-rc8:
+	- [roms]  $1615: TiEmu retains the state of dbg windows (open/closed) now.
+	- [kevin] $1623/1624: fixed: only first 32 bytes of ram_exec were restored from savestate
+	- [kevin] $1625/1626: buffering grayscale planes to avoid blinking in double-buffered games
+	- [roms]  $1627: put all gscales extern into gscales.h
+	- [roms]  $1629: added new I/O ports window which let view/modify HW registers
+	- [roms]  $1648: fixed buffer overflow in RTC HW3 and disabled full screen mode (too slow)
+
+- 16/07/2005, version 2.00-rc7:
+	- [roms] $1583: fixed PPhD's bug (no reload of ROM calls when upgrading)
+	- [roms] $1585: fixed comm box (removed calc & autodetect because un-needed)
+	- [roms] $1586: fixed file patterns in file selector (case sensitivity)
+	- [roms] $1588: avoid linkport accesses when browsing memory from dbg window
+	- [roms] $1590: fixed severe bug in linkport (the status register was reset whenever read
+		like specified by TI but the int handler proves it's false).
+		TiEmu does not run an infinite loop when transfer is interrupted.
+	- [roms] $1593: previous bug fixed again for _all_ calcs
+	- [roms] $1597: set link timeout to 60s for non-NT platforms, 1.5s for others
+	- [roms] $1598: added a new function in the ticables library API (ticable_link_reset)
+		for use by TiEmu. It allows to reset/flush the pipes of virtual linking when the
+		DBus is reset (usually due to transmission error). Link is now resumable.
+	- [roms] $1601: reimplemented HW3 RTC from latest/new O. Armand's information.
+	- [roms] $1608: automatically bind TiEmu #2 on the second instance of TiEmu
+	//- [roms] $1609: fixed wraparound of clock() in RTC hw2 support (~74 minutes).
+
+- 25/06/2005, version 2.00-rc6:
+	- [roms] $1552: replaced my hand-made about box by the generic one provided with GTK 2.6
+	- [roms] $1560: TiEMu can be exited from the cross (WM)
+	- [roms] $1564: fixed 'backing pixmap problem' (bug #1227433): the scale factor
+		was not retrieved fine from .ini file when the ratio contains ',' instead of '.'
+	- [kevin] $1572/1573: handle program entry breakpoints on _main for kernel/Fargo programs
+	- [kevin] $1574/1575: implemented HW3 RTC
+	- [roms]  $1577: can choose HW1/HW2 when importing a tib file
+	- [kevin] $1580/1581: fixed about box license display on MinGW
+
+- 23/06/2005, version 2.00-rc5:
+	- [roms] $1525: merged Kevin's change in rev $1524 (recfile).
+	//- [roms] $1526: cancel button
+	- [roms] $1543: fixed 'Receive file' check item.
+	- [roms] $1544: fixed bug #1227179 (screenshot).
+
+- 10/06/2005, version 2.00-rc4:
+	- [roms] $1488: replaced current icon by Jaime's one
+	- [roms] $1489: removed logo from about box
+	- [jb]   $1493: src/gui/calc.c: screenshot of the whole calc in BW
+		is not supported, error out in this case. It'd be nice to pop an
+		error message to the user.
+	- [jb]   $1493: src/misc/screenshot.c: enable BW screenshot in EPS
+		and PDF; they're treated like color screenshots.
+	- [roms] $1497: added hibou's logo
+	- [roms] $1507: cleanup and little fixes in interrupt support of m68k
+	- [roms] $1509: fixed behaviour of all keys and definitely fixed ON key
+
+- 01/06/2005, version 2.00-rc3:
+	- [roms] $1462: fixed bug #1212619.
+	- [roms] $1467: fixed ON key
+	- [roms] $1470-76: 
+		don't restart the whole GUI when switching view mode.
+		The main wnd can be resized by dragging it and its content is automatically scaled.
+	- [roms] $1478: popup menu and tiemu.ini updated to support custom scaling factor.
+	- [roms] $1480: changed logo for Kevin's one.
+	- [roms] $1483: fixed full-screen mode
+	- [kevin] $1485/1486: replaced TiLP logo in the HTML manual with my temporary TiEmu logo
+	- [roms] $1487: fixed resized window with key positions (mouse) (bug #1217627)
+	
+- 31/05/2005, version 2.00-rc2:
+	- [kevin] $1357/1362: added support for disassembling ER_throw
+	- [kevin] $1364/1365: link tiemu.rc in for MinGW
+	- [roms]  $1382: fixed HOME & CATALOG keys on Titanium (mouse only)
+	- [jb]    $1399: added EPS/PDF screenshot output
+	- [roms]  $1408: fixed check of Titanium skins (bug #1209813)
+	- [roms]  $1415: fixed debugger display under SawFish (patch #1209183)
+	- [kevin] $1417/1418: fixed 0x600017 and implemented detection of Patrick
+                          Davidson's grayscale routine (bug #1207299)
+	- [kevin] $1420/1421: when minimizing the main window, don't hide the others
+                          (patch #1209183)
+	- [kevin] $1424/1425: fixed checkboxes in the program entry breakpoint
+	                      dialog (a subtle 2-byte buffer overflow!)
+	- [kevin] $1427/1428: RTC port triggers every 8192 seconds (correct), not every 4 (dbg code)
+	- [kevin] $1430/1431: fixed resetting with the debugger open (closes the debugger
+	                      rather than starting the engine with the debugger still expecting
+	                      it to be stopped)
+	- [kevin] $1432/1433: reenabled memory window refresh
+	- [roms]  $1434: fixed multiple check items in the popup menu (button group)
+	- [roms]  $1436: HW protection is enabled by default for now
+	- [roms]  $1440: tiemu.ini file loader/saver: slightly re-arranged sections and cleaned-up.
+	- [roms]  $1443: view mode is now saved in the config file.
+	- [roms]  $1444: view mode is restored at startup.
+	- [roms]  $1446: screenshot of TI89 is now clipped
+	- [roms]  $1447: B&W screenshot support added
+	- [roms]  $1448: fixed screenshot of full skin with LCD
+	- [roms]  $1449: timeout of direct file loading can be changed now
+
+- 16/05/2005, version 2.00-rc1 (3.9.1, 0.6.4, 4.5.9):
+	- [kevin] $1337/1338: fix --with-kde for Debian and derivatives
+	- [kevin] $1340/1341: add -Wl,--export-dynamic for all Linux targets to fix Ubuntu problem
+	- [kevin] $1351/1352: implement undocumented flags for ABCD, SBCD, NBCD and CHK
+	                      (source: 68knotes.txt by Bart Trzynadlowski)
+	- [roms] $1358: first release candidate
+
+- 06/05/2005, version 1.80v:
+	- [roms]  $1248: changed rom_base from 0x20 to 0x200000 whenever applicable
+	- [roms]  $1249-1253: memory layout management rewritten
+	- [roms]  $1254: splitted I/O ports on HW3
+	- [roms]  $1255: finished to use new memory layout; the memory window shows 
+					 the exact memory mapping
+	- [roms]  $1263: hw_get_real_address is a function pointer which depends on the 
+					 calculator type for now (part of memory management rewrite attempt)
+	- [roms]  $1278: completely removed old memory banking system (mem_tab & mem_msk)
+	- [roms]  $1293: fixed engine loop (every 30ms)
+	- [roms]  $1294: can change LCD rate from popup menu
+
+
+- 27/04/2005, version 1.80u:
+	- [roms]  $1191: popup menu can be raised by clicking on the LCD (iPAQ)
+	- [roms]  $1192: fixed logging domain support (printl)
+	- [roms]  $1195: some bug fixes by Christian Walther.
+	- [roms]  $1213: fixed contrast on Titanium
+	- [roms]  $1214: fixed range breakpoints (completely broken) and code bkpt
+	- [roms]  $1229: can exit emulator from cross (WM decorations)
+	- [jb]	  $1230: fixed va_list in printl
+	- [kevin] $1231: allow setting a range breakpoint on a single byte
+	- [kevin] $1232: fixed range breakpoint (overlap)
+	- [roms]  $1233: fixed SSP/USP registers in registers.c
+	- [roms]  $1234: 'exit & save state' moved in popup menu
+	- [roms]  $1235: added accelator key to select & set PC on next line
+	- [kevin] $1237/1238: don't clobber bkpts.id if we are already breaking
+	- [kevin] $1239/1240: no FlashROM ghost space at 0x400000 on the TI-89
+	- [kevin] $1239/1240: fixed hardwareRevision in the HW parameter block
+	- [kevin] $1241/1242: fixed reads from wrong offsets in the stack window
+
+- 20/04/2005, version 1.80t:
+	- [roms]  $1152: fixed RAM space on Titanium
+	- [kevin] $1156: added detection for WinXP with classic theme.
+	- [roms]  $1161: fixed window position again (better fix-up)
+	- [roms]  $1162: save main window position
+	- [roms]  $1163: implementing receive file feature
+	- [roms]  $1166: merged Christian Walther's patch for Mac OS-X port.
+	- [kevin] $1167: increased link timeout from 10 to 60s.
+	- [roms]  $1172: added receive of file
+	- [roms]  $1173: improved to support group files
+	- [roms]  $1176: show a dialog box when a file is received
+	- [roms]  $1177: file receiving can be disabled for games which uses linkport for sound
+	- [roms]  $1182: TI89 Titanium entry was missing in the communication box
+	- [roms]  $1183: glade callbacks were not found due to a missing --export-dynamic (iPAQ)
+	- [roms]  $1185: clean-up and improvements in the skin loader (no tmp file any longer)
+					 improvements in the skin loading (avoid multiple loading and load only when necessary)
+	- [roms]  $1188: removed flicker at startup, code slightly reworked
+
+- 11/04/2005, version 1.80s:
+	- [roms]  $1102: fixed old file selector
+	- [kevin] $1112: fix incorrect shift of rom_base in handles.c.
+	- [kevin] $1112: fix several HW protection bugs which prevented booting TI-89 Titanium AMS 3.01.
+	- [kevin] $1112: fix and enable HW2/HW3 FlashROM execution protection.
+	- [kevin] $1114: properly step over jsr _bcd_math calls.
+	- [roms]  $1116: don't use libtool and fixed UAE makefile for cross-compilign support.
+	- [roms]  $1137: fixed clock on HW2
+	- [roms]  $1143: fixed preloading of debugger 
+	- [roms]  $1145: can sort ROM calls by addr, name or id
+	- [roms]  $1146: fix-up window size/position with border size
+	- [roms]  $1147: fixed possible bad selection location in mem, stack and code windows
+		Fixed source code window: scrolling was somewhat weird/broken.
+
+- 28/03/2005, version 1.80r:
+	- [kevin] $1029: merged UAE 0.8.15 from tigcc-dbg branch
+	- [roms]  $1030: fixed MSVC compilation and support for new UAE
+		Note: there is a post-build lock with gencpu. To fix...
+	- [roms]  $1032: added instruction cycle count support
+	- [kevin] $1037: restrict to actual speed based on cycle count, not instruction count.
+	- [roms]  $1038: fixed Win32 multiple file selector
+	- [roms]  $1048: fixed calibration loop (updated on each engine restart)
+	- [roms]  $1059: added pgm_entry bkpt support in dbg_cause.c (merged from Kevin's branch)
+		need to remove 1 pgm entry bkpt limitation
+	- [kevin] $1079: don't start the engine when toggling "Restrict to actual speed" if it was stopped (crash fix).
+	- [roms]  $1081: TiEmu hang when using F10 instead of popup menu. Fixed.
+	- [roms]  $1082: use ShellExecute instead of g_spawn_async in go_to_bookmark (thx Kevin !).
+	- [roms]  $1084: use a list of browsers to get the good one under Linux
+	- [kevin] $1092: trigger interrupts per cycle, not per instruction. Fix interrupt rates. 
+		Measure LCD exposure times in cycles rather than instructions to match the timers.
+
+- 19/03/2005, version 1.80q:
+	- [roms] $985: updated copyright notice.
+	- [roms] $990: set main window title (for TIGCC-IDE).
+	- [roms] $993: switched to GTK+ 2.6.4 for Windows.
+	- [roms] $994: removed GTK deprecated code (-DGTK_DISABLE_DEPRECATED),
+	         except for comm.c
+	- [roms] $996: set default filename in file selectors
+	- [roms] $997: more dissassembled lines of code in the debugger 
+	         (resizeable).
+	- [roms] $998: close the debugger when you press F5.
+	- [roms] $1001: added scaling support for skin & lcd 
+	         (beware: CPU intensive).
+	- [roms] $1002: can send several TI files at once and added 
+	         new file selectors.
+	- [roms] $1008: implemented full-screen view.
+	- [roms] $1009: improved CPU responsiveness of large view mode.
+	- [roms] $1015: TiEmu don't use threads any longer.
+
+- 12/03/2005, version 1.80p:
+	- [kevin] $933: increased link timeout from 1.5 to 10s.
+	- [kevin] $934: fixed grayscale support.
+	- [kevin] $935: fixed grayscale support with double buffering.
+	- [kevin] $937: allow building with -mwindows -D_WINDOWS on MinGW.
+	- [roms]  $940: removed mutex at startup because we should be able to run 
+		2 instances of TiEmu for virtual linking.
+	- [roms]  $941: fixed ghost of RAM in $100000 on TI89,92,92+,V200.
+	- [roms]  $943: fixed ghost of RAM in $000000 on Tinanium
+	- [roms]  $949: fixed timer incrementing/reloading (PPhd: loop freeze)
+	- [roms]  $950: can send all of 89?, 92?, 9x? and v2? to all the models
+	- [roms]  $951: clean-up in ti68k_scan_images (no more cache, useless now)
+	- [roms]  $952: can remove (=file delete) image from list
+	- [roms]  $954: fixed size for archived handles on PedRom
+	- [roms]  $958: fixed file pattern for Win32 file selector; fixed default 
+					path and pattern for the new GTK file selector.
+	- [roms]  $960: improved management of ALPHA key on TI89 (letter/number).
+	- [roms]  $962: factorized TI89/V200 & TI92+ code (memory).
+	- [kevin] $966: added KDE file selector support.
+	- [roms]  $976: full hw1/2/3 protection support (89).
+	- [roms]  $980: overhaul of some parts in memory management and factorized 
+					hw protection code for all calcs.
+	- [roms]  $981: hw protection implemented for all calc models.
+
+- 25/02/2005, version 1.80o: roms
+	- fixed bug in ti68k_get_hw_param_block (wrong search/replace)
+	- fixed TAB char (0x09) pb in the dbg_mem window (Lionel)
+	- handles are now displayed fine with PedRom
+	- program entry breakpoint feature now useable with AMS >= 2.00
+	- improved dbg windows behaviour: save/restore size, position and 
+	state (hide/minimized);	fixed ini file, too
+	- updated manpage
+	- command line improved and up-to-date
+	- cleaned-up configure.ac script (CygWin & MinGW)
+	- fixed Step Over
+	- added Win32 file selector
+	- fixed dependancy problem with tiemu&uae rule in src/Makefile.in
+	- fixed bad use of sizeof in hw_io_init
+	- fixed MinGW path with Kevin
+	- fixed -mms-bitfields issue with UAE Makefile under MinGW (Kevin)
+	- fixed out-of-range access with io_bit_tst in ports.c (Kevin)
+	- fixed contrast on TI92+
+	
+- 18/02/2005, version 1.80n: roms
+	- fixed FLASH writes with HW3 patch
+	- fixed Step Over on the following FLINEs : 0xfff0, 0xfff2, 0xffee.
+	- fixed Hardware Parameter Block when converting FLASH upgrade
+	- the Windows(tm) MENU key raises the popup menu for now
+	- fixed disassemblling of 0xffee and 0xffef FLINEs
+	- changed engine_start/stop architecture to remove some menu locks/bugs
+	- fix: ROM call combo box: does not jump to call when names contains '/'
+	- fix: don't reload ROM calls when changing AMS without chaning calc type
+	- show vector name rather than number
+	- dis-assemble FLINE with __ld_entry_point
+	- dis-assemble FLINE with _bcd_math followed by FPU pseudo-opcode
+	- clean-up and improvements in the misc menu (help)
+	- fixed status bar display in the bkpts dbox
+	- some items of the popup menu are disabled when the engine is running
+	- save FLASH segment which have been written/erased
+	- added FPU dis-assembler
+	- fixed/improved some endianess issues
+	- pedrom tibs are now placed in the 'pedrom' folder. The wizard let you import them 
+		automatically.
+	- fix problem of path with scan_images under Linux
+	- fixed/improved mem allocation in images.c
+	- added program entry breakpoint feature (AMS < 2.00 only)
+
+- 07/02/2005, version 1.80m: roms
+	- dbus architecture improved (reset)
+	- fixed and tested linkport support with real cables: GrayLink, BlackLink, VTi and TiEmu.
+	- tested: TiLP/VTi (vti), VTi/TiEmu (vti), TiLP/TiEmu (tie).
+	- SilverLink makes TiEmu crash.
+	- 0x200000 and 0x400000 are ghost of 0x000000 (Titanium only)
+	- added 0x7100xx ports and fixed LCD address on HW2/HW3
+	- real grayscale emulation for HW2/HW3
+	- removed VTi signature (buggy SR)
+	- searching of data begins at the current tab address
+	- fixed heap listing with AMS300
+	- fixed Step Over on TRAP
+
+- 21/01/2005, version 1.80l: roms
+	- switched to GTK+ package 2.4-rc26 (2.4.14): compatible with GiMP and fixes toolbar tooltips
+	- fixed size of handles in handle wnd
+	- some improvements and fixes in the linkport support
+	- fixed AI2 (need to be raised whenever a key is pressed)
+	- main loop modified: main loop is restarted whenever a new ROM is loaded.
+	- fixed main window which appears when the whole window is ready
+	- fixed V200 and Titanium crash under Linux (buffer overflow). V200 transfers don't crash
+		any more under Windows (probably same bug).
+	- added kbd_dbg variable in tiemu.ini file to display keystrokes in console (useful for creating keymaps).
+	- prevent Alt+ESC and Ctrl+ESC to disturb TiEmu (thanks to Kevin)
+
+- 20/01/2005, version 1.80k: roms
+	- link port is now reset when error occurs: great improvement
+	- added support of EA bit ($60000D:2): Titanium work
+	- clean-up of linkport support (no more hack)
+	- fixed linkport progress bars
+	- boosted linkport speed (direct file)
+
+- 12/01/2005, version 1.80j: roms
+	- rewrite of the m68k loop:
+		* UAE fixed to handle multiple pending interrupts and some other fixes
+		* idle mode and STOP improved but problems with ON key
+	- fixed grayscale routines: they are now rock-stable !
+	- fixed grayscales with HW2
+	- implemented 'increment rate' of $600017 port
+	- fixed RTC timer ($700014) and port $70001F (RTC enable and 1,2,3,5 irq inhibit).
+	- fixed AI3: it was never raised because counter was never incremented
+
+- 03/01/2005, version 1.80i: roms
+	- implemented new method for grayscale computing & management (idea from Kevin)
+	- clean-up of popup menu (#colors menu removed)
+	- grayscales pb with HW2...
+
+- 13/12/2004, version 1.80h: roms
+	- simplified skin/keymap management (TI92+ => TI92, TI89t => TI89)
+	- simplified ROM image/upgrade access
+	- display ROM calls in RAM in the mem panel
+	- fixed contrast with TI89
+	- fixed grayscale computing but grayscales are still flickering
+	- switched to gtk-win32-devel-2.4-rc24.exe package: fix tooltips with toolbars
+
+- 15/11/2004, version 1.80g: roms
+	- idle() fixed (port $600005)
+	- erase FLASH whenever an OS upgrade is loaded.
+	- fixed scrolling of instructions in code window
+	- data bkpt at $0 are now caught
+	- 'Run to cursor': work with far instructions
+	- fixed incrementing of $700014
+	- removed "C:\\tiemu.log" empty file under Linux
+	- added temporary breakpoint mode
+	- breakpoints are now editable
+	- fixed bugs with data breakpoints
+	- fixed bug with 'Run': didn't run if a bkpt is on the current line
+	- update stack frame when editing memory hex dump
+	- don't list invalid ROM calls any more
+	- added frame pointer window
+	- stack & frame pointer window are now scrollable
+	- remind folder when sending variable
+	- allow cross-compatibility when sending TI files
+	- switched to the new file selector (seems to be slow)
+	- added heap window to show handles
+	- fixed LCD address on all calculators
+	- improved ROM call management
+	- ROM call entry box has now auto-completion
+	- refresh code window when removing code bkpt from bkpt window
+	- don't save configuration any longer when upgrading calculator
+	- removed bkpt cause dbox for status bar in the bkpt dbox
+	- fixed TIB support for V200 & TI89Ti (libtifiles)
+	- merge read & write bkpts as r/w bkpts
+
+- 08/11/2004, version 1.80f: roms
+	- PedRom is now provided with TiEmu as default OS.
+	- bug: 'unexpected Xlib async reply' (Linux) found and fixed.
+	- improved LCD on/off and contrast
+	
+- 02/11/2004, version 1.80e: roms
+	Fixed various key binding bugs thanks to Kevin.
+
+- 24/10/2004, version 1.80d: roms
+	- fixed bug: directory creation in $HOME
+	- bug: 'unexpected Xlib async reply' (Linux) (not fixed yet)
+	- fixed missing feature in the FLASH device: TI89 Titanium boots for now
+	
+- 11/10/2004, version 1.80c: roms
+	- applied patch from Christian Walther <cwalther@gmx.ch>
+	- fixed some Linux bugs
+
+- 14/09/2004, version 1.80b: roms
+	- fixed HW3 support
+	- fixed bug in LCD snoop range register: TI89 Titanium (patched) and V200 (patched) work.
+	- fixed bug in FLASH emulation (algorithm)
+	- fixed ROM size handling with TI89 Titanium & V200
+	- removed copying of vector table from FLASH to RAM at startup
+	- added 'go to address' in the PC log window
+	- implemented 'enable/disabled' breakpoint
+	- added some missing HW ports
+	- fixed TI89 Titanium RAM accesses
+
+- 28/08/2004, version 1.80a: roms
+	- fixed vectors copy
+	- bkpts window: can jump to bkpt address
+	- code window: can jump to ROM call
+	- fixed warnings
+	- update stack frame when stepping
+	- improved step over: don't stop at the first RTS/RTE
+	- fixed disassembling of STOP instruction
+	- highlight ROM call
+	- fixed loading of ROM calls (load from FLASH)
+	- ROM calls are sorted by name instead of by id
+
+- 20/08/2004, version 1.79: roms
+	- LCD background is less dark
+	- force mem window refresh when scrolling up/down
+	- no ghost in 0x400000-0x5FFFFF on TI89
+	- stack frame display 1 word on 2
+	- fixed step over: works on DBcc
+	- PC highlight lost when scrolling: fixed
+	- restart engine when clicking outside of the popup menu
+	- important bug: FLINE instructions were not executed !
+	- popup menu slowed down in non-restricted speed mode (fixed)
+	- removed lock-ups at startup (start engine after splash screen)
+	- when calc is OFF, CPU is now used at 3% instead of 100% and debugger can be launched
+
+- 13/08/2004, version 1.78: roms
+	- changed keyboard mapping to pure VTi mapping
+	- added ability to load keymaps from file
+	- force code window refresh when maintaining F7 key pressed
+	- accept ExtendeD's V200 ROM (patched)
+
+- 10/08/2004, version 1.77: roms
+	- step over fixed again: stops on Bcc/DBcc, STOP, RTE, RTD, RTS, RTR, JMP.
+	- FLINE > 5 was mis-disassembled
+	- code window: don't reload source when setting a bkpt
+	- check for image at startup and can select it
+	- code window: show PC in the middle of the window and leave 3 isntructions at bottom
+
+- 07/08/2004, verison 1.76: roms
+	- splitted memory mapping (init/exit)
+	- SR/PC were not shown any longer with exception (fixed)
+	- added refresh button to mem window
+	- update regs when changing the Supervisor bit
+	- clicking OK in the ROM version without selection makes box crash
+	- bug fixes in the mem dbox searching
+	- use Lionel's romcalls listing (N:func_name)
+	- min/max window improved: hide windows like Glade and 1 app in the task bar
+
+- 27/07/2004, version 1.75: roms
+	Olivier's suggestions:
+	- synch Code/Window menu with state of other windows (show/hide)
+	- minimize/maximize all windows when touching calc or code window. Could be better...
+	- can't step after bkpt: fixed.
+	- mem_dbox: show headers, removed stack, refreshed on step, tab refreshed when scrolling,
+	- mem_dbox:	improved scrolling and browsing
+	- step over was buggy (no single step on insts other than jsr/bsr)
+	- code_dbox: improved scrolling and browsing
+	- avoid selection and green bar to be masked
+	- code_dbox: can add mem tab at address
+	- mem_dbox: can disasm at address and added popup menu
+	- mem_dbox: can update multiple bytes at once
+	- regs_dbox: can open a mem tab with register value
+	- new window: stack
+	- regs_dbox: added Status Register window (1 button per bit)
+	- mem_dbox: replaced '+A' header by absolute address
+	- mem_dbox: searching capability (find first & find next)
+
+- 14/07/2004, version 1.74: roms
+	Fixes from Lionel, Kevin and Olivier's suggestions:
+	- when scrolling down in the code window, the bar is now reset 
+	(hide first instruction).
+	- reject some SAV images due to IMG_INFO structure (memcmp)
+	- improved popup menu (slow down)
+	- popup menu available when debugger is opened
+	- rebuilt under Linux
+	- fixed bug with SDCB in the VTi's disassembler
+	- modified VTi's disasm to show F-Line ROM calls
+	- completely rewritten debugging layer and added Step Out mode
+
+- 12/07/2004, version 1.73: roms
+	SDL removed for GTK: screen and keyboard support rewritten from 
+	scratch !
+	Debugger raised on event from m68k thread: less CPU intensive but 
+	could be better.
+	HW1 protection is emulated excepted for archive memory limit.
+
+- 07/07/2004, version 1.72: roms
+	Error management connected and updated.
+	Fixed 'restrict to current speed'.
+	Synch item disabled for now.
+	Fixed bugs in state image loading as well as in LCD initialization 
+		(no LCD updates after state image loading).
+	Linkport reworked but seems to be buggy with HW2 ?!
+	Fixed IMG_INFO structure: size was incorrect.
+	Added new field to IMG_INFO: ROM base address.
+	Navigate with arrow keys in the mem dbox.
+	Save of breakpoints in the state image.
+	Fixed code breakpoint which was buggy.
+	Added symbolic debugger (replace address by name; take a look at 0x4f89fe on TI92+).
+
+- 30/06/2004, version 1.71: roms
+	Lionel Debroux's suggestions:
+	- debugger access is slow: improved by pre-loading windows.
+	- can't scroll into the code window: fixed (VTi uses a fixed size list without scrollers)
+	- window focus: fixed (list of the code window has default focus)
+	- shortcuts (F2, G, ...): fixed
+	- key mapping pb (EE, |): fixed
+	- pb with Alpha key: fixed
+	- no key auto-repeat: fixed
+	- long names with the ROM version box: fixed
+	- disasm listing is bad(): fixed 
+		* mv2sr (move xx,sr) at ?? (TI92 1.11)
+		* mvmel (movem) at 0x24b90c (TI92 1.11)
+		* trap# (trap #) at 0x20212e (TI92 1.11)
+	- SR flags (VTi emulation): fixed
+
+	Fixes:
+	- disable menu access when debugger is opened.
+	- I/O bits manipulation functions moved into bits.h and fixed (bit_set/clr buggy) but
+		direct file loading is now broken.
+	- fixed ON key (works and set on/off LCD screen).
+
+	Improvements:
+	- added VTi-style disassembly view
+
+- 05/05/2004, version 1.70: roms
+	Rework in progress.	
+
+=====> TiEmu II project re-starts here <=====
+
+- 02/07/2003, version 1.68: jb
+	Removed GTK+ 1.2 to GTK+ 2.0.
+
+- 02/01/2003, version 1.68:
+	Removed automake support in ./src. Switched to a pure autoconf support.
+	Some warning removed.
+	
+- 30/01/2003, version 1.67:
+	Automake reworked and improved. Bu, I still have these ugly links.
+	Compilable under MinGW for K. Kofler.	
+	
+- 01/11/2002, version 1.66:
+	Automake/Autoconf does not support sub-dirs any longer -> file are 
+	linked now (ugly !).
+	
+- 13/10/2002, version 1.65:
+	Changed to support libticalcs v4.x.x.
+	Compilation fixes.
+	
+- 02/08/2002, version 1.64:
+	Changed to support libticalcs v4.x.x. 
+	Compilation fixes.
+	
+- 02/06/2002, version 1.63b:
+	FLASH upgrade support works fine now.
+	
+- 01/06/2002, version 1.63a:
+	Beta release.
+	
+- 01/06/2002, version 1.62q:
+	GUI slightly modified (wizard, ROM version, ...) and FLASH upgrade
+	management: support unified.
+	
+- 31/05/2002, version 1.62p:
+	Merge with Win32 port attempt.
+	
+- 30/05/2002, version 1.62o:
+	Linkport improved and cleaned-up. Fully works.
+	A FLASH upgraded converted into a ROM image with TiLP works...
+	
+- 30/05/2002, version 1.62m:
+	HW memory support improved but it's still impossible to directly load
+	a FLASH upgrade as a ROM image.
+	
+- 29/05/2002, version 1.62l:
+	Attemp to thread TiEmu and to remove suspend/unsuspend removed: failed.
+	But, some clean-up has been done.
+	
+- 29/05/2002, version 1.62k:
+	Added the ability to change skin.
+	
+- 28/05/2002, version 1.62j:
+	Skin support updated for supporting TiEmu skins (imported skinops.c
+	from JB's SkinEdit)
+	FLASH upgrade support to improve (if we load directly an upgrade,
+	this will not work but it works after a ROM image).
+	GUI clean-up finished.
+	
+- 27/05/2002, version 1.62i:
+	find_pc function modified and FLASH upgrade support improved.
+	Link box upgraded.
+	Skin support to finish.
+	
+- 26/05/2002, version 1.62h:
+	find_pc function modified and FLASH upgrade support improved.
+	
+- 22/05/2002, version 1.62g:
+	ROM image overhaul.
+	
+- 21/05/2002, version 1.62f:
+	GUI clean-up.
+	
+- 18/05/2002, version 1.62e:
+	GUI clean-up.
+	
+- 16/05/2002, version 1.62d:
+	TI HW clean-up.
+	
+- 15/05/2002, version 1.62c (1.64):
+	TI HW clean-up.
+	
+- 14/05/2002, version 1.62b (1.63):
+	TI HW clean-up.
+	
+- 13/05/2002, version 1.62a (1.62):
+	TI HW clean-up.
+	
+- 12/05/2002, version 1.61:
+	GlobInf structure modified.
+	
+- 11/05/2002, version 1.60:
+	Clean-up finished.
+	
+- 10/05/2002, version 1.59:
+	Headers modified. Clean-up of files.
+	
+- 09/05/2002, version 1.58:
+	Project tree completely rebuilt: libti68k & tiemu are now a single
+	package with sub-folders.
+	
+---	
+Some explanations about the version number: the version number has this form:
+X.XX_X.XX where X is the major number and XX the minor one.
+An even number is a stable version whereas an odd number is an unstable/devel version.
+The first X.XX shows the version of the GtkTiEmu interface and the last X.XX shows the version of the libti68k used.	
+---	
+	
+- 07/05/2002, version 1.57_1.4.3:
+	Scaling support finished (for displays with high resolution).
+	
+- 20/04/2002, version 1.56b_1.4.3:
+	Screenshot code rewritten according to the new rendering system.
+	
+- 16/04/2002, version 1.56a_1.4.3:
+	skn_loader.c: overhaul &  clean-up.
+	sdl_specific.c: rendering completely rewritten with pure SDL functions.
+	Tested on a PC 233MHz: speed & mem use are slightly greater.
+
+- 20/02/2002, version 1.55_1.4.3:
+	Libti68k & TiEmu modified for supporting the liticables-v3.x.x
+	
+- 28/01/2002, version 1.54_1.4.2:
+	Applied the JB's patch for compiling GtkTiEmu on Linux/PPC (problem
+	of endian-ness with skins and some other stuffs).
+
+=====> TiEmu II project starts here <=====
+	
+- 21/11/2001, version 1.53_1.4.2:
+	Direct internal linkport with TiLP. Implemented but disabled.
+	LCD: better gray scales/contrast management (no orange color !)
+
+- 19/11/2001, version 1.52_1.4.1:
+	Compiled under Win32. Debugger has been re-enabled under Win32 since
+	it works fine now.
+
+- 18/11/2001, version 1.51_1.4.0:
+	Send file finished.
+	Debugger dbox slightly improved (unsuspend).
+
+- 15/11/2001, version 1.50_1.3.9:
+	Removed pthread support.
+	Send file function in progress.
+
+- 14/11/2001, version 1.49_1.3.8:
+	It it not necessary to restart emulator if we change the link cable 
+	type.
+	Progress bar & Msgbox added.
+
+- 12/11/2001, version 1.48_1.3.5:
+	Recompiled for supporting modified libti68k.
+
+- 11/11/2001, version 1.47_1.3.5:
+	Cleanup of the debugger dbox.
+	Hidden config files (~/.tiemu*) moved into the ~/.tiemu/ 
+	hidden directory.	
+
+- 10/11/2001, version 1.46_1.3.5:
+	Cleanup of dialog boxes: faster.
+	Added a check for SDL in configure
+
+- 10/11/2001, version 1.45_1.3.5:
+	Cleanup of headers.
+
+- 10/11/2001, version 1.44_1.3.5:
+	Changed any malloc+strcat/cpy to g_strconcat: safer & shorter.
+
+- 05/11/2001, version 1.43_1.3.5:
+	Upgrading to Automake/Autoconf v2.52
+	Upgrading to libticables-v2.x.x
+
+To do:
+	GUI improved (faster, better display of boxes).
+	RC file management updated & improved (sections).
+	Link box upgraded.
+
+- 21/06/2001, version 1.42_1.3.3:
+	Compiled under Win32.
+	Skin/no skin resizing works (SDL does not crashes any longer).
+
+- 20/06/2001, version 1.41_1.3.2:
+	Code source have been cleaned.
+	Some improvements and minor bug fixes.
+
+- 19/06/2001, version 1.40_1.3.0:
+	A ROM wizard has been added for an easy startup.
+
+- 18/06/2001, version 1.39_1.3.0:
+	ROM management improved and fsel dboxes removed from callbacks.c
+	Trying to implement skin/no skin but SDL crashes.
+	About dbox updated and fixed.
+	Implemented a ROM wizard at startup.
+	A bug (Linux) in the inst_paths.base_dir fixed
+
+- 14/06/2001, version 1.38_1.2.9:
+	a FLASH upgrade can be used at startup.
+
+- 13/06/2001, version 1.37_1.2.9:
+	jpeg works under Win32 (HAVE_LIBJPEG !).
+	menu item bug fixed (SkinXX)
+
+- 12/06/2001, version 1.36_1.2.9:
+	Internationalization.
+
+- 11/06/2001, version 1.35_1.2.8:
+	TI89 keyboard is now VTi compatible.
+
+- 10/06/2001, version 1.34_1.2.7:
+	The update_keys function (SDL) did not return iKeyWasPressed.
+	TI89 keymap fixed.
+
+- 09/06/2001, version 1.33_1.2.6:
+	GtkTiEmu exits correctly now. Thanks to JB, my Debian packager, for
+	the idea which allows me to circumvent the pb.
+
+- 05/06/2001, version 1.32_1.2.3: 
+	globInf struct format modified so that rom/ram/tibFile strings are unlimited in size.
+	It is now possible to load a TIB file from the 'Set ROM' dbox.
+	If GtkTiEmu does not find a ROM at startup, it display a fileselection dbox.
+
+- 02/06/2001, version 1.31_1.2.0: 
+	hardware emulation improved. 
+	Listing of available ROMs is now more efficient thanks to a cache file.
+
+- 01/06/2001, version 1.31_1.1.9: 
+	a FLASH upgrade can now be loaded.
+
+- 26/05/2001, version 1.30_1.1.8: 
+	'Send file to GtkTiEmu' item implemented. 
+	Some bugs have been fixed in the debugger but it still crashes under Win32.
+
+- 25/05/2001, version 1.29_?.?.?: 
+	bug fix in the ROM version dialog box (fstat path).
+
+- 23/05/2001, version 1.28_?.?.?: 
+	the bug which crashes the debugger (Win32 version) has been insulated but not fixed yet.
+
+- 22/05/2001, version 1.27_1.1.5: 
+	command shell added. 
+	Load file capability to do/improve.
+
+- 21/05/2O01, version 1.26_?.?.?: 
+	Win32 version have pbs under WindowsNT4. Fixed.
+
+- 20/05/2001, version 1.25_1.1.4: 
+	finish to port GtkTiEmu under Win32. 
+	Screenshot pb under Win32 fixed but the debugger still does not work !
+
+- 19/05/2001, version 1.24_1.1.4: 
+	screenshot options improved: the screenshot file can now be chosen and auto incremented.
+Scaling to do...
+
+- 19/05/2001, version 1.23_1.1.4: 
+	F9/F10 keys fixed in SDL version. 
+	TI89 screen works fine now as well as the skin redrawing (TI89 <->TI92 toggling). Nethertheless, LCD/Skin toggling does not work very well.
+	Contrast fixed. 
+	Screenshot tested in both version, all formats, all depths and all calcs: it'a all right !
+
+- 18/05/2001, version 1.22_1.1.4: 
+	BMP format added. 
+	I have tested all possible color depths (8/16/24 colors) for both the X11 and the SDL version.
+	Screenshots have been tested with various file format, various screenshot size and various color depth.
+
+- 17/05/2001, version 1.21_1.1.4: 
+	screenshot implemented in SDL version. 
+	SDL version works now in 8 bit mode.
+
+- 16/05/2001, version 1.20_1.14: 
+	SDL version works fine in 24/32 planes. 
+	Gray scale management finished.
+
+- 15/05/2001, version 1.19_1.1.4: 
+	SDL version being improved for grey scale support.
+
+- 15/05/2001, version 1.18_1.1.4: 
+	minor bug fixes in X11 screenshots and different color planes tested (8, 16 and 24 bits per pixels). 
+	X11 version completely cleaned.
+
+- 14/05/2001, version 1.17_1.1.4: 
+	check/radio buttons in the popup menu works fine now. 
+	Screenshots works in LCD & WND and in XPM/PCX/JPG.
+
+- 13/05/2001, version 1.16_1.1.4: 
+	SDL version updated.
+
+- 12/05/2001, version 1.15_1.1.4: 
+	screenshot implemented in B&W for X11. Does not work in color mode.
+
+- 10/05/2001, version 1.14_1.1.4: 
+	little bug fix with the popup menu (ESC). 
+	Buttons in items still have to be fixed.
+
+- 08/05/2001, version 1.13_1.1.4: 
+	ti68k library headers files have changed their location
+
+- 07/05/2001, version 1.12_1.1.3: 
+	contrast added.
+
+- 06/05/2001, version 1.11_1.1.2: 
+	dumping of RAM/ROM added.
+
+- 06/05/2001, version 1.10_1.1.1: 
+	'Set ROM version' function implemented.
+
+- 05/05/2001, version 1.09: 
+	Infos dbox improved.
+
+- 05/05/2001, version 1.08: 
+	reset calc works fine now. 
+
+- 04/05/2001, version 1.07: 
+	pb with loadState fixed. Accelator keys added to all dialog boxes.
+
+- 01/05/2001, version 1.06: 
+	loadState does not work with TI89 calc.
+
+- ??/05/2000: version 1.00: 
+	start of project

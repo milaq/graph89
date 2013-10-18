@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="skin89Array">
+        <item>Default</item>
+        <item>Classic 89</item>
+        <item>Classic 89 Titanium</item>
+    </string-array>
+
+    <string-array name="skin89Values">
+        <item>Default</item>
+        <item>Classic 89</item>
+        <item>Classic 89 Titanium</item>
+    </string-array>
+</resources>

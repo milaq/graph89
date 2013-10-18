@@ -1,0 +1,69 @@
+				[ Release notes for TiEmu3 ]
+
+
+
+Previous version: 3.02		(21/12/2007)
+Current version:  3.03		(08/05/2009)
+
+SubVersion (CVS) revision: $Id: RELEASE 2042 2006-05-07 07:46:23Z roms $
+
+TiEmu is available for 3 platforms:
+Linux (GTK), Windows (GTK), Mac OS X (GTK)
+
+[ In order to use TI's BlackLink serial cables or home-made serial or parallel
+cables on any NT-based version of Windows (Windows NT 4, Windows 2000, Windows
+XP, Windows 2003 or any newer version of Windows), you'll need to install the
+DhaHelper driver. The installer for TiEmu 3 without GDB installs this driver
+automatically. The installer for TiEmu 3 with GDB currently doesn't. ]
+
+An easy way to install the above drivers is to install TiLP 2 for Windows.
+For the other link cables / operating systems, no driver is needed.
+
+
+New capabilities:
+-----------------
+
+	- none
+	
+
+Improvements:
+-------------
+
+	- removed obsolete "virtual" link cable
+	- allow automatic changing of link cable setting when requesting a direct file transfer
+	- adding CR/LF every 16 chars in the link logging window
+	- added i18n support to some strings
+
+		
+Bug fixes:
+----------
+
+	- fixed crash when debugging TIGCC program with GDB with low-level debugger in dock mode
+	- fixed dock window enabling/disabling not to keep the engine running across the restart
+	- fixed InnoSetup installer for use with GTK>=2.10.x
+	- don't allow deleting of last RAM tab to avoid resizing of code/dock window
+	- fixed build with GCC 4.3
+	- don't shutdown screen when reading battery status
+	don't resize code windows whenever cycle counter change
+	- fixed disassembling of some FLINE instructions like 0xf800 (lionel)
+	- fixed disassembling of BTST instruction (replaced by BRA)
+	- fixed keynames.c build on OS X
+	- link with g++ if --with-kde (fixes --with-kde build on OS X)
+	- fixed use of wrong free function (g_free where gtk_tree_path_free is required) causing crash with GTK+ 2.14
+	- fixed builtin Tk not working when built against the latest X.Org X11 (Tk bug 2010422)
+	- merged Lionel's patch about link logging: ; take into account buffer overflow
+	- really clears link logging buffer when clicking the 'Clear' button
+	- merged Lionel's patch: allow mix-up of images created by TiEmu 32-bits and TiEmu 64-bits 
+		due to a bug in IMG_INFO structure
+	- fixed Lionel's logging problem (missing values on linkport output
+	- fixed "libticables2 access violation" which appears when changing the link cable under some circumstances
+	- don't allow launching of debugger if preloading has not finished yet => crash
+	- fix the "Default" button when importing a Titanium 89u (default to HW3 until we sort out HW4's actual speed, not HW2)
+	- if link cable reconfiguring fails, fallback to null cable & port
+	- merged Lionel's patch: fix buffer overflow in the disasm routine
+	
+	
+Notes:
+------
+
+	- pressing Ctrl+Alt+Del makes TiEmu unresponsive. Press Ctrl again...

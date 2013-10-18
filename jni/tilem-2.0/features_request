@@ -1,0 +1,16 @@
+
+Chickendude :
+- Print the hexa values of an instruction into the debugger (reasons : to know the values, to replace the values)
+- When going up in the debugger, print instruction by instruction instead of byte per byte
+- Conditional breakpoints (when a register is equal to a value, when a flag is set etc...)
+- A shortcut to switch the calc speed instead of opening the pref menu.
+- Conditional breakpoint when pc comes to stupid values (outside the range $9D95-$C000 for ti83+ by example ...)
+- Be able to open a portion of the memory like the graph buffer in a new pane as an picture (it could be graph buffer or somethign else if we choose another place for buffer, or even to open a sprite etc...)
+
+
+
+Guillaume Hoffman : 
+- Could launch a program and save a screenshot automatically without gui
+- Terminal output for the lcd
+
+

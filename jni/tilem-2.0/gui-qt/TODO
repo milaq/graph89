@@ -1,0 +1,19 @@
+ * skinless mode
+ * use GS emu code from core
+ * debugging :
+	* breakpoints management
+	* instruction stepping
+	* hex mem view
+	* disassembly
+	* scripting
+ * settings UI
+ * animated screen capture
+ * ROM dumping
+ * calc 2 calc linking (physical) [i.e between a real calc and an emulated one] (necessary?)
+ 
+ * keymaps
+ * skins
+ 
+ * skin editor?
+ * auto-generation of keymask from skin image?
+

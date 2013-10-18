@@ -1,0 +1,9 @@
+To generate the documentation, simply type :
+> doxygen doxyfile.gtkgui
+or
+> doxygen doxyfile.qtgui
+
+doxygen will create a html-doxygen directory.
+
+doxygen try to generate the callgraphs too if you have "dot" installed.
+You should really install the package graphviz (for "dot") if you want to see the "callgraph".

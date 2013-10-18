@@ -1,0 +1,254 @@
+[macros]
+0CD098C ROM_CALL~%C
+0CD0C8C CALL_~Z,prgm+%j
+0CD0F8C CALL_~prgm+%j
+0CD128C CALL_~NZ,prgm+%j
+0CD188C CALL_~C,prgm+%j
+0CD1E8C CALL_~NC,prgm+%j
+0CD248C JUMP_~Z,prgm+%j
+0CD278C JUMP_~prgm+%j
+0CD2A8C JUMP_~NZ,prgm+%j
+0CD308C JUMP_~C,prgm+%j
+0CD368C JUMP_~NC,prgm+%j
+0CDC88C RCALL_~%j
+
+[romcalls]
+00 TX_CHARPUT
+01 D_LT_STR
+02 M_CHARPUT
+03 D_ZM_STR
+04 D_LM_STR
+05 GET_T_CUR
+06 SCROLL_UP
+07 TR_CHARPUT
+08 CLEARLCD
+09 D_HL_DECI
+0A CLEARTEXT
+0B D_ZT_STR
+0C BUSY_OFF
+0D BUSY_ON
+80 FIND_PIXEL
+
+[labels]
+0008 rOP1TOOP2
+0010 rFINDSYM
+0018 rPUSHOP1
+0020 rMOV10TOOP1
+0028 rFPMULT
+0030 rFPADD
+
+0033 LD_HL_MHL
+008E CP_HL_DE
+009A UNPACK_HL
+01A2 READ_KEYPAD
+01B1 STORE_KEY
+01BE GET_KEY
+0115 UPDATE_APD
+0168 READ_KEY
+
+8000 kbdScanCode
+8001 kbdLGSC
+8002 kbdPSC
+8003 kbdWUR
+8004 kbdDebncCnt
+8005 kbdKey
+8006 kbdGetKy
+8007 contrast
+8008 apdSubTimer
+8009 apdTimer
+800A apdWarmUp
+800B curTime
+800C curRow
+800D curCol
+800E curUnder
+800F undelBufLen
+8010 undelBuf
+# 8074 tokVarPtr?
+# 8076 tokLen?
+8078 indicMem
+8080 indicCounter
+8081 indicBusy
+8082 OP1
+808D OP2
+8098 OP3
+80A3 OP4
+80AE OP5
+80B9 OP6
+80C6 iMathPtr1
+80C8 iMathPtr2
+80CA iMathPtr3
+80CC iMathPtr4
+80CE iMathPtr5
+# 80D0 chkDelPtr1?
+# 80D2 chkDelPtr2?
+# 80D4 insDelPtr?
+# 80D6 upDownPtr?
+80DF textShadow
+8187 textShadCur
+# 8189 textShadTop?
+# 818A textShadAlph?
+# 818B textShadIns?
+818C textAccent
+818D cxMain
+# 818F cxPPutAway?
+# 8191 cxPutAway?
+# 8193 cxRedisp?
+# 8195 cxErrorEP?
+8197 cxSizeWind
+8199 cxPage
+# 819A cxCurApp?
+819B cxPrev
+# 81AA monQH?
+# 81AB monQT?
+# 81AC monQueue?
+81BC onSP
+81BE onCheckSum
+81DD menuActive
+8333 penCol
+8334 penRow
+# 8335 rclQueue?
+8337 errNo
+8338 errSP
+# 833A errOffset?
+8346 flags
+8364 stCounter
+# 85E3 XOutDat?
+# 85E7 YOutDat?
+# 85EB inputDat?
+8629 ES
+8641 plotSScreen
+8A41 seed1
+8A4B seed2
+# 8A56 parseVar?
+8A5F begPC
+8A61 curPC
+8A63 endPC
+8A6B cmdShadow
+# 8B27 editDat?
+8B2D modePtr
+8B2F winTop
+8B30 winBtm
+8B31 winLeftEdge
+8B32 winLeft
+8B34 winAbove
+8B36 winRow
+# 8B38 winCol?
+8B3A fmtDigits
+# 8B96 fmtMatMem?
+# 8B98 EQS?
+8BD2 delAdjAmt
+8BDD tempMem
+8BDF fpBase
+8BE1 FPS
+8BE3 OPBase
+8BE5 OPS
+# 8BE7 pTempCnt?
+# 8BE9 cleanTmp?
+8BEB pTemp
+8BF7 userMem
+0FA6F symTable
+0FC00 videoRAM
+
+## ZShell
+8C3C PROGRAM_ADDR
+8C3E ROM_VERS
+8C3F ZSHELL_VER
+8C40 ZS_BITS
+
+## Usgard
+8E8B ORGSP
+8EA2 USGSHELL
+8EAB VATName
+8EB4 DEST_ADDR
+8EB4 PAGE1ADDR
+8EB6 PAGE2ADDR
+8C08 PROG_BYTE
+8C41 TX_CHARPUT
+8C44 D_LT_STR
+8C47 M_CHARPUT
+8C4A D_ZM_STR
+8C4D D_LM_STR
+# 8C50 SCROLL_UP
+# 8C53 TR_CHARPUT
+# 8C56 CLEARLCD
+# 8C59 D_HL_DECI
+# 8C5C CLEARTEXT
+# 8C5F D_ZT_STR
+# 8C62 BUSY_OFF
+# 8C65 BUSY_ON
+# 8C68 RANDOM
+8C6B FIND_PIXEL
+8C77 FREEMEM
+8C7A VAR_LENGTH
+8C7D ASCIIZ_LEN
+8C80 NEG_BC
+8C83 MUL_HL
+8C8C COPY_STRING
+8C9B USGARD_INT_INSTALL
+8C9E USGARD_INT_REMOVE
+8CA1 USGARD_INT_CLEAN
+8C95 APPEND
+8C98 UNAPPEND
+8CCB CHECK_APPEND
+8CA4 VAR_NEW
+8CA7 VAR_DELETE
+8CAA VAR_EXEC
+8CAD VAR_GET
+8CB0 VAR_RESIZE
+8CCE RELOC
+8CD1 DERELOC
+8CD7 RELOC_TAB
+8CB3 SEARCH_VAT
+8CB6 OTH_SHUTDOWN
+8CB9 DM_HL_DECI
+8CBC OTH_PAUSE
+8CBF OTH_CLEAR
+8CC2 OTH_EXIT
+8CC5 OTH_ARROW
+8CD4 OTH_FILL
+
+## Rigel
+# 8C50 GET_T_CUR
+# 8C53 SCROLL_UP
+# 8C56 TR_CHARPUT
+# 8C59 CLEARLCD
+# 8C5C D_HL_DECI
+# 8C5F CLEARTEXT
+# 8C62 D_ZT_STR
+# 8C65 BUSY_OFF
+# 8C68 BUSY_ON
+8C6E RIGEL_INT_INSTALL
+8C71 RIGEL_INT_REMOVE
+8C06 VAR_SEARCH
+
+[flags]
+00    kbdFlags
+2,00  trigDeg,trigFlags
+3,00  kbdSCR,kbdFlags
+4,00  kbdKeyPress,kbdFlags
+05    textFlags
+2,05  textScrolled,textFlags
+3,05  textInverse,textFlags
+4,05  textInsMode,textFlags
+08    apdFlags
+2,08  apdAble,apdFlags
+3,08  apdRunning,apdFlags
+09    onFlags
+3,09  onRunning,onFlags
+4,09  onInterrupt,onFlags
+0C    curFlags
+2,0C  curAble,curFlags
+3,0C  curOn,curFlags
+4,0C  curLock,curFlags
+0D    appFlags
+1,0D  appTextSave,appFlags
+5,0D  appCurGraphic,appFlags
+6,0D  appCurWord,appFlags
+12    indicFlags
+0,12  indicRun,indicFlags
+2,12  indicOnly,indicFlags
+3,12  shift2nd,shiftFlags
+4,12  shiftAlpha,shiftFlags
+5,12  shiftLwrAlph,shiftFlags
+6,12  shiftALock,shiftFlags
+7,12  shiftKeepAlph,shiftFlags

@@ -1,0 +1,71 @@
+				*****************
+				*     TiEmu     *
+				* Linux version *
+				*****************
+
+
+
+REQUIREMENTS
+------------
+
+ - A UNIX computer (Intel x86 or PPC) and C compiler (gcc)
+ - X11 (X Window System)
+ - GTK+ 2.6 from <http://www.gtk.org>
+ - ticables2, tifiles2 and ticalcs2 libraries from the 
+	TiLP 2 project <http://tilp.info>
+
+
+INSTALLATION
+------------
+
+At first, you must have the ticables and ticalcs libraries installed. See
+the documentation of these libraries for the installation procedure.
+
+Untar the tiemu-X.XX.tar.gz archive (tar -xvzf), change directory to
+tiemu directory.
+
+Go the tiemu directory and type './configure' in order to be sure
+that all it is OK. If you want to use KDE file dialogs, run 
+'./configure --with-kde' instead. 
+Next, type 'make' to make a binary for your machine.
+
+If you want does not want to use GDB as debugger or use the odl one (tiemu2),
+run './configure --disable-gdb'.
+
+If the compile suceeds without any errors, you can type 'make install' to
+install the binary in /usr/local/bin. This will also copy some necessary
+files to /usr/local/share/tiemu and will install the manpage and the
+help.
+
+If you already have some TiEmu images, you will have to manually copy them
+to the /usr/locale/share/tiemu/images directory.
+
+
+USAGE
+-----
+
+Type 'tiemu' for using it. TiEmu accepts some command line parameters.
+Do 'tiemu --help' or read the manpage by 'man tiemu'.
+
+
+AVAILABILITY
+------------
+
+  http://lpg.ticalc.org/prj_tiemu/index.html
+
+
+COPYRIGHT
+---------
+
+TiEmu is Copyright (C) 2000-2009 by the TiEmu team <tiemu-users@lists.sf.net>
+
+Copying is allowed under the terms of GNU General Public License (LGPL).  
+See the file COPYING for more details.
+
+
+---------------------------------------------------------------------------
+Please report any bugs, questions, ...  (please give us your platform, your 
+calculator type (with ROM version) and your link cable model).
+
+
+The TiEmu team <tiemu-users@lists.sf.net>

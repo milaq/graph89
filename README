@@ -1,0 +1,30 @@
+Graph89 is an emulator targeting the Android platform for TI89, TI89T, TI92, TI92+, V200, TI84+, TI84+SE, TI83, TI83+ and TI83+SE calculators.
+
+This application is distributed in the Android Play store in two versions:
+1. Free   https://play.google.com/store/apps/details?id=com.Bisha.TI89Emu
+2. Paid   https://play.google.com/store/apps/details?id=com.Bisha.TI89EmuDonation
+
+
+The funds gathered by the paid versions are used to support and further improve this application.
+
+
+Graph89 consists of 4 distinct parts.
+
+1. 	TILP libraries located under jni/libticables2-1.3.3  jni/libticalcs2-1.1.7  jni/libticonv-1.1.3  jni/libtifiles2-1.1.5 
+	Each library has its own copyright notice located in the root of the library
+	Note that the TILP libraries included in Graph89 are not in their original state. Certain parts might be removed or modified or modified for different reasons.
+	The original TILP libraries are located in http://lpg.ticalc.org/prj_tilp/
+
+2. 	TiEmu library located under jni/tiemu-3.03
+	The library has its own copyright notice located in jni/tiemu-3.03
+	Note that the TiEmu library included in Graph89 is not in its original state. TiEmu is modified to compile in the Android OS. Certain parts might be removed or modified for different reasons.
+	The original TiEmu library is located in http://lpg.ticalc.org/prj_tiemu/
+
+3. 	TilEm library located under jni/tilem-2.0
+	The library has its own copyright notice located in jni/tilem-2.0
+	Note that the TilEm library included in Graph89 is not in its original state. TiEmu is modified to compile in the Android OS. Certain parts might be removed or modified or modified for different reasons.
+	The original TilEm library is located in http://lpg.ticalc.org/prj_tilem/
+
+4. 	Graph89 Android. This is the UI layer running in the Android OS. 
+	Graph89 is licensed with a GPL V3 license.
+

@@ -1,0 +1,33 @@
+Benjamin : 
+I used these command lines to generate my pot file (not commited) then generated the po files.
+It seems there's 400 lines missing regarding your pot file...
+And even after compilation and install and setting $LANG to french it was not working (with the makefile given below not your automake stuff).
+I have done a french po file, but I need to update it. So the current commited file is probably as gettext should expect.
+
+
+Generate the pot file :
+
+xgettext -d tilem -s -o tilem.pot --from-code=utf-8 --keyword=_ *.c
+
+
+To generate the en_US file po :
+
+msginit -l en_US -o en.po -i tilem.pot
+
+
+To generate the fr file : 
+
+msginit -l fr_FR -o fr.po -i tilem.pot
+
+To compile files : 
+
+all: fr.po en.po en_US/ fr/
+    msgfmt -c -v -o fr/tilem2.mo fr.po
+    msgfmt -c -v -o en_US/tilem2.mo en.po
+
+install:
+    mkdir -p /usr/share/locale/en_US/LC_MESSAGES  
+    cp fr/tilem2.mo /usr/share/locale/fr/LC_MESSAGES
+    cp en_US/tilem2.mo /usr/share/locale/en/LC_MESSAGES
+
+

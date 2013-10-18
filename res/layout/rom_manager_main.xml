@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/emulator_main_controlbar"
+        layout="@layout/controlbar"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/rom_manager_main_startup_defaults_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:visibility="gone"
+        android:layout_margin="5dp">
+               
+        <TextView
+            android:id="@+id/rom_manager_main_startup_defaults_t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Autostart Options"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+       <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/rom_manager_main_startup_defaults_t2"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="If Graph89 is started while the phone is being held in:" 
+                android:layout_weight = "1"/>
+        </LinearLayout>
+       
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/rom_manager_main_startup_defaults_t2"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Portrait Mode, Start: " 
+                android:layout_weight = "1"/>
+
+            <Spinner
+                android:id="@+id/rom_manager_main_startup_defaults_s_portrait"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" 
+                android:layout_weight = "1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/rom_manager_main_startup_defaults_t3"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight = "1"
+                android:text="Landscape Mode, Start: " />
+
+            <Spinner
+                android:id="@+id/rom_manager_main_startup_defaults_s_landscape"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" 
+                android:layout_weight = "1"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="#006099" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/rom_manager_main_add_rom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Add ROM" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_dark" />
+
+    <ListView
+        android:id="@+id/rom_manager_main_rom_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/rom_manager_main_norommessage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dip"
+        android:text="No ROMs are installed\n\nClick &apos;Add ROM&apos; to install at least one\n\nAccepted File Formats:\n  *.rom, *.8Xu, *.89u, *.v2u, *.9xu, *.tib"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+</LinearLayout>

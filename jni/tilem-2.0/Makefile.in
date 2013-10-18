@@ -1,0 +1,95 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+datarootdir = @datarootdir@
+bindir = @bindir@
+datadir = @datadir@
+pkgdatadir = @datadir@/tilem2
+mandir = @mandir@
+
+top_builddir = @top_builddir@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+VPATH = @srcdir@
+@SET_MAKE@
+SHELL = @SHELL@
+
+INSTALL = @INSTALL@
+
+distname = @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+
+distfiles = CHANGELOG COPYING INSTALL KEYS NEWS README THANKS TODO \
+	aclocal.m4 config.h.in configure configure.ac install-sh \
+	Makefile.in \
+	data/Makefile.in \
+	data/keybindings.ini \
+	data/desktop/*.desktop data/desktop/*.xml \
+	data/icons/hicolor/index.theme data/icons/hicolor/*/*/*.png \
+	data/icons-svg/*.svg \
+	data/skins/README data/skins/*.skn \
+	data/symbols/*.sym \
+	db/Makefile.in db/*.c db/*.h \
+	emu/Makefile.in emu/*.c emu/*.h emu/x*/*.c emu/x*/*.h \
+	gui/Makefile.in gui/*.c gui/*.h gui/*.ico gui/*.rc.in \
+	installer/win32/Makefile.in \
+	installer/win32/installer.nsi.in installer/win32/gtkrc \
+	installer/win32/COPYING-ZLIB installer/win32/COPYING-PIXMAN
+
+all:
+	cd emu && $(MAKE)
+	cd db && $(MAKE)
+	cd gui && $(MAKE)
+
+clean:
+	cd emu && $(MAKE) clean
+	cd db && $(MAKE) clean
+	cd gui && $(MAKE) clean
+	cd installer/win32 && $(MAKE) clean
+
+install: all
+	cd gui && $(MAKE) install
+	cd data && $(MAKE) install
+	cd po && $(MAKE) install
+
+uninstall:
+	cd gui && $(MAKE) uninstall
+	cd data && $(MAKE) uninstall
+	cd po && $(MAKE) uninstall
+
+install-home: all
+	$(MAKE) install \
+	  bindir=$(HOME)/bin \
+	  datarootdir=$${XDG_DATA_HOME:-$(HOME)/.local/share} \
+	  gnulocaledir=$${XDG_DATA_HOME:-$(HOME)/.local/share}/tilem2/locale
+
+uninstall-home:
+	$(MAKE) uninstall \
+	  bindir=$(HOME)/bin \
+	  datarootdir=$${XDG_DATA_HOME:-$(HOME)/.local/share} \
+	  gnulocaledir=$${XDG_DATA_HOME:-$(HOME)/.local/share}/tilem2/locale
+
+distclean: clean
+	rm -f config.status config.log config.h configure.lineno
+	rm -rf autom4te.cache
+	rm -f installer/win32/Makefile installer/win32/installer.nsi
+	rm -f gui/tilem2.rc
+	rm -f Makefile emu/Makefile db/Makefile gui/Makefile data/Makefile
+
+dist:
+	rm -rf $(distname)
+	mkdir $(distname)
+	set -e ; files=`cd $(srcdir) ; echo $(distfiles)` ; \
+	for f in $$files ; do \
+	  dir=`echo $(distname)/$$f | sed 's,/[^/]*$$,,'` ; \
+	  [ -d $$dir ] || $(INSTALL) -d $$dir ; \
+	  cp -p $(srcdir)/$$f $$dir ; \
+	done
+	tar cv $(distname) | bzip2 -c -9 > $(distname).tar.bz2
+
+Makefile: Makefile.in config.status
+	$(SHELL) ./config.status
+
+config.status: configure
+	$(SHELL) ./config.status --recheck
+
+.PRECIOUS: Makefile config.status
+.PHONY: all clean dist distclean install install-home uninstall uninstall-home

@@ -1,0 +1,65 @@
+List of known bugs to fix:
+
+
+SF.net's bug list
+=================
+
+2489443 	Screen Elements Ignored by TiEmu
+1891657 	TiEmu can't find glib-2.0-0.dll from Glib 2.14.3
+1649068  	Keyboard layout under Linux
+1569553  	pc-TiEmu link
+1555602 	Missed key presses w/ TabletPC Stylus
+1305067 	"busy" flickers
+1249087 	Key mapping failed
+
+
+Kevin
+=====
+
+*  Il y a un bogue avec le débogueur et les touches: prends un AMS 2.0x ou 3.0x, mets 
+un breakpoint sur le trap #11, lance un programme ASM (même Exec "4e750000" suffit), 
+quitte le débogueur, appuie sur n'importe quelle touche, il réagit comme si c'était ENTER. 
+Seulement après avoir désactivé le BP sur le trap 11 et appuyé sur ENTER une autre fois, 
+TiEmu reprend son comportement normal.
+Ce problème est apparemment causée par le fait qu'une touche (ENTER) est appuyée au moment 
+où on entre dans le débogueur. (Le BP sur le trap 11 s'active au moment où ENTER est encore 
+appuyé.)
+
+* transferts lents
+
+
+Lionel
+======
+
+* Un bug bizarre, dont les instructions de
+reproduction semblent être:
+        * utiliser un AMS "récent" (2.07+), sur une 92+ ou
+V200 (peut-être 89 aussi ?).
+        * aller dans la fenêtre de debug, partie sélection
+des ROM_CALLs, sélectionner l'un d'entre eux
+(_bcd_math par exemple).
+        * passer à un AMS 2.05 (testé: ROM dump de 89 avec
+certificate).
+        * aller dans la fenêtre de debug: TIEmu est parti
+dans le décor, je ne sais pas s'il exécute ou pas
+
+
+roms
+====
+
+* MOVEA.W dis-assembled as MOVEA.L (HeapDeref)
+
+* pressing Ctrl+Alt+Supp makes emu unresponsive. Press Ctrl again.
+
+* CPU consumption may be high
+
+folco
+=====
+
+* debugger crash when double-clicking stack value (http://yaronet.com/posts.php?s=115405)
+
+
+-------------
++ done
+- in progress
+* to do...

@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/RootView" >
+
+    <com.graph89.emulationcore.EmulatorView
+        android:id="@+id/emulator_main_emulatorview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible" />
+
+    <com.graph89.emulationcore.ButtonHighlightView
+        android:id="@+id/emulator_main_buttonhighlightview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#00000000"
+        android:visibility="visible" />
+
+    <include
+        android:id="@+id/emulator_main_controlbar"
+        layout="@layout/controlbar"
+        android:visibility="gone" />
+
+    <com.graph89.controls.MessageView
+        android:id="@+id/emulator_main_messageview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/emulator_main_controlbar"
+        android:visibility="gone" />
+
+    <com.graph89.emulationcore.ActionsList
+        android:id="@+id/actionslist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/emulator_main_controlbar"
+        android:background="#da000000"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,80 @@
+# skin file
+# model  : 84+SE
+
+# skin image
+skin 		{ skin-84pSE.png }
+
+# keymask image
+keymask		{ keymask-84pSE.png }
+
+# LCD rect section
+# format :
+#	 x ,  y ,  w ,  h 
+lcd-coords	{ 60,  60, 192, 128 }
+
+# mouse mapping section
+# format :
+#	 x ,  y ,  sk  # comment
+#
+key-coords	{
+	{ 65, 223, 0x35} # TILEM_KEY_YEQU
+	{110, 226, 0x34} # TILEM_KEY_WINDOW
+	{156, 226, 0x33} # TILEM_KEY_ZOOM
+	{206, 226, 0x32} # TILEM_KEY_TRACE
+	{255, 223, 0x31} # TILEM_KEY_GRAPH
+	
+	{ 64, 282, 0x36} # TILEM_KEY_2ND
+	{110, 290, 0x37} # TILEM_KEY_MODE
+	{156, 290, 0x38} # TILEM_KEY_DEL
+	
+	{202, 294, 0x02} # TILEM_KEY_LEFT
+	{232, 268, 0x04} # TILEM_KEY_UP
+	{232, 318, 0x01} # TILEM_KEY_DOWN
+	{262, 294, 0x03} # TILEM_KEY_RIGHT
+	
+	{ 64, 315, 0x30} # TILEM_KEY_ALPHA
+	{110, 320, 0x28} # TILEM_KEY_GRAPHVAR
+	{156, 320, 0x20} # TILEM_KEY_STAT
+	
+	{ 64, 350, 0x2F} # TILEM_KEY_MATH
+	{110, 355, 0x27} # TILEM_KEY_MATRIX
+	{156, 355, 0x1F} # TILEM_KEY_PRGM
+	{205, 355, 0x17} # TILEM_KEY_VARS
+	{250, 350, 0x0F} # TILEM_KEY_CLEAR
+	
+	{ 64, 390, 0x2E} # TILEM_KEY_RECIP
+	{110, 390, 0x26} # TILEM_KEY_SIN
+	{156, 390, 0x1E} # TILEM_KEY_COS
+	{205, 390, 0x16} # TILEM_KEY_TAN
+	{250, 382, 0x0E} # TILEM_KEY_POWER
+	
+	{ 64, 414, 0x2D} # TILEM_KEY_SQUARE
+	{110, 422, 0x25} # TILEM_KEY_COMMA
+	{156, 422, 0x1D} # TILEM_KEY_LPAREN
+	{205, 422, 0x15} # TILEM_KEY_RPAREN
+	{250, 414, 0x0D} # TILEM_KEY_DIV
+	
+	{ 64, 445, 0x2C} # TILEM_KEY_LOG
+	{110, 460, 0x24} # TILEM_KEY_7
+	{156, 460, 0x1C} # TILEM_KEY_8
+	{205, 460, 0x14} # TILEM_KEY_9
+	{250, 445, 0x0C} # TILEM_KEY_MUL
+	
+	{ 64, 482, 0x2B} # TILEM_KEY_LN
+	{110, 504, 0x23} # TILEM_KEY_4
+	{156, 504, 0x1B} # TILEM_KEY_5
+	{205, 504, 0x13} # TILEM_KEY_6
+	{250, 482, 0x0B} # TILEM_KEY_SUB
+	
+	{ 64, 516, 0x2A} # TILEM_KEY_STORE
+	{110, 550, 0x22} # TILEM_KEY_1
+	{156, 550, 0x1A} # TILEM_KEY_2
+	{205, 550, 0x12} # TILEM_KEY_3
+	{250, 516, 0x0A} # TILEM_KEY_ADD
+	
+	{ 64, 560, 0x29} # TILEM_KEY_ON
+	{110, 594, 0x21} # TILEM_KEY_0
+	{156, 594, 0x19} # TILEM_KEY_DECPNT
+	{205, 594, 0x11} # TILEM_KEY_CHS
+	{250, 560, 0x09} # TILEM_KEY_ENTER
+}

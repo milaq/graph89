@@ -1,0 +1,17 @@
+<resources>
+
+    <string-array name="calctypeArray">
+        <item>-Select Type-</item>
+        <item>TI89</item>
+        <item>TI89 Titanium</item>
+        <item>TI92</item>
+        <item>TI92 Plus</item>
+        <item>Voyage 200</item>
+        <item>TI84 Plus SE</item>
+        <item>TI84 Plus</item>
+        <item>TI83 Plus SE</item>
+        <item>TI83 Plus</item>
+        <item>TI83</item>
+    </string-array>
+
+</resources>

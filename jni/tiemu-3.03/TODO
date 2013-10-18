@@ -1,0 +1,62 @@
+Planned features:
+-----------------
+
+* use the contrast field of skin
+* tracing/logging of mem access or others
+
+YaroNet forum:
+--------------
+
+* = to do
+x = done
+
+1) Topic <http://www.yaronet.com/posts.php?sl=59&s=92954&p=10>:
+---------------------------------------------------------------
+
+%%%%%%% post 001 (All):
+* Si on appuie sur F12 lors du chargement (preloading debugger), le menu des ROMs se présente, mais on peut choisir ce qu'on veut, 
+ça ne change strictement rien, et le modèle de calc par défaut se charge. Le clignotement du curseur dans HOME est alors anormal (trop rapide), 
+mais régulier.
+
+%%%%%%% post 297 (Pollux):
+- débuggeur 
+ ? F5 sur un breakpoint ne fait que relancer le debugger sans rien exécuter 
+ * F8 foire qd la fonction skippée contient un breakpoint (freeze jusqu'à ce qu'on fasse F11) 
+
+2) Topic <http://yaronet.com/posts.php?s=104752>:
+-------------------------------------------------
+
+%%%%%%% post 215 (Pollux):
+<<
+- ce serait bien que comme sous VTI les breakpoints ne soient pas perdus quand on restaure le Calculator State, typiquement si on a un 
+plantage on veut examiner la mémoire, ajouter quelques breakpoints et recharger l'état précédent : c'est impossible de faire ça si les 
+breakpoints sont restaurés  :( 
+
+panneau Breakpoints :
+- Add breakpoint : appuyer sur entrée =/> OK
+panneau Memory :
+- quand on fait Ctrl-A l'onglet courant se déplace d'un cran vers la gauche
+- il faut faire deux fois Ctrl-N pour passer au résultat suivant (la première sélectionne la ligne courante, et la deuxième passe 
+effectivement à l'occurrence suivante)
+- ce serait sympa d'avoir Add data breakpoint dans le clic droit (avec si possible Word comme taille par défaut, comme ça dans 90% des cas 
+il suffit de faire OK pour créer le breakpoint)
+- petit détail : si le clic du milieu pouvait fermer l'onglet ce serait pratique (actuellement pour fermer 3 tabs d'un coup il faut les 
+activer puis les fermer chacun à leur tour)
+panneau Heap :
+- ce serait super, super, pratique de pouvoir cliquer sur la colonne Address pour trier par adresse croissante
+- ce serait pas mal aussi d'avoir un "View end of handle" pour voir où finit le handle
+
+(j'espère que je t'embête pas trop roms %) ) 
+>>
+
+%%%%%%% post 216 (Folco):
+<<
+Il y aurait les raccourcis claviers à rendre "globaux" surla fenêtre, parce que actuellement, il faut quand même prendre la souris pour 
+sélectionner la partie avec laquelle on veut interragir, on perd donc 90% de l'intérêt des raccourcis
+>>
+
+
+3) 
+--
+
+roms: il semblerait que le debugger s'ouvre plus vite avec un GTK récent qu'avec le 2.6, du moins sous Vista. Semble être le contraire sous XP.

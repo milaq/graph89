@@ -1,0 +1,3 @@
+Install Android SDK and Android NDK from http://developer.android.com/sdk/index.html
+
+Open the Graph89 project with Eclipse IDE, build and transfer the APK file to an Android device or Android Emulator.

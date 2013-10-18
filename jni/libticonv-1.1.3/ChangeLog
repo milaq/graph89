@@ -1,0 +1,74 @@
+SubVersion: $Id$
+
+Log of changes (libticonv):
+
+- 14/12/2011, version 1.1.3: debrouxl
+	- upgrade COPYING files and FSF addresses embedded in files, so as to make rpmlint happier.
+	- reconfigure with autoconf 2.68 and libtool 2.4.
+	- reconfigure with libtool 2.4.2.
+	- take a whack at hundreds of NULL pointer dereferences by sanitizing function arguments.
+	- add Window, RclWin and TblSet tokens for CALC_TI82 and CALC_TI85 (SF bug #3438610). Reported, patched and tested by Benjamin Moody.
+
+- 28/05/2011, version 1.1.2: debrouxl
+	- change encoding in .rc file.
+	- compiler warning fixes
+	- minor changes to make autotools definitions work with both libtool 1.x and 2.x.
+	- use AM_GNU_GETTEXT_VERSION to use a consistent version of gettext (namely 0.16, released in late 2006).
+	- reconfigure under Debian Squeeze with Autoconf 2.67 and Automake 1.11.1.
+	- add VS 2008 project/solution files
+	- documentation and comment updates.
+
+- 08/04/2010, version 1.1.1: debrouxl
+	- fixed example.
+	- minor documentation updates.
+	- updated to Autoconf 2.65.
+
+- 04/10/2007, version 1.1.0: roms
+	- implemented NSpire support (NSpire encoding seems to be UTF-8)
+
+- 18/09/2007, version 1.0.5: roms
+	- moved 'untokenization' from vartype into another function (TI86)
+
+- 26/06/2007, version 1.0.4: roms
+	- added vartype argument to tokenization & untokenization functions because TI84+/USB and Window Settings
+		variables need them. Modified functions which rely on these 2 functions, too.
+	- implemented tokenization of named lists (TI84+/USB)
+
+- 10/06/2007, version 1.0.3: roms
+	- fixed translation of Pic/Gdb/StrX variable names (TI84+/USB)
+	- fixed translation of Y? variable names (TI84+/USB)
+	- added catching of some critical errors
+
+- 02/04/2006, version 1.0.2: kevinkofler
+	- fixed sed invocation in makefile for NetBSD (patch by Jukka Salmi)
+
+- 13/10/2006, version 1.0.1: roms
+	- don't include <iconv.h> if the iconv-compatible interface is disabled
+
+- 19/09/2006, version 1.0.0: roms
+	- export iconv emulation interface only if TICONV_ICONV_INTERFACE is defined (kevin's request)
+	- changed TIEXPORT into TIEXPORT4
+
+- 12/09/2006, version 0.0.6: roms
+	- fixed buffer overflow in ticonv_charset_utf16_to_ti
+	- implemented ticonv_utf16_to_ti89tusb call
+	- added support for TILIBS_DEPRECATED (exports symbols which have been tagged as deprecated)
+
+- 07/07/2006, version 0.0.5: roms
+	- added 0x5d0x40 => IDList detokenization (TI84+)
+	- added ticonv_gfe_to_zfe for TiGroup support (ZIP archives don't like greek chars)
+	- fixed an error in the 68k charset tables, also one less difference from TI's (kevin)
+
+- 05/06/2006, version 0.0.4: roms
+	- renamed stdints.h into stdints4.h
+	
+- 07/04/2006, version 0.0.3: roms
+	- added support of the new TI84+ & TItanium USB hand-helds.
+	- increased SO major number due to API changes
+
+- 27/03/2006, version 0.0.2: kevinkofler
+	- added iconv.c for an iconv-compatible interface
+
+- 11/02/2006, version 0.0.1: roms
+	- creation of library (idea suggested by Kevin Kofler)
+	- imported code from TiEmu (Kevin's ticonv.c) and tifiles2 (Romain's transcode.c)

@@ -1,0 +1,7 @@
+- Linking between 2 tilem instances
+- Sound
+- Rewrite macro (parser and tokens).
+- Add scripting (lua or something else?)
+- Teacher mode (record keys pressed and produce a picture file with keys icons)
+
+

@@ -1,0 +1,42 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"
+	android:paddingTop="10dp"
+	android:paddingBottom="20dp">
+
+	<TextView
+		android:id="@+id/dialog_slider_current_value"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:textColor="#fff"
+		android:textSize="23sp" />
+		
+	<SeekBar
+		android:id="@+id/dialog_slider_seek_bar"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/dialog_slider_current_value"
+		android:layout_marginTop="10dp" />
+	
+	<TextView
+		android:id="@+id/dialog_slider_min_value"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@id/dialog_slider_seek_bar"
+		android:layout_alignParentLeft="true"
+		android:textColor="#aaa" />
+
+	<TextView
+		android:id="@+id/dialog_slider_max_value"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@id/dialog_slider_seek_bar"
+		android:layout_alignParentRight="true"
+		android:textColor="#aaa" />		
+				
+</RelativeLayout>

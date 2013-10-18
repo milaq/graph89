@@ -1,0 +1,62 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+datarootdir = @datarootdir@
+bindir = @bindir@
+datadir = @datadir@
+pkgdatadir = @datadir@/tilem2
+mandir = @mandir@
+
+top_builddir = @top_builddir@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+VPATH = @srcdir@
+@SET_MAKE@
+
+AR = @AR@
+CC = @CC@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+DEFS = @DEFS@
+RANLIB = @RANLIB@
+SHELL = @SHELL@
+
+objects = disasm.o prevaddr.o listing.o lstfile.o
+
+compile = $(CC) -I$(top_builddir) -I$(top_srcdir)/emu -I$(srcdir) $(CFLAGS) $(CPPFLAGS) $(DEFS)
+
+all: libtilemdb.a
+
+libtilemdb.a: $(objects)
+	$(AR) cru libtilemdb.a $(objects)
+	$(RANLIB) libtilemdb.a
+
+# Disassembler
+
+disasm.o: disasm.c tilemdb.h ../emu/tilem.h ../config.h
+	$(compile) -c $(srcdir)/disasm.c
+
+prevaddr.o: prevaddr.c tilemdb.h ../emu/tilem.h ../config.h
+	$(compile) -c $(srcdir)/prevaddr.c
+
+# Listing file management
+
+listing.o: listing.c tilemdb.h ../emu/tilem.h ../config.h
+	$(compile) -c $(srcdir)/listing.c
+
+lstfile.o: lstfile.c tilemdb.h ../emu/tilem.h ../config.h
+	$(compile) -c $(srcdir)/lstfile.c
+
+
+clean:
+	rm -f *.o
+	rm -f libtilemdb.a
+
+
+Makefile: Makefile.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status
+
+$(top_builddir)/config.status: $(top_srcdir)/configure
+	cd $(top_builddir) && $(SHELL) ./config.status --recheck
+
+.PRECIOUS: Makefile $(top_builddir)/config.status
+.PHONY: all clean

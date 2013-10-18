@@ -1,0 +1,113 @@
+
+TilEmQt : a GUI frontend to TilEm core library
+
+It is written in C++ using the Qt4 toolkit and released under GNU GPL3.
+
+1) Building
+
+	* get all dependencies, namely Qt4 and libtilemcore (and obviously their dependencies as well)
+	optionnally you may want to get libticalcs2/libticables/libtifiles (all of which are TILP
+	dependencies and which themselves depend on libiconv and glib) to enable link emulation.
+	
+	* run the following command in a shell (in the appropriate directory) :
+	
+		qmake && make
+	
+	or, to build with link emulation (requires libticalcs2 and co) :
+	
+		qmake -config enable_link && make
+	
+	Note that under *nix systems the presence of tilibs2 is auto-detected via pkg-config (which
+	obviously requires a "proper" installation of them) so this switch is mostly useful under
+	windows, in which case you first need to edit the project file by hand to adjust include/lib
+	pathes.
+	
+	If, on the contrary you want to explicitely disable link emulation you can do it as follows :
+	
+		qmake -config disable_link && make
+	
+	To properly switch from a build to another (and make sure no remaining intermediate compilation
+	files get in the way) do :
+		
+		make distclean
+	
+2) Using
+	
+	To use the emulator you will need a ROM file. Note that the ROM file need not contain a
+	valid OS : TilEm supports OS-less ROMs and (if build with linking emulation) is able to
+	load the OS of your choice into such a "blank" ROM.
+	
+	TilEmQt can be invoked as follows (hope you don't mind regexps) :
+	
+	tilemqt (option | ROM file)+
+	
+	The emulator window is a grid of calculator images. You can add as much calculators as you
+	see fit (please not though that emulating a large number of calculators at the same time
+	may cause noticeable slowdown of the emulation of ALL calcs). To add a new calc use the "Add calc"
+	button in the toolbar and to remove one use the "Close" entry of the calc's context menu.
+	
+	Each emulated calc can be independently detached from the grid (and re-attached afterwards)
+	through its context menu.
+	
+	Each emulated calc can be independently zoomed in/out using Ctrl+wheel.
+	
+	All buttons of emulated calc skins are clickable and most keypresses can also be triggered
+	through the keyboard but only the active calc will catch keyboard events.
+	
+	At anytime, for every emulated calc, you have the possibility to save the emulator state
+	(ROM/RAM/regs/...) into a file (note that it may alter the source ROM if archive was written
+	to during the emulation session) and to switch to a different ROM.
+	
+	tilem supports z80-based TI calculators from the 73 to the 86 but some skins are lacking
+	at the moment so if you load 76/81/82/85/86 ROMS you'll have to select another skin.
+	
+	Upon ROM loading tilem will try to autodetect ROM type and present you with a combobox where
+	the guess is elected but all the other supported ROM types are available so you can correct
+	a wrong guess or try some weird (in)compatibility experiment.
+	
+3) Linking
+	
+	TilEm has three mode of linking, all of which depend on the availability of libticables,
+	libticalcs and libtifiles.
+	
+	* internal "drag2calc" : drag and drop files to send them to any emulated calculator.
+	* internal "calc2calc" : create a connection between two emulated calcs and let them
+	communicate as they see fit
+	* external : open a "TIEMU cable" (libticables terminology) making it possible for
+	other programs using libticables (most notably TiLP) to communicate with an emulated
+	calc.
+	
+	Among these only calc2calc does not depend on tilibs (and is therefore available regardless
+	of the build options).
+	
+	The drag2calc mode is always active (provided link support was enabled at compile time)
+	but the other two modes have to be enabled manually.
+	
+	All linking mode are mutually exclusive : an emulated calc cannot respond to stimuli from
+	more than one linking mode at the same time. However it is possible to have multiple
+	calc2calc connections and drag2calc operations running at the same time as long as each
+	calc is only involved in one at the same time.
+	
+	The external connection is even more restricted (due to internal libticables limitation)
+	in that there can only one connection at a time (systemwide).
+	
+4) Debugging
+	
+	WIP
+	
+5) Extending
+
+	There are two main ways to extend TilEmQt and both are useful and welcome :
+	
+	* creating new skins (for not yet supported clacs or with better resolution for instance)
+	-> no programming knowledge required
+	
+	* hacking the source code to add new features and/or fix bugs
+	-> requires C/C++ knowledge and some familiarity with either Qt or tilem/ticalcs/ticables
+	libs.
+	
+6) Whodunnit
+
+libtilemcore : Benjamin Moody aka FloppusMaximus <floppusmaximus@users.sf.net>
+
+Qt-based GUI : Hugues Luc Bruant aka fullmetalcoder <non.deterministic.finite.organism@gmail.com>

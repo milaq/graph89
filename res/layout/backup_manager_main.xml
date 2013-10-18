@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/emulator_main_controlbar"
+        layout="@layout/controlbar"
+        android:visibility="visible" />
+    
+    <Button
+        android:id="@+id/backup_manager_backup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Make a Backup" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_dark" />
+
+    <ListView
+        android:id="@+id/backup_manager_backup_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:visibility="visible">
+    </ListView>
+
+    <TextView
+        android:id="@+id/backup_manager_nobackups_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dip"
+        android:text="No backups are found"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+</LinearLayout>

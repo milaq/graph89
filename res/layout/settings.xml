@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seek="com.graph89.controls.SeekBarPreference"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <PreferenceCategory
+        android:key="CONFIG_TITLE"
+        android:title="" >
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Keypress Feedback" >
+
+        <com.graph89.controls.SeekBarPreference
+            android:defaultValue="10"
+            android:dialogTitle="Set duration"
+            android:key="CONF_HAPTIC_FEEDBACK"
+            android:persistent="true"
+            android:summary="Key vibration"
+            android:title="Haptic Feedback"
+            seek:maxValue="30"
+            seek:minValue="0" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="CONF_AUDIO_FEEDBACK"
+            android:summary="Make a click sound on key press"
+            android:title="Acoustic Feedback" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="CONFIG_CAT_DISPLAY_SETTINGS"
+        android:title="Display Settings" >
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="CONF_ZOOM_MODE"
+            android:summary="Stretch the skin to fill the whole screen"
+            android:title="Zoom Mode" />
+
+        <com.graph89.controls.SeekBarPreference
+            android:defaultValue="1"
+            android:dialogTitle="Screen Scale"
+            android:key="CONF_SCREENSCALE"
+            android:persistent="true"
+            android:summary="Adjust the size of the emulated screen on Portrait mode"
+            android:title="Screen Scale"
+            seek:maxValue="1"
+            seek:minValue="1" />
+        
+        <ListPreference
+            android:defaultValue="Solid"
+            android:entries="@array/lcd_types"
+            android:entryValues="@array/lcd_values"
+            android:key="CONF_LCD_TYPE"
+            android:title="LCD Type" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="CONF_ENABLE_GRAYSCALE"
+            android:summary="Used in certain games/apps. Enabling it will decrease the engine&apos;s performance"
+            android:title="Enable Grayscale" />
+
+        <ListPreference
+            android:defaultValue="Default"
+            android:entries="@array/skin89Array"
+            android:entryValues="@array/skin89Values"
+            android:key="CONF_SKIN"
+            android:title="Skin" />
+
+        <ListPreference
+            android:defaultValue="Classic V200"
+            android:entries="@array/skin200Array"
+            android:entryValues="@array/skin200Values"
+            android:key="CONF_SKIN_V200"
+            android:title="Skin" />
+        
+               <ListPreference
+            android:defaultValue="Classic 84"
+            android:entries="@array/skin84Array"
+            android:entryValues="@array/skin84Values"
+            android:key="CONF_SKIN_TI84"
+            android:title="Skin" />
+
+        <ListPreference
+            android:defaultValue="Portrait"
+            android:entries="@array/orientationArray"
+            android:entryValues="@array/orientationValues"
+            android:key="CONF_ORIENTATION"
+            android:title="Orientation" />
+
+        <com.graph89.controls.AmbilWarnaPreference
+            android:defaultValue="0xFFB6C5B7"
+            android:key="CONF_PIXEL_OFF"
+            android:summary="Set the color for a LCD Off Pixel"
+            android:title="OFF Pixel Color" />
+
+        <com.graph89.controls.AmbilWarnaPreference
+            android:defaultValue="0xFF000000"
+            android:key="CONF_PIXEL_ON"
+            android:summary="Set the color for a LCD On Pixel"
+            android:title="ON Pixel Color" />
+        
+        <com.graph89.controls.AmbilWarnaPreference
+            android:defaultValue="0xFFA5BAA0"
+            android:key="CONF_GRID_COLOR"
+            android:summary="Set the grid color for Dot Matrix LCD type"
+            android:title="LCD Grid Color" />
+
+        <com.graph89.controls.AmbilWarnaPreference
+            android:defaultValue="0xFFA5BAA0"
+            android:key="CONF_LCD_COLOR"
+            android:summary="Set the background color of the LCD. Not always visible!"
+            android:title="LCD Background Color" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Emulation Settings" >
+
+        <com.graph89.controls.SeekBarPreference
+            android:defaultValue="5"
+            android:dialogTitle="Turn off the Emulator"
+            android:key="CONF_AUTO_OFF"
+            android:persistent="true"
+            android:summary="Turn off the emulator after an interval of inactivity"
+            android:title="Auto Off"
+            seek:maxValue="31"
+            seek:minValue="3" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="CONF_OFF_ON_SCREENOFF"
+            android:summary="Exit app when the calculator is turned off by [2nd] [ON]"
+            android:title="Exit on Screen Off" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="CONF_SAVE_STATE"
+            android:summary="Save the emulator state before exiting the app"
+            android:title="Save State on exit" />
+
+        <com.graph89.controls.SeekBarPreference
+            android:defaultValue="100"
+            android:dialogTitle="Set CPU Speed"
+            android:key="CONF_CPU_SPEED"
+            android:persistent="true"
+            android:summary="Change the Max speed of the emulation engine"
+            android:title="CPU Speed"
+            seek:maxValue="250"
+            seek:minValue="30" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="CONF_OVERCLOCK"
+            android:summary="Speed up the engine while performing calculations"
+            android:title="Overclock when &apos;Busy&apos;" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="CONF_ENERGY_SAVE"
+            android:summary="Slow down if no activity"
+            android:title="Energy Save" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

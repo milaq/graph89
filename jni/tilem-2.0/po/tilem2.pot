@@ -1,0 +1,1722 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The TilEm Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: TilEm 2.0\n"
+"Report-Msgid-Bugs-To: tilem-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-10-05 16:54-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: gui/animation.c:568
+#, c-format
+msgid "Failed to open '%s' for writing: %s"
+msgstr ""
+
+#: gui/animation.c:587
+#, c-format
+msgid "Error while closing '%s': %s"
+msgstr ""
+
+#: gui/audiodev.c:71
+#, c-format
+msgid "audiodev-sdl: %s\n"
+msgstr ""
+
+#: gui/audiodev.c:154
+#, c-format
+msgid "Playback stopped unexpectedly"
+msgstr ""
+
+#: gui/audiodev.c:184
+#, c-format
+msgid "WARNING: Audio buffer underrun by %d bytes"
+msgstr ""
+
+#: gui/audiodev.c:262
+#, c-format
+msgid "Initialized \"%s\" driver"
+msgstr ""
+
+#: gui/audiodev.c:267
+#, c-format
+msgid "AUDIODEV = \"%s\""
+msgstr ""
+
+#: gui/audiodev.c:304
+#, c-format
+msgid "Unknown sample format"
+msgstr ""
+
+#: gui/audiodev.c:336
+#, c-format
+msgid "Cannot create semaphore: %s"
+msgstr ""
+
+#: gui/audiodev.c:344
+#, c-format
+msgid "buffer size = %d, latency = %.3g"
+msgstr ""
+
+#: gui/audiodev.c:401
+#, c-format
+msgid "TilEm has not been compiled with sound support."
+msgstr ""
+
+#: gui/audiosetup.c:64
+#, c-format
+msgid "%+.2g dB"
+msgstr ""
+
+#: gui/audiosetup.c:195 gui/audiosetup.c:271
+msgid "Audio Properties"
+msgstr ""
+
+#: gui/audiosetup.c:205
+msgid "_Volume:"
+msgstr ""
+
+#: gui/audiosetup.c:215
+msgid "C_hannels:"
+msgstr ""
+
+#: gui/audiosetup.c:225
+msgid "_Driver:"
+msgstr ""
+
+#: gui/audiosetup.c:232 gui/ti81prg.c:366
+msgid "Automatic"
+msgstr ""
+
+#: gui/audiosetup.c:250
+msgid "Sampling _rate (kHz):"
+msgstr ""
+
+#: gui/audiosetup.c:261
+msgid "_Latency (ms):"
+msgstr ""
+
+#: gui/breakpoints.c:70
+msgid "Memory address (logical)"
+msgstr ""
+
+#: gui/breakpoints.c:70 gui/breakpoints.c:71 gui/breakpoints.c:532
+msgid "Address"
+msgstr ""
+
+#: gui/breakpoints.c:71
+msgid "Memory address (absolute)"
+msgstr ""
+
+#: gui/breakpoints.c:72
+msgid "I/O port"
+msgstr ""
+
+#: gui/breakpoints.c:72
+msgid "Port Number"
+msgstr ""
+
+#: gui/breakpoints.c:73
+msgid "Z80 instruction"
+msgstr ""
+
+#: gui/breakpoints.c:73
+msgid "Opcode"
+msgstr ""
+
+#: gui/breakpoints.c:309
+msgid "_Start:"
+msgstr ""
+
+#: gui/breakpoints.c:315
+msgid "_Value:"
+msgstr ""
+
+#: gui/breakpoints.c:401
+msgid "Page:"
+msgstr ""
+
+#: gui/breakpoints.c:458
+msgid "Breakpoint _type:"
+msgstr ""
+
+#: gui/breakpoints.c:476
+msgid "Break when:"
+msgstr ""
+
+#: gui/breakpoints.c:483
+msgid "_Reading"
+msgstr ""
+
+#: gui/breakpoints.c:487
+msgid "_Writing"
+msgstr ""
+
+#: gui/breakpoints.c:491
+msgid "E_xecuting"
+msgstr ""
+
+#: gui/breakpoints.c:505
+msgid "Breakpoint Condition"
+msgstr ""
+
+#: gui/breakpoints.c:515
+msgid "Si_ngle"
+msgstr ""
+
+#: gui/breakpoints.c:519
+msgid "R_ange"
+msgstr ""
+
+#: gui/breakpoints.c:529
+msgid "S_tart:"
+msgstr ""
+
+#: gui/breakpoints.c:530
+msgid "_End:"
+msgstr ""
+
+#: gui/breakpoints.c:715
+msgid "Add Breakpoint"
+msgstr ""
+
+#: gui/breakpoints.c:759
+msgid "Edit Breakpoint"
+msgstr ""
+
+#: gui/breakpoints.c:794
+msgid "Clear all breakpoints?"
+msgstr ""
+
+#: gui/breakpoints.c:797
+msgid "All existing breakpoints will be deleted and cannot be restored."
+msgstr ""
+
+#: gui/breakpoints.c:887
+msgid "Breakpoints"
+msgstr ""
+
+#: gui/breakpoints.c:937 gui/rcvmenu.c:447
+msgid "Type"
+msgstr ""
+
+#: gui/breakpoints.c:961
+msgid "Start"
+msgstr ""
+
+#: gui/breakpoints.c:971
+msgid "End"
+msgstr ""
+
+#: gui/breakpoints.c:1026
+msgid "Break on _invalid instructions"
+msgstr ""
+
+#: gui/breakpoints.c:1028
+msgid "Break on _undocumented instructions"
+msgstr ""
+
+#: gui/config.c:128
+msgid "Unable to read settings"
+msgstr ""
+
+#: gui/config.c:129 gui/debugger.c:123 gui/keybindings.c:239
+#, c-format
+msgid "An error occurred while reading %s: %s"
+msgstr ""
+
+#: gui/config.c:159
+msgid "Unable to save settings"
+msgstr ""
+
+#: gui/config.c:160
+#, c-format
+msgid "An error occurred while writing %s: %s"
+msgstr ""
+
+#: gui/config.c:195 gui/config.c:252 gui/config.c:288 gui/config.c:324
+msgid "invalid argument\n"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "A_F:"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "B_C:"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "D_E:"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "H_L:"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "I_X:"
+msgstr ""
+
+#: gui/debugger.c:59
+msgid "SP:"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "AF':"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "BC':"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "DE':"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "HL':"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "I_Y:"
+msgstr ""
+
+#: gui/debugger.c:60
+msgid "PC:"
+msgstr ""
+
+#: gui/debugger.c:61
+msgid "IM:"
+msgstr ""
+
+#: gui/debugger.c:61
+msgid "I:"
+msgstr ""
+
+#: gui/debugger.c:122
+msgid "Unable to read symbols"
+msgstr ""
+
+#: gui/debugger.c:436 gui/disasmview.c:880
+msgid "Go to Address"
+msgstr ""
+
+#: gui/debugger.c:436 gui/disasmview.c:880
+msgid "Address:"
+msgstr ""
+
+#: gui/debugger.c:527
+msgid "_Pause"
+msgstr ""
+
+#: gui/debugger.c:528
+msgid "Pause emulation"
+msgstr ""
+
+#: gui/debugger.c:531
+msgid "_Run"
+msgstr ""
+
+#: gui/debugger.c:532
+msgid "Resume emulation"
+msgstr ""
+
+#: gui/debugger.c:533
+msgid "_Step"
+msgstr ""
+
+#: gui/debugger.c:534
+msgid "Execute one instruction"
+msgstr ""
+
+#: gui/debugger.c:535
+msgid "Step _Over"
+msgstr ""
+
+#: gui/debugger.c:536
+msgid "Run to the next line (skipping over subroutines)"
+msgstr ""
+
+#: gui/debugger.c:538
+msgid "_Finish Subroutine"
+msgstr ""
+
+#: gui/debugger.c:539
+msgid "Run to end of the current subroutine"
+msgstr ""
+
+#: gui/debugger.c:540
+msgid "Toggle Breakpoint"
+msgstr ""
+
+#: gui/debugger.c:541
+msgid "Enable or disable breakpoint at the selected address"
+msgstr ""
+
+#: gui/debugger.c:543
+msgid "_Breakpoints"
+msgstr ""
+
+#: gui/debugger.c:544
+msgid "Add, remove, or modify breakpoints"
+msgstr ""
+
+#: gui/debugger.c:546
+msgid "_Address..."
+msgstr ""
+
+#: gui/debugger.c:547
+msgid "Jump to an address"
+msgstr ""
+
+#: gui/debugger.c:549
+msgid "Current P_C"
+msgstr ""
+
+#: gui/debugger.c:550
+msgid "Jump to the current program counter"
+msgstr ""
+
+#: gui/debugger.c:552
+msgid "_Previous Stack Entry"
+msgstr ""
+
+#: gui/debugger.c:553
+msgid "Jump to the previous address in the stack"
+msgstr ""
+
+#: gui/debugger.c:555
+msgid "_Next Stack Entry"
+msgstr ""
+
+#: gui/debugger.c:556
+msgid "Jump to the next address in the stack"
+msgstr ""
+
+#: gui/debugger.c:558
+msgid "One Byte _Backward"
+msgstr ""
+
+#: gui/debugger.c:559
+msgid "Scroll backward by one byte"
+msgstr ""
+
+#: gui/debugger.c:561
+msgid "One Byte _Forward"
+msgstr ""
+
+#: gui/debugger.c:562
+msgid "Scroll forward by one byte"
+msgstr ""
+
+#: gui/debugger.c:566
+msgid "_Logical Addresses"
+msgstr ""
+
+#: gui/debugger.c:567
+msgid "Show contents of the current Z80 address space"
+msgstr ""
+
+#: gui/debugger.c:568
+msgid "_Absolute Addresses"
+msgstr ""
+
+#: gui/debugger.c:569
+msgid "Show all memory contents"
+msgstr ""
+
+#: gui/debugger.c:572
+msgid "_Debug"
+msgstr ""
+
+#: gui/debugger.c:573
+msgid "_View"
+msgstr ""
+
+#: gui/debugger.c:574
+msgid "_Go"
+msgstr ""
+
+#: gui/debugger.c:576
+msgid "Close the debugger"
+msgstr ""
+
+#: gui/debugger.c:579
+msgid "_Keypad"
+msgstr ""
+
+#: gui/debugger.c:580
+msgid "Show the calculator keypad state"
+msgstr ""
+
+#: gui/debugger.c:795
+msgid "EI"
+msgstr ""
+
+#: gui/debugger.c:910
+msgid "TilEm Debugger"
+msgstr ""
+
+#: gui/debugger.c:911
+msgid "Debugger"
+msgstr ""
+
+#: gui/debugger.c:1142
+#, c-format
+msgid "%04X:"
+msgstr ""
+
+#: gui/disasmview.c:113
+#, c-format
+msgid "%s:"
+msgstr ""
+
+#: gui/disasmview.c:944
+msgid "_Breakpoint Here"
+msgstr ""
+
+#: gui/disasmview.c:964
+msgid "_Go to Address..."
+msgstr ""
+
+#: gui/disasmview.c:969
+msgid "Go to P_C"
+msgstr ""
+
+#: gui/disasmview.c:1061
+msgid "Addr"
+msgstr ""
+
+#: gui/disasmview.c:1068
+msgid "Disassembly"
+msgstr ""
+
+#: gui/emucore.c:192 gui/link.c:324
+#, c-format
+msgid "Unknown error (%d)"
+msgstr ""
+
+#: gui/emucore.c:208
+msgid "Link cable I/O error"
+msgstr ""
+
+#: gui/emucore.c:260
+msgid "Unable to open link cable"
+msgstr ""
+
+#: gui/emucore.c:443
+msgid "Unable to open sound device"
+msgstr ""
+
+#: gui/emucore.c:488
+msgid "Unable to play sound"
+msgstr ""
+
+#: gui/emulator.c:290
+#, c-format
+msgid "No ROM file specified"
+msgstr ""
+
+#: gui/emulator.c:304 gui/emulator.c:324 gui/emulator.c:464 gui/emulator.c:482
+#: gui/skinops.c:258
+#, c-format
+msgid "Unable to open %s for reading: %s"
+msgstr ""
+
+#: gui/emulator.c:350
+#, c-format
+msgid "The file %s is not a recognized calculator ROM file."
+msgstr ""
+
+#: gui/emulator.c:371 gui/emulator.c:496
+#, c-format
+msgid "The specified ROM or state file is invalid."
+msgstr ""
+
+#: gui/emulator.c:531 gui/emulator.c:549
+#, c-format
+msgid "Unable to open %s for writing: %s"
+msgstr ""
+
+#: gui/emulator.c:569 gui/emulator.c:588 gui/link.c:1038
+#, c-format
+msgid "Error writing %s: %s"
+msgstr ""
+
+#: gui/emulator.c:946
+msgid "Open Calculator"
+msgstr ""
+
+#: gui/emulator.c:947
+msgid "ROM files"
+msgstr ""
+
+#: gui/emulator.c:948 gui/macro.c:125 gui/macro.c:268 gui/preferences.c:243
+#: gui/rcvmenu.c:149 gui/rcvmenu.c:209 gui/screenshot.c:659
+#: gui/screenshot.c:676 gui/sendfile.c:339
+msgid "All files"
+msgstr ""
+
+#: gui/emulator.c:966 gui/menu.c:85 gui/tilem2.c:173 gui/tilem2.c:203
+msgid "Unable to load calculator state"
+msgstr ""
+
+#: gui/emuwin.c:398
+msgid "Unable to load skin"
+msgstr ""
+
+#: gui/event.c:162
+msgid ""
+"(c) Benjamin Moody\n"
+"(c) Thibault Duponchelle\n"
+"(c) Luc Bruant\n"
+msgstr ""
+
+#: gui/event.c:163
+msgid ""
+"TilEm is a TI Linux Emulator.\n"
+" It emulates all current z80 models.\n"
+" TI73, TI76, TI81, TI82, TI83(+)(SE), TI84+(SE), TI85 and TI86 ;D"
+msgstr ""
+
+#: gui/filedlg.c:459
+msgid "Select a folder to save received files."
+msgstr ""
+
+#: gui/filedlg.c:592
+#, c-format
+msgid "A file named \"%s\" already exists.  Do you want to replace it?"
+msgstr ""
+
+#: gui/filedlg.c:601
+#, c-format
+msgid ""
+"The file already exists in \"%s\".  Replacing it will overwrite its contents."
+msgstr ""
+
+#: gui/filedlg.c:610 gui/rcvmenu.c:112
+msgid "_Replace"
+msgstr ""
+
+#: gui/filedlg.c:964
+msgid "Browse..."
+msgstr ""
+
+#: gui/fixedtreeview.c:139
+msgid "missing sentinel"
+msgstr ""
+
+#: gui/keybindings.c:170
+#, c-format
+msgid "no bindings for %s\n"
+msgstr ""
+
+#: gui/keybindings.c:192
+#, c-format
+msgid "syntax error in key bindings: '%s=%s'\n"
+msgstr ""
+
+#: gui/keybindings.c:228 gui/keybindings.c:238
+msgid "Unable to load key bindings"
+msgstr ""
+
+#: gui/keybindings.c:229
+msgid ""
+"The file keybindings.ini could not be found.  TilEm may not have been "
+"installed correctly."
+msgstr ""
+
+#: gui/keypaddlg.c:117
+msgid "Keypad"
+msgstr ""
+
+#: gui/keypaddlg.c:155
+#, c-format
+msgid "Group %d"
+msgstr ""
+
+#: gui/keypaddlg.c:177
+msgid "<b>Scan Groups</b>"
+msgstr ""
+
+#: gui/keypaddlg.c:182
+msgid "<b>Keys</b>"
+msgstr ""
+
+#: gui/keypaddlg.c:186
+msgid "Input Value:"
+msgstr ""
+
+#: gui/link.c:52
+#, c-format
+msgid "INTERNAL ERROR: cable already opened\n"
+msgstr ""
+
+#: gui/link.c:71
+#, c-format
+msgid "INTERNAL ERROR: cable already closed\n"
+msgstr ""
+
+#: gui/link.c:293
+msgid "unsupported calc"
+msgstr ""
+
+#: gui/link.c:331
+msgid "File I/O error"
+msgstr ""
+
+#: gui/link.c:334
+msgid "Not a valid PRG file"
+msgstr ""
+
+#: gui/link.c:337
+msgid "The calculator does not have enough free memory to load the program."
+msgstr ""
+
+#: gui/link.c:341
+msgid ""
+"All calculator program slots are in use.  You must delete an existing "
+"program before loading a new program."
+msgstr ""
+
+#: gui/link.c:346
+msgid ""
+"The calculator is currently busy.  Please exit to the home screen before "
+"loading programs."
+msgstr ""
+
+#: gui/link.c:351
+#, c-format
+msgid "Unknown error code (%d)"
+msgstr ""
+
+#: gui/link.c:378
+#, c-format
+msgid "Failed to open %s for reading: %s"
+msgstr ""
+
+#: gui/link.c:385
+#, c-format
+msgid "The file %s is not a valid TI-81 program file."
+msgstr ""
+
+#: gui/link.c:483
+#, c-format
+msgid "Sending %s"
+msgstr ""
+
+#: gui/link.c:553
+#, c-format
+msgid "The file %s is not a valid program or variable file."
+msgstr ""
+
+#: gui/link.c:582
+msgid "Unable to send file"
+msgstr ""
+
+#: gui/link.c:693
+#, c-format
+msgid "%s %s files"
+msgstr ""
+
+#: gui/link.c:730
+msgid "Reading variable list"
+msgstr ""
+
+#: gui/link.c:766 gui/link.c:959
+msgid "Receiving variables"
+msgstr ""
+
+#: gui/link.c:825 gui/sendfile.c:331
+msgid "TI-81 programs"
+msgstr ""
+
+#: gui/link.c:862
+msgid "Unable to receive variable list"
+msgstr ""
+
+#: gui/link.c:923
+msgid ""
+"Applications cannot be saved in an XXg group file.  Try using TIG format or "
+"saving apps individually."
+msgstr ""
+
+#: gui/link.c:1009
+msgid ""
+"TI-81 programs cannot be saved in a group file. Try saving programs "
+"individually."
+msgstr ""
+
+#: gui/link.c:1026
+#, c-format
+msgid "Failed to open %s for writing: %s"
+msgstr ""
+
+#: gui/link.c:1115
+msgid "Unable to save file"
+msgstr ""
+
+#: gui/link.c:1228
+#, c-format
+msgid "Variable %s not found"
+msgstr ""
+
+#: gui/linksetup.c:37
+msgid "Gray TI Graph Link"
+msgstr ""
+
+#: gui/linksetup.c:38
+msgid "Black TI Graph Link"
+msgstr ""
+
+#: gui/linksetup.c:39
+msgid "Silver TI Graph Link (USB)"
+msgstr ""
+
+#: gui/linksetup.c:40
+msgid "Parallel Link"
+msgstr ""
+
+#: gui/linksetup.c:205 gui/linksetup.c:344
+msgid "Link Port"
+msgstr ""
+
+#: gui/linksetup.c:221
+msgid "_Disconnected"
+msgstr ""
+
+#: gui/linksetup.c:226
+msgid "Connected to _speakers"
+msgstr ""
+
+#: gui/linksetup.c:229
+msgid "Ad_vanced..."
+msgstr ""
+
+#: gui/linksetup.c:242
+msgid "Connected to another _emulator (virtual cable)"
+msgstr ""
+
+#: gui/linksetup.c:249
+msgid "Connected to an e_xternal link cable"
+msgstr ""
+
+#: gui/linksetup.c:256
+msgid "Cable _type:"
+msgstr ""
+
+#: gui/linksetup.c:278
+msgid "_Port:"
+msgstr ""
+
+#: gui/linksetup.c:290
+msgid "Ti_meout (sec):"
+msgstr ""
+
+#: gui/linksetup.c:320
+#, c-format
+msgid ""
+"USB drivers not found. You must install TiLP\n"
+"(%s) in order to use\n"
+"an external link cable."
+msgstr ""
+
+#: gui/macro.c:120
+msgid "Save macro"
+msgstr ""
+
+#: gui/macro.c:124 gui/macro.c:267
+msgid "Macro files"
+msgstr ""
+
+#: gui/macro.c:163
+#, c-format
+msgid "Nothing to play\n"
+msgstr ""
+
+#: gui/macro.c:264
+msgid "Open macro"
+msgstr ""
+
+#: gui/memory.c:84
+#, c-format
+msgid "x%c: "
+msgstr ""
+
+#: gui/memory.c:94
+#, c-format
+msgid "x%c: WARNING: "
+msgstr ""
+
+#: gui/memory.c:104
+#, c-format
+msgid "x%c: INTERNAL ERROR: "
+msgstr ""
+
+#: gui/menu.c:166
+msgid "Send _File..."
+msgstr ""
+
+#: gui/menu.c:167
+msgid "Send a program or variable file to the calculator"
+msgstr ""
+
+#: gui/menu.c:170
+msgid "Re_ceive File..."
+msgstr ""
+
+#: gui/menu.c:171
+msgid "Receive a program or variable from the calculator"
+msgstr ""
+
+#: gui/menu.c:174
+msgid "_Link Cable..."
+msgstr ""
+
+#: gui/menu.c:175 gui/tilem2.c:68
+msgid "Connect to an external link cable"
+msgstr ""
+
+#: gui/menu.c:179
+msgid "_Open Calculator..."
+msgstr ""
+
+#: gui/menu.c:180
+msgid "Open a calculator ROM file"
+msgstr ""
+
+#: gui/menu.c:183
+msgid "_Save Calculator"
+msgstr ""
+
+#: gui/menu.c:184
+msgid "Save current calculator state"
+msgstr ""
+
+#: gui/menu.c:187
+msgid "Re_vert Calculator State"
+msgstr ""
+
+#: gui/menu.c:188
+msgid "Revert to saved calculator state"
+msgstr ""
+
+#: gui/menu.c:191
+msgid "_Reset Calculator"
+msgstr ""
+
+#: gui/menu.c:192
+msgid "Reset the calculator"
+msgstr ""
+
+#: gui/menu.c:196
+msgid "_Debugger"
+msgstr ""
+
+#: gui/menu.c:197
+msgid "Pause emulation and start the debugger"
+msgstr ""
+
+#: gui/menu.c:201 gui/screenshot.c:421
+msgid "_Record"
+msgstr ""
+
+#: gui/menu.c:202 gui/menu.c:206
+msgid "Begin recording a macro"
+msgstr ""
+
+#: gui/menu.c:205
+msgid "S_top"
+msgstr ""
+
+#: gui/menu.c:209
+msgid "_Play"
+msgstr ""
+
+#: gui/menu.c:210
+msgid "Play back the current macro"
+msgstr ""
+
+#: gui/menu.c:213
+msgid "_Open Macro File..."
+msgstr ""
+
+#: gui/menu.c:214
+msgid "Load a macro from a file"
+msgstr ""
+
+#: gui/menu.c:217
+msgid "_Save Macro File..."
+msgstr ""
+
+#: gui/menu.c:218
+msgid "Save current macro to a file"
+msgstr ""
+
+#: gui/menu.c:222
+msgid "S_creenshot..."
+msgstr ""
+
+#: gui/menu.c:223
+msgid "Save a screenshot"
+msgstr ""
+
+#: gui/menu.c:226
+msgid "_Quick Screenshot"
+msgstr ""
+
+#: gui/menu.c:227
+msgid "Save a screenshot using default settings"
+msgstr ""
+
+#: gui/menu.c:232
+msgid "Edit emulator settings"
+msgstr ""
+
+#: gui/menu.c:236
+msgid "_About"
+msgstr ""
+
+#: gui/menu.c:237
+msgid "Print some informations about TilEm 2 and its authors"
+msgstr ""
+
+#: gui/menu.c:241
+msgid "_Quit"
+msgstr ""
+
+#: gui/menu.c:242
+msgid "Quit the application"
+msgstr ""
+
+#: gui/menu.c:312
+msgid "_Macro"
+msgstr ""
+
+#: gui/pbar.c:48 gui/pbar.c:53
+msgid "(paused)"
+msgstr ""
+
+#: gui/preferences.c:184
+msgid "Preferences"
+msgstr ""
+
+#: gui/preferences.c:198
+msgid "_Limit to actual calculator speed"
+msgstr ""
+
+#: gui/preferences.c:202
+msgid "As _fast as possible"
+msgstr ""
+
+#: gui/preferences.c:211
+msgid "Emulation Speed"
+msgstr ""
+
+#: gui/preferences.c:218
+msgid "Emulate _grayscale"
+msgstr ""
+
+#: gui/preferences.c:227
+msgid "Use _smooth scaling"
+msgstr ""
+
+#: gui/preferences.c:238
+msgid "Use s_kin:"
+msgstr ""
+
+#: gui/preferences.c:241
+msgid "Select Skin"
+msgstr ""
+
+#: gui/preferences.c:242
+msgid "Skin files"
+msgstr ""
+
+#: gui/preferences.c:261
+msgid "Display"
+msgstr ""
+
+#: gui/rcvmenu.c:93
+msgid "Replace existing file?"
+msgid_plural "Replace existing files?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gui/rcvmenu.c:99
+#, c-format
+msgid ""
+"The file \"%2$s\" already exists in \"%1$s\".  Replacing it will overwrite "
+"its contents."
+msgid_plural ""
+"The following files already exist in \"%s\".  Replacing them will overwrite "
+"their contents:\n"
+"%s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gui/rcvmenu.c:146 gui/rcvmenu.c:205
+msgid "Save File"
+msgstr ""
+
+#: gui/rcvmenu.c:198
+#, c-format
+msgid "untitled.%s"
+msgstr ""
+
+#: gui/rcvmenu.c:203
+#, c-format
+msgid "%s group files"
+msgstr ""
+
+#: gui/rcvmenu.c:208 gui/sendfile.c:338
+msgid "TIGroup files"
+msgstr ""
+
+#: gui/rcvmenu.c:258
+msgid "Save Files to Directory"
+msgstr ""
+
+#: gui/rcvmenu.c:430 gui/sendfile.c:237
+msgid "Slot"
+msgstr ""
+
+#: gui/rcvmenu.c:438
+msgid "Name"
+msgstr ""
+
+#: gui/rcvmenu.c:457
+msgid "Size"
+msgstr ""
+
+#: gui/rcvmenu.c:493
+#, c-format
+msgid "%d"
+msgstr ""
+
+#: gui/rcvmenu.c:495
+#, c-format
+msgid "%'d"
+msgstr ""
+
+#: gui/rcvmenu.c:534
+msgid "Receive File"
+msgstr ""
+
+#: gui/rcvmenu.c:569
+msgid "Save as:"
+msgstr ""
+
+#: gui/rcvmenu.c:572
+msgid "S_eparate files"
+msgstr ""
+
+#: gui/rcvmenu.c:577
+msgid "_Group file"
+msgstr ""
+
+#: gui/screenshot.c:133
+#, c-format
+msgid "screenshot saved : %s\n"
+msgstr ""
+
+#: gui/screenshot.c:137 gui/screenshot.c:694 gui/screenshot.c:712
+msgid "Unable to save screenshot"
+msgstr ""
+
+#: gui/screenshot.c:326
+#, c-format
+msgid "%d × %d"
+msgstr ""
+
+#: gui/screenshot.c:341
+msgid "Custom"
+msgstr ""
+
+#: gui/screenshot.c:370
+msgid "Screenshot"
+msgstr ""
+
+#: gui/screenshot.c:400
+msgid "Preview"
+msgstr ""
+
+#: gui/screenshot.c:418
+msgid "_Grab"
+msgstr ""
+
+#: gui/screenshot.c:424
+msgid "_Stop"
+msgstr ""
+
+#: gui/screenshot.c:433
+msgid "Options"
+msgstr ""
+
+#: gui/screenshot.c:439
+msgid "Gra_yscale"
+msgstr ""
+
+#: gui/screenshot.c:443
+msgid "Image si_ze:"
+msgstr ""
+
+#: gui/screenshot.c:458
+msgid "_Width:"
+msgstr ""
+
+#: gui/screenshot.c:470
+msgid "_Height:"
+msgstr ""
+
+#: gui/screenshot.c:483
+msgid "Animation s_peed:"
+msgstr ""
+
+#: gui/screenshot.c:497
+msgid "_Foreground:"
+msgstr ""
+
+#: gui/screenshot.c:509
+msgid "_Background:"
+msgstr ""
+
+#: gui/screenshot.c:655 gui/screenshot.c:669
+msgid "Save Screenshot"
+msgstr ""
+
+#: gui/screenshot.c:658 gui/screenshot.c:673
+msgid "GIF images"
+msgstr ""
+
+#: gui/screenshot.c:672
+msgid "PNG images"
+msgstr ""
+
+#: gui/screenshot.c:674
+msgid "BMP images"
+msgstr ""
+
+#: gui/screenshot.c:675
+msgid "JPEG images"
+msgstr ""
+
+#: gui/screenshot.c:695
+msgid "File name does not have a recognized suffix"
+msgstr ""
+
+#: gui/sendfile.c:161
+#, c-format
+msgid "%s (in use: %s)"
+msgstr ""
+
+#: gui/sendfile.c:166
+#, c-format
+msgid "%s (in use)"
+msgstr ""
+
+#: gui/sendfile.c:229
+msgid "File"
+msgstr ""
+
+#: gui/sendfile.c:244
+msgid "Select Program Slots"
+msgstr ""
+
+#: gui/sendfile.c:268
+msgid ""
+"Select a slot where each program should be loaded.  If a program slot is "
+"already in use, its contents will be overwritten."
+msgstr ""
+
+#: gui/sendfile.c:332
+msgid "TI-73 files"
+msgstr ""
+
+#: gui/sendfile.c:333
+msgid "TI-82 files"
+msgstr ""
+
+#: gui/sendfile.c:334
+msgid "TI-83 files"
+msgstr ""
+
+#: gui/sendfile.c:335
+msgid "TI-83 Plus files"
+msgstr ""
+
+#: gui/sendfile.c:336
+msgid "TI-85 files"
+msgstr ""
+
+#: gui/sendfile.c:337
+msgid "TI-86 files"
+msgstr ""
+
+#: gui/sendfile.c:341
+msgid "All compatible files"
+msgstr ""
+
+#: gui/sendfile.c:508
+msgid "Send File"
+msgstr ""
+
+#: gui/skinops.c:61
+#, c-format
+msgid "Unable to open this file: <%s>\n"
+msgstr ""
+
+#: gui/skinops.c:77
+#, c-format
+msgid "Bad skin format\n"
+msgstr ""
+
+#: gui/skinops.c:226
+#, c-format
+msgid "Unable to load background image"
+msgstr ""
+
+#: gui/skinops.c:269
+#, c-format
+msgid "The file %s is not a valid skin."
+msgstr ""
+
+#: gui/ti81prg.c:321
+#, c-format
+msgid "warning: checksum incorrect\n"
+msgstr ""
+
+#: gui/tilem2.c:57
+msgid "The rom file to run"
+msgstr ""
+
+#: gui/tilem2.c:57 gui/tilem2.c:58 gui/tilem2.c:60 gui/tilem2.c:63
+#: gui/tilem2.c:64 gui/tilem2.c:69
+msgid "FILE"
+msgstr ""
+
+#: gui/tilem2.c:58
+msgid "The skin file to use"
+msgstr ""
+
+#: gui/tilem2.c:59
+msgid "The model to use"
+msgstr ""
+
+#: gui/tilem2.c:59
+msgid "NAME"
+msgstr ""
+
+#: gui/tilem2.c:60
+msgid "The state-file to use"
+msgstr ""
+
+#: gui/tilem2.c:61
+msgid "Start in skinless mode"
+msgstr ""
+
+#: gui/tilem2.c:62
+msgid "Reset the calc at startup"
+msgstr ""
+
+#: gui/tilem2.c:63
+msgid "Get a var at startup"
+msgstr ""
+
+#: gui/tilem2.c:64
+msgid "Run this macro at startup"
+msgstr ""
+
+#: gui/tilem2.c:65
+msgid "Launch debugger"
+msgstr ""
+
+#: gui/tilem2.c:66
+msgid "Run at normal speed"
+msgstr ""
+
+#: gui/tilem2.c:67
+msgid "Run at maximum speed"
+msgstr ""
+
+#: gui/tilem2.c:68
+msgid "TYPE[:PORT]"
+msgstr ""
+
+#: gui/tilem2.c:303
+#, c-format
+msgid "%s: %s\n"
+msgstr ""
+
+#: gui/tilem2.c:310
+#, c-format
+msgid "%s: unknown model %s\n"
+msgstr ""
+
+#: gui/tilem2.c:318
+#, c-format
+msgid "%s: invalid link cable %s\n"
+msgstr ""
+
+#: gui/tool.c:280
+msgid "Select Calculator Type"
+msgstr ""
+
+#: gui/tool.c:314
+#, c-format
+msgid "Calculator type for %s:"
+msgstr ""
+
+#: gui/tool.c:362
+#, c-format
+msgid "utf8_to_filename: unsupported charset %s"
+msgstr ""
+
+#: gui/tool.c:374
+msgid "utf8_to_filename: error in conversion"
+msgstr ""
+
+#: gui/tool.c:428
+msgid "untitled"
+msgstr ""
+
+#: emu/audio.c:232
+msgid "8-bit, unsigned"
+msgstr ""
+
+#: emu/audio.c:233
+msgid "8-bit, signed"
+msgstr ""
+
+#: emu/audio.c:234
+msgid "16-bit, unsigned, little-endian"
+msgstr ""
+
+#: emu/audio.c:235
+msgid "16-bit, signed, little-endian"
+msgstr ""
+
+#: emu/audio.c:236
+msgid "16-bit, unsigned, big-endian"
+msgstr ""
+
+#: emu/audio.c:237
+msgid "16-bit, signed, big-endian"
+msgstr ""
+
+#: emu/audio.c:249 emu/audio.c:259
+#, c-format
+msgid "audio: %s"
+msgstr ""
+
+#: emu/audio.c:417
+msgid "buffer overrun"
+msgstr ""
+
+#: emu/audio.c:673 emu/audio.c:823
+msgid "output sampling rate undefined"
+msgstr ""
+
+#: emu/audio.c:677 emu/audio.c:827
+msgid "number of output channels undefined"
+msgstr ""
+
+#: emu/audio.c:681 emu/audio.c:831
+msgid "output sample format undefined"
+msgstr ""
+
+#: emu/audio.c:685
+msgid "Starting playback:"
+msgstr ""
+
+#: emu/audio.c:686
+#, c-format
+msgid " rate        = %d"
+msgstr ""
+
+#: emu/audio.c:687
+#, c-format
+msgid " channels    = %d"
+msgstr ""
+
+#: emu/audio.c:688
+#, c-format
+msgid " format      = %s"
+msgstr ""
+
+#: emu/audio.c:690
+#, c-format
+msgid " buffer size = %d"
+msgstr ""
+
+#: emu/audio.c:776
+#, c-format
+msgid "invalid sampling rate (%d)"
+msgstr ""
+
+#: emu/audio.c:791
+#, c-format
+msgid "invalid number of channels (%d)"
+msgstr ""
+
+#: emu/audio.c:806
+#, c-format
+msgid "invalid sample format (%d)"
+msgstr ""
+
+#: emu/audio.c:841
+#, c-format
+msgid "invalid buffer size (%d)"
+msgstr ""
+
+#: emu/cert.c:102
+#, c-format
+msgid "Repairing certificate area..."
+msgstr ""
+
+#: emu/cert.c:129
+#, c-format
+msgid "Found application at page %02x (index %d)"
+msgstr ""
+
+#: emu/flash.c:61
+#, c-format
+msgid "Flash error (%s)"
+msgstr ""
+
+#: emu/flash.c:104
+#, c-format
+msgid "bad program %02x over %02x"
+msgstr ""
+
+#: emu/flash.c:152
+msgid "reading from Flash while programming"
+msgstr ""
+
+#: emu/flash.c:160 emu/flash.c:167
+msgid "reading from Flash while erasing"
+msgstr ""
+
+#: emu/flash.c:186
+msgid "reading during program/erase sequence"
+msgstr ""
+
+#: emu/flash.c:201
+msgid "erasing protected sector"
+msgstr ""
+
+#: emu/flash.c:233
+#, c-format
+msgid "undefined command %02x->%06x after AA"
+msgstr ""
+
+#: emu/flash.c:243
+msgid "attempt to erase without pre-erase"
+msgstr ""
+
+#: emu/flash.c:252
+msgid "autoselect is not implemented"
+msgstr ""
+
+#: emu/flash.c:260
+#, c-format
+msgid "undefined command %02x->%06x after AA,55"
+msgstr ""
+
+#: emu/flash.c:266 emu/flash.c:284
+msgid "programming protected sector"
+msgstr ""
+
+#: emu/flash.c:278
+#, c-format
+msgid "mixing fast programming with regular programming: %02x->%06x"
+msgstr ""
+
+#: emu/flash.c:293
+#, c-format
+msgid "undefined command %02x->%06x after fast mode pre-exit 90"
+msgstr ""
+
+#: emu/flash.c:303
+#, c-format
+msgid "undefined command %02x->%06x after pre-erase"
+msgstr ""
+
+#: emu/flash.c:310
+#, c-format
+msgid "undefined command %02x->%06x after pre-erase AA"
+msgstr ""
+
+#: emu/flash.c:315
+#, c-format
+msgid "Erasing entire Flash chip"
+msgstr ""
+
+#: emu/flash.c:328
+#, c-format
+msgid "undefined command %02x->%06x after pre-erase AA,55"
+msgstr ""
+
+#: emu/md5.c:77
+#, c-format
+msgid "Invalid MD5 mode %d"
+msgstr ""
+
+#: emu/state.c:43
+#, c-format
+msgid "Unknown hwreg %s"
+msgstr ""
+
+#: emu/state.c:84
+#, c-format
+msgid "Unknown timer %s"
+msgstr ""
+
+#: emu/z80.c:239
+#, c-format
+msgid "invalid bp type"
+msgstr ""
+
+#: emu/z80.c:377 emu/z80.c:388
+#, c-format
+msgid "setting invalid timer %d"
+msgstr ""
+
+#: emu/z80.c:399
+#, c-format
+msgid "removing invalid timer %d"
+msgstr ""
+
+#: emu/z80.c:410 emu/z80.c:425
+#, c-format
+msgid "querying invalid timer %d"
+msgstr ""
+
+#: emu/z80.c:472
+#, c-format
+msgid "attempt to remove invalid breakpoint %d"
+msgstr ""
+
+#: emu/z80.c:504 emu/z80.c:516 emu/z80.c:528 emu/z80.c:540 emu/z80.c:552
+#: emu/z80.c:564
+#, c-format
+msgid "attempt to access invalid breakpoint %d"
+msgstr ""
+
+#: emu/z80.c:576 emu/z80.c:595 emu/z80.c:607 emu/z80.c:619 emu/z80.c:632
+#: emu/z80.c:644
+#, c-format
+msgid "attempt to modify invalid breakpoint %d"
+msgstr ""
+
+#: emu/z80.c:866 emu/z80.c:950
+#, c-format
+msgid "No timers set"
+msgstr ""
+
+#: emu/z80cmds.h:82 emu/xn/xn_io.c:858
+#, c-format
+msgid "Invalid opcode %x"
+msgstr ""
+
+#: emu/x1/x1_io.c:69 emu/x3/x3_io.c:98 emu/x4/x4_io.c:315 emu/x5/x5_io.c:65
+#: emu/x6/x6_io.c:65 emu/xn/xn_io.c:318 emu/xz/xz_io.c:315
+#, c-format
+msgid "Input from port %x"
+msgstr ""
+
+#: emu/x4/x4_io.c:525 emu/x7/x7_io.c:215 emu/xp/xp_io.c:236 emu/xz/xz_io.c:525
+#, c-format
+msgid "Flash unlocked"
+msgstr ""
+
+#: emu/x4/x4_io.c:527 emu/x7/x7_io.c:217 emu/xp/xp_io.c:238 emu/xz/xz_io.c:527
+#, c-format
+msgid "Flash locked"
+msgstr ""
+
+#: emu/x4/x4_io.c:531 emu/x4/x4_io.c:576 emu/x4/x4_io.c:586 emu/x4/x4_io.c:596
+#: emu/x4/x4_io.c:607 emu/x4/x4_io.c:618 emu/xs/xs_io.c:479 emu/xs/xs_io.c:524
+#: emu/xs/xs_io.c:534 emu/xs/xs_io.c:544 emu/xs/xs_io.c:555 emu/xs/xs_io.c:566
+#: emu/xz/xz_io.c:531 emu/xz/xz_io.c:576 emu/xz/xz_io.c:586 emu/xz/xz_io.c:596
+#: emu/xz/xz_io.c:607 emu/xz/xz_io.c:618
+#, c-format
+msgid "Writing to protected port %02x"
+msgstr ""
+
+#: emu/x4/x4_memory.c:98 emu/x4/x4_memory.c:129 emu/x7/x7_memory.c:78
+#: emu/x7/x7_memory.c:101 emu/xn/xn_memory.c:98 emu/xn/xn_memory.c:141
+#: emu/xp/xp_memory.c:78 emu/xp/xp_memory.c:105 emu/xs/xs_memory.c:100
+#: emu/xs/xs_memory.c:131 emu/xz/xz_memory.c:98 emu/xz/xz_memory.c:129
+#, c-format
+msgid "Reading from read-protected sector"
+msgstr ""
+
+#: emu/x4/x4_memory.c:140 emu/x7/x7_memory.c:96 emu/xn/xn_memory.c:136
+#: emu/xp/xp_memory.c:98 emu/xs/xs_memory.c:142 emu/xz/xz_memory.c:140
+#, c-format
+msgid "Executing in restricted Flash area"
+msgstr ""
+
+#: emu/x4/x4_memory.c:150 emu/xn/xn_memory.c:130 emu/xp/xp_memory.c:97
+#: emu/xs/xs_memory.c:156 emu/xz/xz_memory.c:150
+#, c-format
+msgid "Executing in restricted RAM area"
+msgstr ""
+
+#: emu/x4/x4_memory.c:158 emu/x7/x7_memory.c:108 emu/xn/xn_memory.c:155
+#: emu/xp/xp_memory.c:112 emu/xs/xs_memory.c:164 emu/xz/xz_memory.c:158
+#, c-format
+msgid "No OS installed"
+msgstr ""
+
+#: emu/x7/x7_io.c:225
+#, c-format
+msgid "No-exec mask set to %x"
+msgstr ""
+
+#: emu/xn/xn_io.c:770
+#, c-format
+msgid "Keypad locked"
+msgstr ""
+
+#: emu/xn/xn_io.c:775
+#, c-format
+msgid "Keypad unlocked"
+msgstr ""
+
+#: emu/xn/xn_io.c:835
+#, c-format
+msgid "Unknown control instruction %x"
+msgstr ""
+
+#: emu/xp/xp_io.c:248
+#, c-format
+msgid "No-exec mask for 08-0F set to %x"
+msgstr ""
+
+#: emu/xp/xp_io.c:252
+#, c-format
+msgid "No-exec mask for 10-17 set to %x"
+msgstr ""
+
+#: emu/xp/xp_io.c:256
+#, c-format
+msgid "No-exec mask for 18-1B set to %x"
+msgstr ""
+
+#: emu/xp/xp_io.c:260
+#, c-format
+msgid "No-exec mask for RAM set to %x"
+msgstr ""

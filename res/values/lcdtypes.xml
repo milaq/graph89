@@ -1,0 +1,13 @@
+<resources>
+
+    <string-array name="lcd_types">
+        <item>Solid</item>
+        <item>Dot Matrix</item>
+    </string-array>
+    
+    <string-array name="lcd_values">
+        <item>Solid</item>
+        <item>Dot Matrix</item>
+    </string-array>
+
+</resources>

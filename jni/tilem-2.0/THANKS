@@ -1,0 +1,37 @@
+                                Thanks
+                               --------
+The current maintainers of TilEm are Thibault Duponchelle and Benjamin
+Moody, but many other people have played a part in making this program
+possible.
+
+The original TilEm was written in 2001 by Julien Solignac.  The
+current version is partially based on the original, but large portions
+have been rewritten, starting in 2009, by Benjamin Moody and Thibault
+Duponchelle.  Portions of the hardware emulation code are also due to
+Luc Bruant.
+
+The code for reading skin files is based on code from TiEmu, written
+by Julien Blache.  The GIF compression code is based on whirlgif,
+written by Hans Dinsen-Hansen and Michael A. Mayer.
+
+Thanks to Claude Clerc for the photo of his TI-83 Plus, and to Danilo
+Šegan for the photo of his TI-86, which we have used as skins.  Thanks
+to Scott Zeid for the design of the program icon.
+
+TilEm uses the TiLP libraries (libticalcs2, libticables2, libtifiles2,
+and libticonv) to send and receive variables.  Thanks are due to the
+current maintainer of TiLP, Lionel Debroux, for his assistance, as
+well as to all of the past maintainers of TiLP, including Romain
+Liévin, Kevin Kofler, and Julien Blache.
+
+Finally, this program would never have been possible without the
+efforts of countless programmers and researchers over the years to
+discover and document the inner workings of the calculator hardware.
+The following people deserve special recognition for their research:
+Randy Compton, Tijl Coosemans, Brian Coventry, Dan Eble, Dan
+Englender, Dines Justesen, Julien Lasson, Mattias Lindqvist, James
+Montelongo, Michael Vincent, Brandon Wilson, and Joerg Woerner.
+
+(Thibault) In addition of above:
+Thanks to Michael Nock and Guillaume Hoffman for testing, feature request and encouragement.
+Thanks to Xavier Andreani for his encouragement.

@@ -1,0 +1,79 @@
+# skin file
+# model  : 73
+
+# skin image
+skin 		{ skin-73.png }
+
+# keymask image
+keymask		{ keymask-83p.png }
+
+# LCD rect section
+# format :
+#	 x ,  y ,  w ,  h 
+lcd-coords	{ 60,  75, 192, 128 }
+
+# mouse mapping section
+# format :
+#	 x ,  y ,  sk  # keyname
+key-coords	{
+	{ 50, 255, 0x35} # TILEM_KEY_YEQU
+	{105, 255, 0x34} # TILEM_KEY_WINDOW
+	{160, 255, 0x33} # TILEM_KEY_ZOOM
+	{210, 255, 0x32} # TILEM_KEY_TRACE
+	{265, 255, 0x31} # TILEM_KEY_GRAPH
+	
+	{ 50, 315, 0x36} # TILEM_KEY_2ND
+	{105, 315, 0x37} # TILEM_KEY_MODE
+	{160, 315, 0x38} # TILEM_KEY_DEL
+	
+	{200, 320, 0x02} # TILEM_KEY_LEFT
+	{236, 292, 0x04} # TILEM_KEY_UP
+	{236, 348, 0x01} # TILEM_KEY_DOWN
+	{275, 320, 0x03} # TILEM_KEY_RIGHT
+	
+	{ 50, 350, 0x30} # TILEM_KEY_ALPHA
+	{105, 350, 0x28} # TILEM_KEY_GRAPHVAR
+	{160, 350, 0x20} # TILEM_KEY_STAT
+	
+	{ 50, 386, 0x2F} # TILEM_KEY_MATH
+	{105, 386, 0x27} # TILEM_KEY_MATRIX
+	{155, 386, 0x1F} # TILEM_KEY_PRGM
+	{210, 386, 0x17} # TILEM_KEY_VARS
+	{265, 386, 0x0F} # TILEM_KEY_CLEAR
+	
+	{ 50, 424, 0x2E} # TILEM_KEY_RECIP
+	{105, 424, 0x26} # TILEM_KEY_SIN
+	{155, 424, 0x1E} # TILEM_KEY_COS
+	{210, 424, 0x16} # TILEM_KEY_TAN
+	{265, 424, 0x0E} # TILEM_KEY_POWER
+	
+	{ 50, 460, 0x2D} # TILEM_KEY_SQUARE
+	{105, 460, 0x25} # TILEM_KEY_COMMA
+	{155, 460, 0x1D} # TILEM_KEY_LPAREN
+	{210, 460, 0x15} # TILEM_KEY_RPAREN
+	{265, 460, 0x0D} # TILEM_KEY_DIV
+	
+	{ 50, 496, 0x2C} # TILEM_KEY_LOG
+	{105, 496, 0x24} # TILEM_KEY_7
+	{155, 496, 0x1C} # TILEM_KEY_8
+	{210, 496, 0x14} # TILEM_KEY_9
+	{265, 496, 0x0C} # TILEM_KEY_MUL
+	
+	{ 50, 534, 0x2B} # TILEM_KEY_LN
+	{105, 534, 0x23} # TILEM_KEY_4
+	{155, 534, 0x1B} # TILEM_KEY_5
+	{210, 534, 0x13} # TILEM_KEY_6
+	{265, 534, 0x0B} # TILEM_KEY_SUB
+	
+	{ 50, 572, 0x2A} # TILEM_KEY_STORE
+	{105, 572, 0x22} # TILEM_KEY_1
+	{155, 572, 0x1A} # TILEM_KEY_2
+	{210, 572, 0x12} # TILEM_KEY_3
+	{265, 572, 0x0A} # TILEM_KEY_ADD
+	
+	{ 50, 608, 0x29} # TILEM_KEY_ON
+	{105, 608, 0x21} # TILEM_KEY_0
+	{155, 608, 0x19} # TILEM_KEY_DECPNT
+	{210, 608, 0x11} # TILEM_KEY_CHS
+	{265, 608, 0x09} # TILEM_KEY_ENTER
+}

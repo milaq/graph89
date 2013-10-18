@@ -1,0 +1,56 @@
+                           Installing TilEm
+                          ------------------
+
+To compile TilEm, you will need:
+
+  * a standard C compiler
+
+  * the GTK+ library, version 2.6.0 or later
+
+  * the libticalcs2 library (part of the TiLP project), and its
+    dependencies (libticables2, libtifiles2, and libticonv)
+
+  * (optional, needed for sound support) the SDL library
+
+Some OS distributions package the "development files" separately from
+the libraries themselves; you need both.  If you are using Debian (or
+a related distribution, such as Ubuntu or Mint), install the packages
+'build-essential', 'libticalcs-dev', 'libgtk2.0-dev', and
+'libsdl1.2-dev'.
+
+If these packages aren't available from your package manager, you'll
+need to compile them yourself; see the TiLP website for more
+information (http://lpg.ticalc.org/prj_tilp/).
+
+Mac OS X has not been tested by the TilEm team, but if TiLP works,
+TilEm should, too.  Please let us know if you do get it to work.
+
+Once the above dependencies are installed, open a terminal and 'cd' to
+the directory containing this INSTALL file.  Then run
+
+   ./configure
+
+which will check whether you have all of the necessary software
+installed, and figure out how to compile TilEm for your particular
+system.  If configure is successful, you can then run
+
+   make
+
+to compile TilEm.  Finally, you can run
+
+   sudo make install
+
+to install it (or run 'make install' as the superuser.)  The program
+will be installed in '/usr/local/bin/', and data files will be
+installed in '/usr/local/share/tilem2/'.  Alternatively, you can run
+
+   make install-home
+
+to install TilEm in your own home directory ('$HOME/bin/', with data
+files stored in '$HOME/.local/share/tilem2/'), which does not require
+superuser privileges.  (If $HOME/bin didn't exist already, you might
+have to run 'export PATH=$HOME/bin:$PATH', or log out and log back in,
+before running TilEm.)
+
+Once TilEm is installed, start it by running 'tilem2', or through your
+system's applications menu.

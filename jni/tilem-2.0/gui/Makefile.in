@@ -1,0 +1,283 @@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+datarootdir = @datarootdir@
+bindir = @bindir@
+datadir = @datadir@
+pkgdatadir = @datadir@/tilem2
+localedir = @localedir@
+mandir = @mandir@
+
+top_builddir = @top_builddir@
+top_srcdir = @top_srcdir@
+srcdir = @srcdir@
+VPATH = @srcdir@
+@SET_MAKE@
+
+CC = @CC@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+DEFS = @DEFS@
+GUI_LDFLAGS = @GUI_LDFLAGS@
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+SHELL = @SHELL@
+WINDRES = @WINDRES@
+
+GTK_CFLAGS = @GTK_CFLAGS@
+GTK_LIBS = @GTK_LIBS@
+
+SDL_CFLAGS = @SDL_CFLAGS@
+SDL_LIBS = @SDL_LIBS@
+
+TICALCS_CFLAGS = @TICALCS_CFLAGS@
+TICALCS_LIBS = @TICALCS_LIBS@
+
+TILEMCORE_CFLAGS = -I$(top_srcdir)/emu
+TILEMCORE_LIBS = -L$(top_builddir)/emu -ltilemcore
+
+TILEMDB_CFLAGS = -I$(top_srcdir)/db
+TILEMDB_LIBS = -L$(top_builddir)/db -ltilemdb
+
+DEF_SHARE_DIR = -DSHARE_DIR=\"$(pkgdatadir)\" \
+	-DUNINSTALLED_SHARE_DIR=\"$(top_srcdir)/data\" \
+	-DLOCALE_DIR=\"$(localedir)\"
+
+gui_extra_objects = @gui_extra_objects@
+
+objects = tilem2.o \
+	address.o \
+	animatedgif.o \
+	animation.o \
+	audiodev.o \
+	audiosetup.o \
+	breakpoints.o \
+	config.o \
+	charmap.o \
+	debugger.o \
+	disasmview.o \
+	emulator.o \
+	emucore.o \
+	emuwin.o \
+	event.o \
+	filedlg.o \
+	files.o \
+	fixedtreeview.o \
+	gifencod.o \
+	icons.o \
+	keybindings.o \
+	keypaddlg.o \
+	link.o \
+	macro.o \
+	memmodel.o \
+	memview.o \
+	memory.o \
+	pbar.o \
+	preferences.o \
+	linksetup.o \
+	sendfile.o \
+	screenshot.o \
+	skinops.o \
+	ti81prg.o \
+	menu.o \
+	rcvmenu.o \
+	tool.o \
+	$(gui_extra_objects)
+
+libs = $(TILEMDB_LIBS) $(TILEMCORE_LIBS) $(GTK_LIBS) $(TICALCS_LIBS) \
+	$(SDL_LIBS) $(LIBS)
+
+compile = $(CC) -I$(top_builddir) -I$(srcdir) $(CFLAGS) $(CPPFLAGS) $(DEFS) \
+	$(TILEMCORE_CFLAGS) $(TILEMDB_CFLAGS) \
+	$(GTK_CFLAGS) $(TICALCS_CFLAGS)
+
+link = $(CC) $(CFLAGS) $(LDFLAGS) $(GUI_LDFLAGS) 
+
+common_headers = ../config.h ../emu/tilem.h ../db/tilemdb.h \
+	gui.h emulator.h debugger.h emuwin.h skinops.h animation.h \
+	audiodev.h gtk-compat.h gettext.h msgbox.h fixedtreeview.h
+
+all: tilem2@EXEEXT@
+
+#Main emulator GUI
+tilem2@EXEEXT@: $(objects) ../emu/libtilemcore.a ../db/libtilemdb.a
+	$(link) -o tilem2@EXEEXT@ $(objects) $(libs)
+
+tilem2.o: tilem2.c icons.h files.h $(common_headers)
+	$(compile) -c $(srcdir)/tilem2.c
+
+# Debugger
+debugger.o: debugger.c disasmview.h $(common_headers)
+	$(compile) -c $(srcdir)/debugger.c
+
+# Disassembly view
+disasmview.o: disasmview.c disasmview.h $(common_headers)
+	$(compile) -c $(srcdir)/disasmview.c
+
+# Memory view
+memview.o: memview.c memmodel.h $(common_headers)
+	$(compile) -c $(srcdir)/memview.c
+
+# Tree model interface for calc memory
+memmodel.o: memmodel.c memmodel.h $(common_headers)
+	$(compile) -c $(srcdir)/memmodel.c
+
+# Breakpoint dialog
+breakpoints.o: breakpoints.c $(common_headers)
+	$(compile) -c $(srcdir)/breakpoints.c
+
+# Utility functions for debugging
+address.o: address.c $(common_headers)
+	$(compile) -c $(srcdir)/address.c
+
+# Keypad dialog
+keypaddlg.o: keypaddlg.c $(common_headers)
+	$(compile) -c $(srcdir)/keypaddlg.c
+
+# Memory management and messages
+memory.o: memory.c gettext.h ../emu/tilem.h
+	$(compile) -c $(srcdir)/memory.c
+
+# Emulator management
+emulator.o: emulator.c emucore.h $(common_headers)
+	$(compile) -c $(srcdir)/emulator.c
+
+# Emulator main loop
+emucore.o: emucore.c emucore.h $(common_headers)
+	$(compile) -c $(srcdir)/emucore.c
+
+# Emulator GUI (main window)
+emuwin.o: emuwin.c $(common_headers)
+	$(compile) -c $(srcdir)/emuwin.c
+
+# Handle events
+event.o: event.c $(common_headers)
+	$(compile) -c $(srcdir)/event.c
+
+# Preferences dialog
+preferences.o: preferences.c $(common_headers)
+	$(compile) -c $(srcdir)/preferences.c 
+
+# External link setup dialog
+linksetup.o: linksetup.c $(common_headers)
+	$(compile) -c $(srcdir)/linksetup.c
+
+# Audio setup dialog
+audiosetup.o: audiosetup.c $(common_headers)
+	$(compile) -c $(srcdir)/audiosetup.c
+
+# Open skin (skn format file) originally created by Julien Blache and Romain Lievins
+skinops.o: skinops.c skinops.h gettext.h
+	$(compile) -c $(srcdir)/skinops.c
+
+# Popups and other stuff
+tool.o: tool.c $(common_headers)
+	$(compile) -c $(srcdir)/tool.c
+
+# Manage config.ini 
+config.o: config.c files.h $(common_headers)
+	$(compile) -c $(srcdir)/config.c
+
+# Handle internal link
+link.o: link.c emucore.h ti81prg.h $(common_headers)
+	$(compile) -c $(srcdir)/link.c
+
+# Handle macro
+macro.o: macro.c $(common_headers)
+	$(compile) -c $(srcdir)/macro.c
+
+# Create and modify animated gif
+gifencod.o: gifencod.c gifencod.h
+	$(compile) -c $(srcdir)/gifencod.c
+
+# Handle screenshot anim (animated gif)
+animatedgif.o: animatedgif.c $(common_headers)
+	$(compile) -c $(srcdir)/animatedgif.c
+
+# Screenshot widget
+screenshot.o: screenshot.c $(common_headers)
+	$(compile) -c $(srcdir)/screenshot.c
+
+# Progress bar widget
+pbar.o: pbar.c $(common_headers)
+	$(compile) -c $(srcdir)/pbar.c
+
+# Screenshot/animation recording
+animation.o: animation.c $(common_headers)
+	$(compile) -c $(srcdir)/animation.c
+
+# Audio output
+audiodev.o: audiodev.c $(common_headers)
+	$(compile) $(SDL_CFLAGS) -c $(srcdir)/audiodev.c
+
+# Shared/configuration files
+files.o: files.c files.h
+	$(compile) $(DEF_SHARE_DIR) -c $(srcdir)/files.c
+
+# Custom icons
+icons.o: icons.c icons.h
+	$(compile) $(DEF_SHARE_DIR) -c $(srcdir)/icons.c
+
+# Keybindings
+keybindings.o: keybindings.c files.h $(common_headers)
+	$(compile) -c $(srcdir)/keybindings.c
+
+# Menu
+menu.o: menu.c $(common_headers)
+	$(compile) -c $(srcdir)/menu.c
+
+# Link receive dialog
+rcvmenu.o: rcvmenu.c $(common_headers)
+	$(compile) -c $(srcdir)/rcvmenu.c
+
+# Link send dialog
+sendfile.o: sendfile.c emucore.h $(common_headers)
+	$(compile) -c $(srcdir)/sendfile.c
+
+# File open/save dialogs
+filedlg.o: filedlg.c filedlg.h gettext.h
+	$(compile) -c $(srcdir)/filedlg.c
+
+# Fixed-width tree view
+fixedtreeview.o: fixedtreeview.c fixedtreeview.h gettext.h
+	$(compile) -c $(srcdir)/fixedtreeview.c
+
+# TI-81 program file functions
+ti81prg.o: ti81prg.c ti81prg.h gettext.h ../emu/tilem.h
+	$(compile) -c $(srcdir)/ti81prg.c
+
+# Character conversion
+charmap.o: charmap.c charmap.h ../emu/tilem.h
+	$(compile) -c $(srcdir)/charmap.c
+
+# Windows resource file
+tilem2rc.o: tilem2.rc
+	major=`echo "@PACKAGE_VERSION@" | sed 's/\..*//'` ; \
+	minor=`echo "@PACKAGE_VERSION@" | sed 's/.*\.//;s/[^0-9].*//'` ; \
+	svnver=`svnversion "$(top_srcdir)" 2>/dev/null | sed 's/[^0-9].*//'` ; \
+	[ -n "$$svnver" ] || svnver=0 ; \
+	$(WINDRES) -DBUILD_VERSION=$$major,$$minor,0,$$svnver tilem2.rc tilem2rc.o
+
+tilem2.rc: tilem2.rc.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status gui/tilem2.rc
+
+install: tilem2@EXEEXT@
+	$(INSTALL) -d -m 755 $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) -m 755 tilem2@EXEEXT@ $(DESTDIR)$(bindir)
+
+uninstall:
+	rm -f $(DESTDIR)$(bindir)/tilem2@EXEEXT@
+
+clean:
+	rm -f *.o
+	rm -f tilem2@EXEEXT@
+
+Makefile: Makefile.in $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status
+
+$(top_builddir)/config.status: $(top_srcdir)/configure
+	cd $(top_builddir) && $(SHELL) ./config.status --recheck
+
+.PRECIOUS: Makefile $(top_builddir)/config.status
+.PHONY: all clean install uninstall

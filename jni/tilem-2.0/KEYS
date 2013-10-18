@@ -1,0 +1,270 @@
+KEYBOARD BINDINGS
+
+ This list shows the default keyboard controls for TilEm.  You can
+ modify these, if you like, by editing 'keybindings.ini'.  (Place the
+ modified version of keybindings.ini in your TilEm configuration
+ directory - $HOME/.config/tilem2/ on Unix, or
+ $PROFILE\Local Settings\Application Data\tilem2 on Windows.)
+
+ In the following list:
+   S = Shift
+   C = Control
+   ↑ = 2nd
+   α = Alpha
+
+ ² in the TI-82/83 column indicates that the key is only for the TI-82.
+ ³ indicates that it is only for the TI-83/TI-83 Plus/TI-84 Plus.
+
+ Key          TI-73        TI-76.fr     TI-81        TI-82/83     TI-85/86
+ ──────────────────────────────────────────────────────────────────────────────
+ F12          ON           ON           ON           ON           ON
+ S+F12        ↑ [OFF]      ↑ [OFF]      ↑ [OFF]      ↑ [OFF]      ↑ [OFF]
+
+ Up           Up           Up           Up           Up           Up
+ Down         Down         Down         Down         Down         Down
+ Left         Left         Left         Left         Left         Left
+ Right        Right        Right        Right        Right        Right
+ S+Up         ↑ Up         ↑ Up         ↑ Up         ↑ Up         ↑ Up
+ S+Down       ↑ Down       ↑ Down       ↑ Down       ↑ Down       ↑ Down
+ Home         ↑ Left       ↑ Left                    ↑ Left       ↑ Left
+ End          ↑ Right      ↑ Right                   ↑ Right      ↑ Right
+ PageUp                                              α Up    ³
+ PageDown                                            α Down  ³
+
+ F1           Y=           f(x)=        Y=           Y=           F1
+ F2           WINDOW       fenêtre      RANGE        WINDOW       F2
+ F3           ZOOM         zoom         ZOOM         ZOOM         F3
+ F4           TRACE        trace        TRACE        TRACE        F4
+ F5           GRAPH        graphe       GRAPH        GRAPH        F5
+ S+F1         ↑ [PLOT]     ↑ [gr stat]  ↑ Y=         ↑ [STAT PLT] ↑ [M1]
+ S+F2         ↑ [TBLSET]   ↑ [déf tab]  ↑ RANGE      ↑ [TBLSET]   ↑ [M2]
+ S+F3         ↑ [FORMAT]   ↑ [format]   ↑ ZOOM       ↑ [FORMAT]   ↑ [M3]
+ S+F4         ↑ TRACE      ↑ [calculs]  ↑ TRACE      ↑ [CALC]     ↑ [M4]
+ S+F5         ↑ [TABLE]    ↑ [table]    ↑ GRAPH      ↑ [TABLE]    ↑ [M5]
+ PageDown                                                         MORE
+
+ Tab          2nd          2nde         2nd          2nd          2nd
+ ' or Menu    ↑ [TEXT]     texte        Alpha        Alpha        Alpha
+
+ Insert       ↑ [INS]      ↑ [insérer]  INS          ↑ [INS]      ↑ [INS]
+ Delete       DEL          suppr        DEL          DEL          DEL
+ Backspace    Left, DEL    Left, suppr  Left, DEL    Left, DEL    Left, DEL
+ C+Backspace  CLEAR        annul        CLEAR        CLEAR        CLEAR
+  or C+Delete
+
+ Escape       CLEAR        annul        CLEAR        CLEAR        EXIT
+ S+Escape     ↑ [QUIT]     ↑ [quitter]  ↑ [QUIT]     ↑ [QUIT]     ↑ [QUIT]
+
+ F6                        math         MATH         MATH         GRAPH
+ F7           APPS         angle        MATRX        MATRX/APPS   STAT
+ F8           PRGM         prgm         PRGM         PRGM         PRGM
+ F9                        var          VARS         VARS         CUSTOM
+ F10                       stats                     STAT
+ F11          MODE         mode         MODE         MODE         ↑ [MODE]
+ c            CONST
+ d            DRAW
+ l            LIST
+ m            MATH
+ p                         prgm         PRGM         PRGM
+ C+Tab        ↑ [CATALOG]  ↑ [catalog]               ↑ [CATALOG]³ ↑ [CATALOG]
+
+ _            UNIT
+ | or ½       a/b
+ f            F◂▸D
+ a            Ab/c◂▸d/e
+ s            SIMP
+ %            %
+
+ |                                      ↑ [ABS]      ↑ [ABS] ²
+ s                         sin          SIN          SIN
+ c                         cos          COS          COS
+ t                         tan          TAN          TAN
+ o                         log          LOG          LOG
+ l                         ln           LN           LN
+
+ u                         ↑ [uₙ]                    ↑ [u]  ³
+ v                         ↑ [vₙ]                    ↑ [v]  ³
+ w                         ↑ [wₙ]                    ↑ [w]  ³
+ u                                                   ↑ [Uₙ₋₁]  ²
+ v                                                   ↑ [Vₙ₋₁]  ²
+ n                                                   ↑ [n]     ²
+
+ C+1 or \     ↑ [x⁻¹]      x⁻¹          x⁻¹          x⁻¹          ↑ [x⁻¹]
+ C+2 or ²     x²           x²           x²           x²           x²
+ (            (            (            (            (            (
+ )            )            (            )            )            )
+ {                         ↑ [{]                     ↑ [{]
+ }                         ↑ [}]                     ↑ [}]
+ [                                                   ↑ [[]        ↑ [[]
+ ]                                                   ↑ []]        ↑ []]
+ ^            ^            ^            ^            ^            ^
+ /            ÷            ÷            ÷            ÷            ÷
+ *            ×            ×            ×            ×            ×
+ -            -            -            -            -            -
+ +            +            +            +            +            +
+ ,            ,            ,            α [,]        ,            ,
+
+ >            STO▸         STO▸         STO▸         STO▸         STO▸
+ <            ↑ [RCL]      ↑ [rappel]   ↑ STO▸       ↑ [RCL]      ↑ [RCL]
+
+ 0 - 9        0 - 9        0 - 9        0 - 9        0 - 9        0 - 9
+ .            .            .            .            .            .
+ ~ or ±       (-)          (-)          (-)          (-)          (-)
+ & or €       ↑ [EE]       ↑ […×10ⁿ]    EE           ↑ [EE]       EE
+
+ x            X            x,n          X|T          X,T,θ,n
+ $            ↑ [ANS]      ↑ [rép]      ↑ [ANS]      ↑ [ANS]      ↑ [ANS]
+ #            ↑ [π]        ↑ [π]        ↑ [π]        ↑ [π]        ↑ [π]
+ e                         ↑ [e]                     ↑ [e]  ³
+ i                                                   ↑ [i]  ³
+
+ A - Z                                  α [A]-[Z]    α [A]-[Z]    α [A]-[Z]
+ a - z                                                            ↑α [a]-[z]
+ Space                                  α [space]    α [space]    α [space]
+ @                                      α [θ]        α [θ]
+ "                                      α ["]        α ["]
+ ?                                      α [?]        α [?]
+ :                                                   α [:]        ↑ [:]
+ =                                                                α [=]
+
+ Return       ENTER        entrer       ENTER        ENTER        ENTER
+ S+Return     ↑ [ENTRY]    ↑ [précéd]   ↑ [ENTRY]    ↑ [ENTRY]    ↑ [ENTRY]
+ ──────────────────────────────────────────────────────────────────────────────
+
+ For the TI-83 Plus and TI-84 Plus, in addition to the keys listed
+ above for the TI-83, pressing Shift+letter while Caps Lock is enabled
+ will type a lowercase letter (Alpha, Alpha, letter.)  Lowercase mode
+ will need to be enabled on the calculator for this to work; it's not
+ enabled by default, but there are many assembly programs that can do
+ so.
+
+
+KEYPAD CHARTS
+
+                TI-73                                  TI-76.fr
+
+ ╭──────┬──────┬──────┬──────┬──────╮    ╭──────┬──────┬──────┬──────┬──────╮
+ │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │    │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │
+ │F1    │F2    │F3    │F4    │F5    │    │F1    │F2    │F3    │F4    │F5    │
+ ╰──────┴──────┴──────┴────┬─┴──┬───╯    ╰──────┴──────┴──────┴────┬─┴──┬───╯
+ ╭──────┬──────┬──────╮    │S+Up│        ╭──────┬──────┬──────╮    │S+Up│
+ │      │S+Esc │Ins   ├────┤Up  ├─────╮  │      │S+Esc │Ins   ├────┤Up  ├─────╮
+ │Tab   │F11   │Del   │Home├────┤End  │  │Tab   │F11   │Del   │Home├────┤End  │
+ ├──────┼──────┼──────┤Left├────┤Right│  ├──────┼──────┼──────┤Left├────┤Right│
+ │'     │      │      ├────┤S+Dn├─────╯  │      │      │      ├────┤S+Dn├─────╯
+ │m     │d     │l     │    │Down│        │'     │x     │F10   │    │Down│
+ ├──────┼──────┼──────┼────┴─┬──┴───╮    ├──────┼──────┼──────┼────┴─┬──┴───╮
+ │      │&     │C+Tab │      │      │    │      │      │      │      │      │
+ │C+2   │^     │F8    │F7    │Esc   │    │F6    │F7    │F8    │F9    │Esc   │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │\     │#     │      │      │    │      │      │      │      │#     │
+ │_     │|     │f     │a     │c     │    │\     │s     │c     │t     │^     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │&     │{     │}     │e     │
+ │s     │%     │(     │)     │/     │    │C+2   │,     │(     │)     │/     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │u     │v     │w     │      │
+ │x     │7     │8     │9     │*     │    │o     │7     │8     │9     │*     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │      │      │      │      │
+ │,     │4     │5     │6     │-     │    │l     │4     │5     │6     │-     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │<     │      │      │      │      │    │<     │      │      │      │      │
+ │>     │1     │2     │3     │+     │    │>     │1     │2     │3     │+     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │S+F12 │      │      │$     │S+Ret │    │S+F12 │C+Tab │      │$     │S+Ret │
+ │F12   │0     │.     │~     │Ret   │    │F12   │0     │.     │~     │Ret   │
+ ╰──────┴──────┴──────┴──────┴──────╯    ╰──────┴──────┴──────┴──────┴──────╯
+
+
+                TI-81                                   TI-82
+
+ ╭──────┬──────┬──────┬──────┬──────╮    ╭──────┬──────┬──────┬──────┬──────╮
+ │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │    │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │
+ │F1    │F2    │F3    │F4    │F5    │    │F1    │F2    │F3    │F4    │F5    │
+ ╰──────┴──────┴──────┴────┬─┴──┬───╯    ╰──────┴──────┴──────┴────┬─┴──┬───╯
+ ╭──────┬──────┬──────╮    │S+Up│        ╭──────┬──────┬──────╮    │S+Up│
+ │      │      │      ├────┤Up  ├─────╮  │      │S+Esc │Ins   ├────┤Up  ├─────╮
+ │Tab   │Ins   │Del   │    ├────┤     │  │Tab   │F11   │Del   │Home├────┤End  │
+ ├──────┼──────┼──────┤Left├────┤Right│  ├──────┼──────┼──────┤Left├────┤Right│
+ │      │      │      ├────┤S+Dn├─────╯  │      │      │      ├────┤S+Dn├─────╯
+ │'     │x     │F11   │    │Down│        │'     │x     │F10   │    │Down│
+ ├──────┼──────┼──────┼────┴─┬──┴───╮    ├──────┼──────┼──────┼────┴─┬──┴───╮
+ │      │      │      │      │S+Esc │    │      │      │      │      │      │
+ │F6    │F7    │F8    │F9    │Esc   │    │F6    │F7    │F8    │F9    │Esc   │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │|     │      │      │      │#     │    │|     │      │      │      │#     │
+ │\     │s     │c     │t     │^     │    │\     │s     │c     │t     │^     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │&     │{     │}     │      │
+ │C+2   │&     │(     │)     │/     │    │C+2   │,     │(     │)     │/     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │u     │v     │n     │[     │
+ │o     │7     │8     │9     │*     │    │o     │7     │8     │9     │*     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │      │    │      │      │      │      │]     │
+ │l     │4     │5     │6     │-     │    │l     │4     │5     │6     │-     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │<     │      │      │      │      │    │<     │      │      │      │      │
+ │>     │1     │2     │3     │+     │    │>     │1     │2     │3     │+     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │S+F12 │      │      │$     │S+Ret │    │S+F12 │      │      │$     │S+Ret │
+ │F12   │0     │.     │~     │Ret   │    │F12   │0     │.     │~     │Ret   │
+ ╰──────┴──────┴──────┴──────┴──────╯    ╰──────┴──────┴──────┴──────┴──────╯
+ 
+   Not shown:                              Not shown:
+     A-Z      Alpha, [A]-[Z]                 A-Z      Alpha, [A]-[Z]
+     @        Alpha, 3                       @        Alpha, 3
+     "        Alpha, +                       "        Alpha, +
+     Space    Alpha, 0                       Space    Alpha, 0
+     ,        Alpha, .                       :        Alpha, .
+     ?        Alpha, (-)                     ?        Alpha, (-)
+ 
+ 
+    TI-83 / TI-83 Plus / TI-84 Plus                 TI-85 / TI-86
+ 
+ ╭──────┬──────┬──────┬──────┬──────╮    ╭──────┬──────┬──────┬──────┬──────╮
+ │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │    │S+F1  │S+F2  │S+F3  │S+F4  │S+F5  │
+ │F1    │F2    │F3    │F4    │F5    │    │F1    │F2    │F3    │F4    │F5    │
+ ╰──────┴──────┴──────┴────┬─┴──┬───╯    ╰──────┴──────┴──────┴────┬─┴──┬───╯
+ ╭──────┬──────┬──────╮    │S+Up│        ╭──────┬──────┬──────╮    │S+Up│
+ │      │S+Esc │Ins   ├────┤Up  ├─────╮  │      │S+Esc │F11   ├────┤Up  ├─────╮
+ │Tab   │F11   │Del   │Home├────┤End  │  │Tab   │Esc   │PgDn  │Home├────┤End  │
+ ├──────┼──────┼──────┤Left├────┤Right│  ├──────┼──────┼──────┤Left├────┤Right│
+ │      │      │      ├────┤S+Dn├─────╯  │      │      │Ins   ├────┤S+Dn├─────╯
+ │'     │x     │F10   │    │Down│        │'     │      │Del   │    │Down│
+ ├──────┼──────┼──────┼────┴─┬──┴───╮    ├──────┼──────┼──────┼────┴─┬──┴───╮
+ │      │      │      │      │      │    │      │      │      │C+Tab │      │
+ │F6    │F7    │F8    │F9    │Esc   │    │F6    │F7    │F8    │F9    │C+BkSp│
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │#     │    │      │      │      │      │#     │
+ │\     │s     │c     │t     │^     │    │      │      │      │      │^     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │&     │{     │}     │e     │    │      │\     │[     │]     │      │
+ │C+2   │,     │(     │)     │/     │    │      │&     │(     │)     │/     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │u     │v     │w     │[     │    │      │      │      │      │      │
+ │o     │7     │8     │9     │*     │    │C+2   │7     │8     │9     │*     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │      │      │      │      │]     │    │      │      │      │      │      │
+ │l     │4     │5     │6     │-     │    │,     │4     │5     │6     │-     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │<     │      │      │      │      │    │<     │      │      │      │      │
+ │>     │1     │2     │3     │+     │    │>     │1     │2     │3     │+     │
+ ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
+ │S+F12 │C+Tab │i     │$     │S+Ret │    │S+F12 │      │:     │$     │S+Ret │
+ │F12   │0     │.     │~     │Ret   │    │F12   │0     │.     │~     │Ret   │
+ ╰──────┴──────┴──────┴──────┴──────╯    ╰──────┴──────┴──────┴──────┴──────╯
+ 
+   Not shown:                              Not shown:
+     PageUp    Alpha, Up                     A-Z      Alpha, [A]-[Z]
+     PageDown  Alpha, Down                   a-z      2nd, Alpha, [a]-[z]
+     A-Z       Alpha, [A]-[Z]                Space    Alpha, (-)
+     @         Alpha, 3                      =        Alpha, Sto▸
+     "         Alpha, +
+     Space     Alpha, 0
+     :         Alpha, .
+     ?         Alpha, (-)
+ 
+   TI-83 Plus / TI-84 Plus only:
+     CapsLock + Shift + a-z  =  Alpha, Alpha, [a]-[z]
