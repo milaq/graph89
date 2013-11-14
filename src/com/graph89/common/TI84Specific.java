@@ -50,6 +50,18 @@ public class TI84Specific
 		extensions.add(".8xv"); //Var
 		extensions.add(".8xo"); //group
 		extensions.add(".8xg"); //group
+		
+		extensions.add(".83l");  //list
+		extensions.add(".83m");  //matrix
+		extensions.add(".83p");  //program
+		extensions.add(".83y");  // y-var
+		extensions.add(".83s");  // String
+		extensions.add(".83i");  // picture
+		extensions.add(".83c");  // complex
+		extensions.add(".83w");  // window
+		extensions.add(".83z");  // zoom
+		extensions.add(".83t");  // table
+		extensions.add(".83b");  // backup
 	}
 
 	public static boolean ProcessKeyPress(int keyCode, KeyEvent event)
