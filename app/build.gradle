@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.Bisha.TI89EmuDonation"
+        minSdkVersion 8
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.1.3c"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.2.2'
+}
