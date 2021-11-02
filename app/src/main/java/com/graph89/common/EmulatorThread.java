@@ -37,6 +37,8 @@ public abstract class EmulatorThread
 	public CalculatorInstance		CalculatorInstance			= null;
 	public static EmulatorActivity	Activity					= null;
 
+	public static volatile boolean	LoadState					= false;
+	public static volatile boolean	SaveState					= false;
 	public static volatile boolean	ResetCalc					= false;
 
 	protected int					mState						= STATE_NOT_INIT;

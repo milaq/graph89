@@ -141,8 +141,22 @@ public class TilEmThread extends EmulatorThread implements Runnable
 
 					if (KillFlag == true)
 					{
-						if (runCntr > 20) WriteState(); //don't save if the engine hasn't run for a second or so. Android tends to kill the app on orientation change. Might corrupt the state.
+						if (runCntr > 20 && CalculatorInstance.Configuration.SaveStateOnExit) { //don't save if the engine hasn't run for a second or so. Android tends to kill the app on orientation change. Might corrupt the state.
+							WriteState();
+						}
 						break;
+					}
+
+					if (LoadState)
+					{
+						LoadState();
+						LoadState = false;
+					}
+
+					if (SaveState)
+					{
+						WriteState();
+						SaveState = false;
 					}
 
 					if (ResetCalc)
@@ -289,7 +303,7 @@ public class TilEmThread extends EmulatorThread implements Runnable
 
 	private void WriteState()
 	{
-		if (CalculatorInstance.Configuration.SaveStateOnExit && Util.IsStorageAvailable() && !Activity.isFinishing())
+		if (Util.IsStorageAvailable() && !Activity.isFinishing())
 		{
 			//int ret = 
 			EmulatorActivity.nativeTilemSaveState(CalculatorInstance.ImageFilePath, CalculatorInstance.StateFilePath);

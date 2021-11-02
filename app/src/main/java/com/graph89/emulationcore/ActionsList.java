@@ -57,12 +57,14 @@ public class ActionsList extends ListView
 	public static final int			INSTALL_APPS			= 1;
 	public static final int			TAKE_SCREENSHOT			= 2;
 	public static final int			SYNCHRONIZE_CLOCK		= 3;
-	public static final int			RESET					= 4;
-	public static final int			BACKUP_MANAGER			= 5;
-	public static final int			ROM_MANAGER				= 6;
-	public static final int			CONFIGURATION_SETTINGS	= 7;
-	public static final int			WHATSNEW				= 8;
-	public static final int			ABOUT					= 9;
+	public static final int			LOAD_STATE				= 4;
+	public static final int			SAVE_STATE				= 5;
+	public static final int			RESET					= 6;
+	public static final int			BACKUP_MANAGER			= 7;
+	public static final int			ROM_MANAGER				= 8;
+	public static final int			CONFIGURATION_SETTINGS	= 9;
+	public static final int			WHATSNEW				= 10;
+	public static final int			ABOUT					= 11;
 
 	private Context					mContext				= null;
 	private ListViewAdapter			mAdapter				= null;
@@ -74,6 +76,8 @@ public class ActionsList extends ListView
 		ActionEntries.add(new ListItem(INSTALL_APPS, "Install Application / Send Files"));
 		ActionEntries.add(new ListItem(TAKE_SCREENSHOT, "Take Screenshot"));
 		ActionEntries.add(new ListItem(SYNCHRONIZE_CLOCK, "Synchronize Clock"));
+		ActionEntries.add(new ListItem(LOAD_STATE, "Load State"));
+		ActionEntries.add(new ListItem(SAVE_STATE, "Save State"));
 		ActionEntries.add(new ListItem(RESET, "Reset"));
 		ActionEntries.add(new ListItem(BACKUP_MANAGER, "Backup Manager"));
 		ActionEntries.add(new ListItem(ROM_MANAGER, "ROM Manager"));
@@ -125,6 +129,20 @@ public class ActionsList extends ListView
 					case SYNCHRONIZE_CLOCK:
 						EmulatorActivity.SyncClock = true;
 						activity.HideActions();
+						break;
+					case LOAD_STATE:
+						if (EmulatorActivity.IsEmulating)
+						{
+							EmulatorThread.LoadState = true;
+							activity.HideActions();
+						}
+						break;
+					case SAVE_STATE:
+						if (EmulatorActivity.IsEmulating)
+						{
+							EmulatorThread.SaveState = true;
+							activity.HideActions();
+						}
 						break;
 					case RESET:
 						if (EmulatorActivity.IsEmulating)
