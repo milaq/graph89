@@ -9,10 +9,10 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="Graph 89"
-        android:theme="@style/Graph89Theme" android:allowBackup="true">
+        android:theme="@style/Graph89Theme"
+        android:allowBackup="true">
         <activity
-            android:name="com.graph89.emulationcore.EmulatorActivity"
-            android:label="Graph 89">
+            android:name="com.graph89.emulationcore.EmulatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
