@@ -62,8 +62,7 @@ public class ActionsList extends ListView
 	public static final int			ROM_MANAGER				= 6;
 	public static final int			CONFIGURATION_SETTINGS	= 7;
 	public static final int			WHATSNEW				= 8;
-	public static final int			HELP_AND_INFORMATION	= 9;
-	public static final int			ABOUT					= 10;
+	public static final int			ABOUT					= 9;
 
 	private Context					mContext				= null;
 	private ListViewAdapter			mAdapter				= null;
@@ -80,7 +79,6 @@ public class ActionsList extends ListView
 		ActionEntries.add(new ListItem(ROM_MANAGER, "ROM Manager"));
 		ActionEntries.add(new ListItem(CONFIGURATION_SETTINGS, "Configuration Settings"));
 		ActionEntries.add(new ListItem(WHATSNEW, "What's New"));
-		ActionEntries.add(new ListItem(HELP_AND_INFORMATION, "Help and Information"));
 		ActionEntries.add(new ListItem(ABOUT, "About"));
 	}
 
@@ -171,12 +169,6 @@ public class ActionsList extends ListView
 						WhatsNew wn = new WhatsNew(activity);
 						wn.Show();
 						break;
-					case HELP_AND_INFORMATION:
-					{
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.graph89.com"));
-						activity.startActivity(intent);
-					}
-						break;
 					case ABOUT:
 						AboutScreen a = new AboutScreen(mContext);
 						a.Show();
@@ -203,7 +195,6 @@ public class ActionsList extends ListView
 			ActionEntries.get(BACKUP_MANAGER).IsActive = true;
 			ActionEntries.get(ROM_MANAGER).IsActive = true;
 			ActionEntries.get(WHATSNEW).IsActive = true;
-			ActionEntries.get(HELP_AND_INFORMATION).IsActive = true;
 			ActionEntries.get(ABOUT).IsActive = true;
 		}
 
