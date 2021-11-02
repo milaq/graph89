@@ -23,6 +23,8 @@ LOCAL_CFLAGS := \
 
 LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
 
+LOCAL_DISABLE_FATAL_LINKER_WARNINGS := true
+
 LOCAL_SHARED_LIBRARIES := glib-2.0
 
 include $(BUILD_SHARED_LIBRARY)

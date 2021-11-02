@@ -56,6 +56,8 @@ LOCAL_CFLAGS := \
 
 LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
 
+LOCAL_DISABLE_FATAL_LINKER_WARNINGS := true
+
 LOCAL_LDLIBS := -lz
 
 LOCAL_SHARED_LIBRARIES := glib-2.0 ticonv-1.1.3

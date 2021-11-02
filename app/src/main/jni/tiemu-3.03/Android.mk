@@ -82,6 +82,8 @@ LOCAL_CFLAGS := \
 
 LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
 
+LOCAL_DISABLE_FATAL_LINKER_WARNINGS := true
+
 LOCAL_SHARED_LIBRARIES := glib-2.0 ticonv-1.1.3 ticables2-1.3.3 tifiles2-1.1.5 ticalcs2-1.1.7
 
 LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog
