@@ -289,9 +289,7 @@ public class TIEmuThread extends EmulatorThread implements Runnable
 	
     private void PatchSerialNumber()
     {
-            if (EmulatorActivity.UserEmail == null || EmulatorActivity.UserEmail.trim().length() < 5) return;
-
-            String hash = Util.getMD5(EmulatorActivity.UserEmail);
+            String hash = Util.getMD5(EmulatorActivity.UniqueId);
 
             try
             {
@@ -299,7 +297,7 @@ public class TIEmuThread extends EmulatorThread implements Runnable
 
                     if (lic.isFile())
                     {
-                            String email = hash.substring(0, 2) + "$" + EmulatorActivity.UserEmail.trim().toLowerCase(Locale.getDefault());
+                            String email = hash.substring(0, 2) + "$" + EmulatorActivity.UniqueId.trim().toLowerCase(Locale.getDefault());
 
                             byte[] myk = email.getBytes("UTF8");
                             byte[] k = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };

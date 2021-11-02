@@ -66,7 +66,6 @@ import com.google.gson.reflect.TypeToken;
 import com.graph89.common.CalculatorInstance;
 import com.graph89.common.CalculatorInstanceHelper;
 import com.graph89.common.Directories;
-import com.graph89.common.GoogleAccount;
 import com.graph89.common.ProgressDialogControl;
 import com.graph89.common.Util;
 import com.graph89.common.ZipHelper;
@@ -163,13 +162,6 @@ public class BackupManager extends Graph89ActivityBase
 	protected void onResume()
 	{
 		super.onResume();
-
-		md5 = Util.getMD5(GoogleAccount.getEmail(this));
-
-		if (md5 == null || md5.length() <= 0)
-		{
-			Util.ShowAlert(this, "Error", "Backup Manager is not supported for your device due to missing Google Account!");
-		}
 
 		RefreshUI();
 	}

@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -69,7 +70,6 @@ import com.graph89.common.CalculatorTypes;
 import com.graph89.common.Dimension2D;
 import com.graph89.common.Directories;
 import com.graph89.common.EmulatorThread;
-import com.graph89.common.GoogleAccount;
 import com.graph89.common.ProgressDialogControl;
 import com.graph89.common.SkinBase;
 import com.graph89.common.SkinDefinition;
@@ -110,7 +110,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 	public static int							Orientation						= ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
 	public static Date							LastTouched						= null;
 	public static boolean						UseVolumeAsMenu					= false;
-	public static String						UserEmail						= null;
+	public static String						UniqueId						= null;
 	public static boolean						InitComplete					= false;
 
 	public static volatile boolean				IsEmulating						= false;
@@ -699,7 +699,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 			GetDisplaySize();
 			CalculatorInstances = new CalculatorInstanceHelper(this);
 			GetActiveCalculatorInstance();
-			UserEmail = GoogleAccount.getEmail(this);
+			UniqueId = getUniqueId();
 
 			UIStateManagerObj.EmulatorViewIntstance.setOnTouchListener(UIStateManagerObj.EmulatorViewIntstance);
 			VibratorService = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -712,6 +712,20 @@ public class EmulatorActivity extends Graph89ActivityBase
 			lastButtonPressed = -1;
 			lastlastButtonPressed = -1;
 			InitComplete = true;
+		}
+	}
+
+	private String getUniqueId() {
+		SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
+		String savedId = settings.getString("UNIQUE_INSTANCE_ID", null);
+		if (savedId == null) {
+			SharedPreferences.Editor editor = settings.edit();
+			String generatedId = UUID.randomUUID().toString();
+			editor.putString("UNIQUE_INSTANCE_ID", generatedId);
+			editor.commit();
+			return generatedId;
+		} else {
+			return savedId;
 		}
 	}
 
