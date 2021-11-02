@@ -40,7 +40,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -79,18 +78,16 @@ import com.graph89.common.Util;
 import com.graph89.common.V200Specific;
 import com.graph89.controls.FilePickerActivity;
 import com.graph89.controls.ReceivedFileSaver;
-import com.graph89.controls.ScreenshotTaker;
 import com.graph89.controls.WhatsNew;
 
 public class EmulatorActivity extends Graph89ActivityBase
 {
 	// ///////////Handler Codes////////////////////////////////////////////////
-	public static final int						HANDLER_STARTGALLERY			= Graph89ActivityBase.MAX_HANDLER_ID + 1;
-	public static final int						HANDLER_RECEIVEFILE				= Graph89ActivityBase.MAX_HANDLER_ID + 2;
-	public static final int						HANDLER_SHOWPROGRESSDIALOG		= Graph89ActivityBase.MAX_HANDLER_ID + 3;
-	public static final int						HANDLER_UPDATEPROGRESSDIALOG	= Graph89ActivityBase.MAX_HANDLER_ID + 4;
-	public static final int						HANDLER_HIDEPROGRESSDIALOG		= Graph89ActivityBase.MAX_HANDLER_ID + 5;
-	public static final int						HANDLER_TERMINATE				= Graph89ActivityBase.MAX_HANDLER_ID + 6;
+	public static final int						HANDLER_RECEIVEFILE				= Graph89ActivityBase.MAX_HANDLER_ID + 1;
+	public static final int						HANDLER_SHOWPROGRESSDIALOG		= Graph89ActivityBase.MAX_HANDLER_ID + 2;
+	public static final int						HANDLER_UPDATEPROGRESSDIALOG	= Graph89ActivityBase.MAX_HANDLER_ID + 3;
+	public static final int						HANDLER_HIDEPROGRESSDIALOG		= Graph89ActivityBase.MAX_HANDLER_ID + 4;
+	public static final int						HANDLER_TERMINATE				= Graph89ActivityBase.MAX_HANDLER_ID + 5;
 	// //////////////OnActivityResult Codes/////////////////////////////////////
 	public static final int						INSTALL_APP						= 1;
 	// /////////////////////////////////////////////////////////////////////////
@@ -601,16 +598,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 		SetTextSpannable(0, ss); // lowest priority (0)
 	}
 
-	public void StartGallery()
-	{
-		if (ScreenshotTaker.LastFile == null) return;
-
-		Intent intent = new Intent();
-		intent.setAction(android.content.Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.fromFile(ScreenshotTaker.LastFile), "image/png");
-		startActivity(intent);
-	}
-
 	private void ShowWhatsNew()
 	{
 		SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
@@ -800,11 +787,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void HandlerStartGallery()
-	{
-		mHandler.sendEmptyMessage(EmulatorActivity.HANDLER_STARTGALLERY);
-	}
-
 	public void HandlerReceiveFile()
 	{
 		mHandler.sendEmptyMessage(EmulatorActivity.HANDLER_RECEIVEFILE);
@@ -867,9 +849,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 		switch (msg.what)
 		{
-			case EmulatorActivity.HANDLER_STARTGALLERY:
-				StartGallery();
-				break;
 			case EmulatorActivity.HANDLER_RECEIVEFILE:
 				ReceiveFile();
 				break;

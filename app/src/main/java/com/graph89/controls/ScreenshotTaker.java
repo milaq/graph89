@@ -21,8 +21,6 @@ package com.graph89.controls;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -30,7 +28,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +43,6 @@ public class ScreenshotTaker
 {
 	private Context		mContext			= null;
 	private String		mScreenshotFolder	= null;
-
-	public static File	LastFile			= null;
 
 	public ScreenshotTaker(Context context, String screenshotFolder)
 	{
@@ -121,32 +116,12 @@ public class ScreenshotTaker
 									image.compress(Bitmap.CompressFormat.PNG, 90, out);
 									out.close();
 
-									MediaScannerConnection.scanFile(mContext, new String[] { f.getAbsolutePath() }, null, new MediaScannerConnection.OnScanCompletedListener()
-									{
-										public void onScanCompleted(String path, Uri uri)
-										{
-										}
-									});
-
-									LastFile = f;
-
-									activity.HideKeyboard();
-
-									// keyboard doesn't hide. Delay the new
-									// intent to give it time to hide.
-									Timer timer = new Timer();
-									timer.schedule(new TimerTask()
-									{
-										@Override
-										public void run()
-										{
-											activity.HandlerStartGallery();
-										}
-									}, 400);
+									MediaScannerConnection.scanFile(mContext, new String[] { f.getAbsolutePath() }, null, null);
+									Util.ShowAlert((EmulatorActivity) mContext, "Screenshot", "Successfully saved emulated screen to " + filename);
 								}
 								catch (Exception e)
 								{
-									Util.ShowAlert((EmulatorActivity) mContext, "ScreenshotTaker ShowDialog", e);
+									Util.ShowAlert((EmulatorActivity) mContext, "Error taking screenshot", e);
 								}
 							}
 
