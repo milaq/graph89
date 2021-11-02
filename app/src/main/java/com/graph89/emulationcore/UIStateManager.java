@@ -118,7 +118,7 @@ public class UIStateManager
 		return ActionsListIntstance.getVisibility() == View.VISIBLE;
 	}
 
-	public void BackKeyPressed()
+	public void handleActionListVisibility()
 	{
 		ActionsListIntstance.AdjustVisibility();
 

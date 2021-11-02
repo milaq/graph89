@@ -25,5 +25,6 @@ public class CalculatorInfoV200 extends CalculatorInfoBase
 	{
 		ScreenWidth = 240;
 		ScreenHeight = 128;
+		OnKey = 78;
 	}
 }

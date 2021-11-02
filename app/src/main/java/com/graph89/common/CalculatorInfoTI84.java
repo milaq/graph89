@@ -25,5 +25,6 @@ public class CalculatorInfoTI84 extends CalculatorInfoBase
 	{
 		ScreenWidth = 96;
 		ScreenHeight = 64;
+		OnKey = 41;
 	}
 }

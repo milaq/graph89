@@ -29,11 +29,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -109,7 +106,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	public static Dimension2D					AndroidDeviceScreenDimension	= null;
 	public static int							Orientation						= ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
 	public static Date							LastTouched						= null;
-	public static boolean						UseVolumeAsMenu					= false;
 	public static String						UniqueId						= null;
 	public static boolean						InitComplete					= false;
 
@@ -234,16 +230,19 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 		LastTouched = new Date();
 
-		switch (keyCode)
-		{
-			case KeyEvent.KEYCODE_MENU:
-			case KeyEvent.KEYCODE_BACK:
-				if (UIStateManagerObj != null) UIStateManagerObj.BackKeyPressed();
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (UIStateManagerObj != null && UIStateManagerObj.AreActionsVisible()) {
+				UIStateManagerObj.handleActionListVisibility();
 				return true;
-			case KeyEvent.KEYCODE_VOLUME_DOWN:
-			case KeyEvent.KEYCODE_VOLUME_UP:
-				if (UseVolumeAsMenu()) return true;
-				break;
+			} else {
+				EngineExit();
+				return super.onKeyDown(keyCode, event);
+			}
+		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
+			if (UIStateManagerObj != null) {
+				UIStateManagerObj.handleActionListVisibility();
+			}
+			return true;
 		}
 
 		if (IsEmulating)
@@ -525,13 +524,20 @@ public class EmulatorActivity extends Graph89ActivityBase
 					UIStateManagerObj.MessageViewIntstance.playSoundEffect(SoundEffectConstants.CLICK);
 				}
 			}
-			
+
+			if (key == CurrentSkin.CalculatorInfo.OnKey) {
+				if (active == 0 && UIStateManagerObj != null) {
+					UIStateManagerObj.handleActionListVisibility();
+				}
+				return;
+			}
+
 			if(active != 0)
 			{
 				EmulatorActivity.lastlastButtonPressed = EmulatorActivity.lastButtonPressed;
 				EmulatorActivity.lastButtonPressed = key;
 			}
-			
+
 			nativeSendKey(key, active);
 		}
 	}
@@ -648,45 +654,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 		return titleList;
 	}
 
-	private boolean UseVolumeAsMenu()
-	{
-		if (InFirstScreen)
-		{
-			AlertDialog alert = new AlertDialog.Builder(this).setTitle("Menu Access").setMessage("Use the Volume keys to access Menu?").setNegativeButton(android.R.string.no, new Dialog.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface d, int which)
-				{
-					SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
-					SharedPreferences.Editor editor = settings.edit();
-					editor.remove("VOLUME_AS_MENU");
-					UseVolumeAsMenu = false;
-					editor.commit();
-				}
-			}).setPositiveButton(android.R.string.yes, new Dialog.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface d, int which)
-				{
-					SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
-					SharedPreferences.Editor editor = settings.edit();
-					editor.putBoolean("VOLUME_AS_MENU", true);
-					editor.commit();
-					UseVolumeAsMenu = true;
-				}
-			}).create();
-			alert.show();
-		}
-
-		if (UseVolumeAsMenu)
-		{
-			UIStateManagerObj.BackKeyPressed();
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	private boolean IsPortrait()
 	{
 		//fix
@@ -715,9 +682,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 			VibratorService = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 			LastTouched = new Date();
-
-			SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
-			UseVolumeAsMenu = settings.getBoolean("VOLUME_AS_MENU", false);
 
 			lastButtonPressed = -1;
 			lastlastButtonPressed = -1;
