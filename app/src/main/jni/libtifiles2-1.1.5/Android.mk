@@ -1,9 +1,9 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-FILES_TOP := jni/libtifiles2-1.1.5
-CONV_TOP := jni/libticonv-1.1.3
-GLIB_TOP := jni/glib
+FILES_TOP := $(LOCAL_PATH)/../libtifiles2-1.1.5
+CONV_TOP := $(LOCAL_PATH)/../libticonv-1.1.3
+GLIB_TOP := $(LOCAL_PATH)/../glib
 
 LOCAL_SRC_FILES:= \
 	src/comments.c \
@@ -46,20 +46,19 @@ LOCAL_MODULE:= tifiles2-1.1.5
 
 LOCAL_CFLAGS := \
     -I$(FILES_TOP)/src	 \
-    \
     -I$(GLIB_TOP)	\
     -I$(GLIB_TOP)/glib   \
     -I$(GLIB_TOP)/android	\
-    \
     -I$(CONV_TOP)/src   \
-    \
     -DHAVE_CONFIG_H\
     -DSTDC\
-    -O3 
-       
-LOCAL_LDLIBS := -lz 
-    
+    -O3
+
+LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
+
+LOCAL_LDLIBS := -lz
+
 LOCAL_SHARED_LIBRARIES := glib-2.0 ticonv-1.1.3
-    
+
 #include $(BUILD_STATIC_LIBRARY)
 include $(BUILD_SHARED_LIBRARY)

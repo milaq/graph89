@@ -1,7 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-GLIB_TOP := jni/glib
-CABLES_TOP := jni/libticables2-1.3.3
+GLIB_TOP := $(LOCAL_PATH)/../glib
+CABLES_TOP := $(LOCAL_PATH)/../libticables2-1.3.3
 
 LOCAL_SRC_FILES:= \
 	src/data_log.c \
@@ -33,11 +33,9 @@ LOCAL_MODULE:= ticables2-1.3.3
 
 LOCAL_CFLAGS := \
     -I$(CABLES_TOP)/src	 \
-    \
     -I$(GLIB_TOP)\
     -I$(GLIB_TOP)/glib   \
     -I$(GLIB_TOP)/android	\
-    \
     -DHAVE_CONFIG_H\
     -DNO_CABLE_BLK\
 	-DNO_CABLE_GRY\
@@ -46,8 +44,9 @@ LOCAL_CFLAGS := \
 	-DNO_CABLE_VTI\
 	-DNO_CABLE_TIE \
 	-O3
-    
+
+LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
+
 LOCAL_SHARED_LIBRARIES := glib-2.0
-    
 
 include $(BUILD_SHARED_LIBRARY)

@@ -1,6 +1,8 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
+GLIB_TOP:= $(LOCAL_PATH)/../
+
 LOCAL_SRC_FILES:= \
     ./libcharset/localcharset.c \
     garray.c        \
@@ -61,14 +63,13 @@ LOCAL_MODULE:= glib-2.0
 
 # ./glib private macros, copy from Makefile.am
 LOCAL_CFLAGS := \
-    -Ijni/glib			\
-    -Ijni/glib/android		\
-    -I$(LOCAL_PATH)/libcharset		\
-    -I$(LOCAL_PATH)/gnulibi		\
-    -I$(LOCAL_PATH)/pcre		\
+    -I$(GLIB_TOP)			\
+    -I$(GLIB_TOP)/android		\
+    -I$(GLIB_TOP)/glib/libcharset		\
+    -I$(GLIB_TOP)/glib/gnulibi		\
+    -I$(GLIB_TOP)/glib/pcre		\
     -DLIBDIR=\"$(libdir)\"          \
     -DHAVE_CONFIG_H                 \
-    \
     -DG_LOG_DOMAIN=\"GLib-GRegex\" \
     -DSUPPORT_UCP \
     -DSUPPORT_UTF8 \
@@ -82,7 +83,9 @@ LOCAL_CFLAGS := \
     -DEBCDIC=0 \
     -DPOSIX_MALLOC_THRESHOLD=10 \
     -DG_DISABLE_DEPRECATED \
-    -DGLIB_COMPILATION 
-    
+    -DGLIB_COMPILATION
+
+LOCAL_LDFLAGS := -Wl,--allow-multiple-definition
+
 #include $(BUILD_STATIC_LIBRARY)
 include $(BUILD_SHARED_LIBRARY)
