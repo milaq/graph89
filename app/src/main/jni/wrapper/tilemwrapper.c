@@ -120,7 +120,7 @@ int tilem_reset()
 	upages_t upages;
 	state_userpages(emu->calc, &upages);
 	if (upages.start == -1)
-			return;
+			return -3;
 
 	if (upages.start >= 0)
 	{
