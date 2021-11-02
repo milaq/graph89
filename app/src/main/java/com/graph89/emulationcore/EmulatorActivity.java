@@ -37,6 +37,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -57,6 +58,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.Bisha.TI89EmuDonation.R;
 import com.graph89.common.BackwardCompatibility;
@@ -69,6 +71,7 @@ import com.graph89.common.CalculatorTypes;
 import com.graph89.common.Dimension2D;
 import com.graph89.common.Directories;
 import com.graph89.common.EmulatorThread;
+import com.graph89.common.PermissionHelper;
 import com.graph89.common.ProgressDialogControl;
 import com.graph89.common.SkinBase;
 import com.graph89.common.SkinDefinition;
@@ -127,6 +130,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 		InitScreenFlags();
 		setContentView(R.layout.emulator_main);
 		BackwardCompatibility.RunPatches(this);
+		checkPermissions();
 		InitMembers();
 	/*	
 		try
@@ -183,6 +187,25 @@ public class EmulatorActivity extends Graph89ActivityBase
 		}
 		catch (Exception e)
 		{
+		}
+	}
+
+	public void checkPermissions() {
+		if (android.os.Build.VERSION.SDK_INT >= 23) {
+			if (!PermissionHelper.isMediaPermissionsGranted(this)) {
+				PermissionHelper.requestMediaPermissions(this, PermissionHelper.MEDIA_PERMISSIONS_REQUEST);
+			}
+		}
+	}
+
+	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+		if (requestCode == PermissionHelper.MEDIA_PERMISSIONS_REQUEST) {
+			for (int i = 0; i < permissions.length; i++) {
+				if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+					Toast.makeText(this, "Required storage permission not granted", Toast.LENGTH_LONG).show();
+					finish();
+				}
+			}
 		}
 	}
 
