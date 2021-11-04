@@ -21,13 +21,6 @@
         layout="@layout/controlbar"
         android:visibility="gone" />
 
-    <com.graph89.controls.MessageView
-        android:id="@+id/emulator_main_messageview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/emulator_main_controlbar"
-        android:visibility="gone" />
-
     <com.graph89.emulationcore.ActionsList
         android:id="@+id/actionslist"
         android:layout_width="fill_parent"

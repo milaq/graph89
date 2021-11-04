@@ -32,11 +32,9 @@ import com.graph89.controls.MessageView;
 public class UIStateManager
 {
 	public static final int		UI_STATE_UNINITIALIZED		= 0;
-	public static final int		UI_STATE_TEXTMODE			= 1;
-	public static final int		UI_STATE_EMULATOR			= 2;
+	public static final int		UI_STATE_EMULATOR			= 1;
 
 	public ControlBar			ControlBarIntstance			= null;
-	public MessageView			MessageViewIntstance		= null;
 	public EmulatorView			EmulatorViewIntstance		= null;
 	public ActionsList			ActionsListIntstance		= null;
 	public ButtonHighlightView	ButtonHighlightViewInstance	= null;
@@ -51,7 +49,6 @@ public class UIStateManager
 
 		ControlBarIntstance = new ControlBar(context);
 
-		MessageViewIntstance = (MessageView) activity.findViewById(R.id.emulator_main_messageview);
 		ActionsListIntstance = (ActionsList) activity.findViewById(R.id.actionslist);
 		EmulatorViewIntstance = (EmulatorView) activity.findViewById(R.id.emulator_main_emulatorview);
 		ButtonHighlightViewInstance = (ButtonHighlightView) activity.findViewById(R.id.emulator_main_buttonhighlightview);
@@ -78,22 +75,10 @@ public class UIStateManager
 		}));
 	}
 
-	public void ShowTextViewer()
-	{
-		EmulatorViewIntstance.setVisibility(View.GONE);
-		HideActions();
-		MessageViewIntstance.setVisibility(View.VISIBLE);
-		ControlBarIntstance.ShowControlBar();
-		ControlBarIntstance.HideCalculatorTypeSpinner();
-
-		mCurrentUIState = UIStateManager.UI_STATE_TEXTMODE;
-	}
-
 	public void ShowCalc()
 	{
 		ControlBarIntstance.ShowCalculatorTypeSpinner();
 		ControlBarIntstance.HideControlBar();
-		MessageViewIntstance.setVisibility(View.GONE);
 		HideActions();
 		EmulatorViewIntstance.setVisibility(View.VISIBLE);
 
@@ -104,6 +89,7 @@ public class UIStateManager
 	{
 		ActionsListIntstance.AdjustVisibility();
 		ActionsListIntstance.setVisibility(View.VISIBLE);
+		ControlBarIntstance.ShowControlBar();
 	}
 
 	public void HideActions()
@@ -126,10 +112,6 @@ public class UIStateManager
 		{
 			int newVisibility = ControlBarIntstance.ToggleControlBar();
 			ActionsListIntstance.setVisibility(newVisibility);
-		}
-		else if (mCurrentUIState == UIStateManager.UI_STATE_TEXTMODE)
-		{
-			ToggleActionListVisibility();
 		}
 	}
 

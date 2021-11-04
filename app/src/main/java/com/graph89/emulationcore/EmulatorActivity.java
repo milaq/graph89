@@ -19,11 +19,7 @@
 
 package com.graph89.emulationcore;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,21 +31,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Vibrator;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -110,8 +98,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 	public static boolean						InitComplete					= false;
 
 	public static volatile boolean				IsEmulating						= false;
-
-	private static boolean						InFirstScreen					= false;
+	private static boolean						NoRomsConfigured				= false;
 
 	public static volatile ArrayList<String>	UploadFilesPath					= null;
 	public static volatile boolean				SyncClock						= false;
@@ -231,7 +218,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 		LastTouched = new Date();
 
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			if (UIStateManagerObj != null && UIStateManagerObj.AreActionsVisible()) {
+			if (UIStateManagerObj != null && UIStateManagerObj.AreActionsVisible() && !NoRomsConfigured) {
 				UIStateManagerObj.handleActionListVisibility();
 				return true;
 			} else {
@@ -285,19 +272,14 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 		ShowWhatsNew();
 
-		InFirstScreen = false;
 		if (CalculatorInstances.GetInstances().size() == 0)
 		{
-			InFirstScreen = true;
-			try {
-				ShowIntroText();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			NoRomsConfigured = true;
+			UIStateManagerObj.ShowActions();
 		}
 		else
 		{
+			NoRomsConfigured = false;
 			KillCalc();
 
 			GetActiveCalculatorInstance();
@@ -519,10 +501,11 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 				if (VibratorService != null && ActiveInstance.Configuration.HapticFeedback > 0) VibratorService.vibrate(ActiveInstance.Configuration.HapticFeedback);
 
-				if (ActiveInstance.Configuration.AudioFeedBack)
-				{
-					UIStateManagerObj.MessageViewIntstance.playSoundEffect(SoundEffectConstants.CLICK);
-				}
+				// TODO fix sound effect
+//				if (ActiveInstance.Configuration.AudioFeedBack)
+//				{
+//					UIStateManagerObj.MessageViewIntstance.playSoundEffect(SoundEffectConstants.CLICK);
+//				}
 			}
 
 			if (key == CurrentSkin.CalculatorInfo.OnKey) {
@@ -560,22 +543,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 		}
 	}
 
-	public void SetText(int priority, String text)
-	{
-		if (!InitComplete) return;
-
-		UIStateManagerObj.MessageViewIntstance.SetText(priority, text);
-		UIStateManagerObj.ShowTextViewer();
-	}
-
-	public void SetTextSpannable(int priority, Spannable text)
-	{
-		if (!InitComplete) return;
-
-		UIStateManagerObj.MessageViewIntstance.SetSpannable(priority, text);
-		UIStateManagerObj.ShowTextViewer();
-	}
-
 	public void ShowKeyboard()
 	{
 		if (!InitComplete) return;
@@ -589,42 +556,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	{
 		if (!InitComplete) return;
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-	}
-
-	private void ShowIntroText() throws IOException
-	{
-		Resources r = getResources();
-		float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, r.getDisplayMetrics());
-		float py = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, r.getDisplayMetrics());
-
-		Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.backbutton);
-		b = Bitmap.createScaledBitmap(b, (int) px, (int) py, true);
-
-		ImageSpan is = new ImageSpan(this, b, ImageSpan.ALIGN_BASELINE);
-
-		StringBuilder msg = new StringBuilder();
-		msg.append("Press the 'BACK' Button [ ] to show the Menu.\n\n");
-
-		msg.append("\nGraph 89 emulates the following calculators:\nTI-83, TI-83 Plus, TI-83 Plus SE, TI-84 Plus, TI-84 Plus SE, TI-89, TI-89 Titanium, TI92, TI 92 Plus and Voyage 200" + "\n\n1. You should own the TI calculator you're willing to emulate. If you don't, STOP here. You cannot use an emulator if you do not own the hardware!!!\n\n" + "2. You need to extract the ROM image from your own calculator. ROM images can be installed by copying them to the internal memory of your Android device, pressing the BACK button and selecting 'ROM Manager'\n" + "Accepted file formats: *.rom, *.8Xu, *.89u, *.v2u, *.9xu, *.tib. Please read the Graph89 description on Google Play Store as it might contain aditional information\n\n" + "3. In order to avoid corruption, always transfer the ROM file to your Android device by using a USB cable. DO NOT use a browser or an email client.\n\nDetailed instructions:\nhttp://www.ticalc.org/programming/emulators/romdump.html\n\nSoftware such as TiLP II can be used to extract the ROM. http://sourceforge.net/projects/tilp/files/\n\n\n" + "For more information visit www.graph89.com\n\n\n\n");
-
-		InputStream fstream = this.getAssets().open("license.txt");
-
-		DataInputStream in = new DataInputStream(fstream);
-		BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-		String strLine;
-
-		while ((strLine = br.readLine()) != null)
-		{
-			msg.append(strLine).append("\n");
-		}
-		
-		br.close();
-		
-		SpannableString ss = new SpannableString(msg.toString());
-		ss.setSpan(is, 25, 26, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-
-		SetTextSpannable(0, ss); // lowest priority (0)
 	}
 
 	private void ShowWhatsNew()
