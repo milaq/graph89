@@ -87,9 +87,8 @@ public class BackupManager extends Graph89ActivityBase
 	private List<Backup>					mBackups						= null;
 	private List<SelectedInstance>			mSelectedInstances				= null;
 	private String							mBackupDirectory				= null;
-	private String							mBackupTMPDirectory				= null;
-	private String							mAppStorageDirectory			= null;
-	private String							md5								= null;
+	private String							mRestoreDirectory				= null;
+	private String 							mInstanceDirectory				= null;
 
 	private AlertDialog						mAddEditdialog					= null;
 	private static CalculatorInstanceHelper	mCalculatorInstances			= null;
@@ -105,8 +104,8 @@ public class BackupManager extends Graph89ActivityBase
 		this.setRequestedOrientation(EmulatorActivity.Orientation);
 
 		mBackupDirectory = Directories.getBackupDirectory(this);
-		mBackupTMPDirectory = mBackupDirectory + "tmp/";
-		mAppStorageDirectory = Directories.GetInternalAppStorage(this);
+		mRestoreDirectory = Directories.getRestoreDirectory(this);
+		mInstanceDirectory = Directories.getInstanceDirectory(this);
 
 		mCalculatorInstances = new CalculatorInstanceHelper(this);
 
@@ -213,8 +212,6 @@ public class BackupManager extends Graph89ActivityBase
 		File[] files = backupDir.listFiles();
 
 		if (files == null) return;
-
-		String calcID = GetCalcId(md5);
 		
 		for (int i = 0; i < files.length; ++i)
 		{
@@ -226,8 +223,7 @@ public class BackupManager extends Graph89ActivityBase
 			{
 				Backup backup = getBackupFromFile(f);
 				backup.BackupData = null;
-
-				if (md5 != null && calcID.equals(backup.CalculatorID)) mBackups.add(backup);
+				mBackups.add(backup);
 			}
 		}
 
@@ -247,21 +243,13 @@ public class BackupManager extends Graph89ActivityBase
 		bk.BackupDescription = name;
 		bk.BackupDate = new Date();
 		bk.ConfigJson = mCalculatorInstances.toJson();
-		bk.CalculatorID = GetCalcId(md5);
-		bk.BackupData = ZipHelper.zipDir(mAppStorageDirectory);
+		bk.BackupData = ZipHelper.zipDir(mInstanceDirectory);
 
 		WriteBackupToFile(bk, backupFile);
 
 		HandlerHideProgressDialog();
 
 		HandlerRefreshUI();
-	}
-
-	private static String GetCalcId(String md5)
-	{
-		if (md5 == null || md5.length() == 0) return null;
-
-		return md5.substring(md5.length() - 5, md5.length() - 1);
 	}
 
 	private static void WriteBackupToFile(Backup bk, String filaname) throws IOException
@@ -514,10 +502,10 @@ public class BackupManager extends Graph89ActivityBase
 		ProgressDialogObj.Message = "Restoring ...";
 		HandlerShowProgressDialog();
 
-		Util.deleteDirectory(new File(mBackupTMPDirectory));
-		Util.CreateDirectory(mBackupTMPDirectory);
+		Util.deleteDirectory(new File(mRestoreDirectory));
+		Util.CreateDirectory(mRestoreDirectory);
 
-		ZipHelper.Unzip(mBackupTMPDirectory, backupToRestore.BackupData);
+		ZipHelper.Unzip(mRestoreDirectory, backupToRestore.BackupData);
 
 		boolean isMerge = restoreType.startsWith("Merge");
 
@@ -593,11 +581,11 @@ public class BackupManager extends Graph89ActivityBase
 		File imgFile = new File(backedupInstance.ImageFilePath);
 		File stateFile = new File(backedupInstance.StateFilePath);
 
-		File newImgFile = new File(mAppStorageDirectory + destinationInstance.ID + "/" + imgFile.getName());
-		File newStateFile = new File(mAppStorageDirectory + destinationInstance.ID + "/" + stateFile.getName());
+		File newImgFile = new File(mInstanceDirectory + destinationInstance.ID + "/" + imgFile.getName());
+		File newStateFile = new File(mInstanceDirectory + destinationInstance.ID + "/" + stateFile.getName());
 
-		File oldImgFile = new File(mBackupTMPDirectory + backedupInstance.ID + "/" + imgFile.getName());
-		File oldStateFile = new File(mBackupTMPDirectory + backedupInstance.ID + "/" + stateFile.getName());
+		File oldImgFile = new File(mRestoreDirectory + backedupInstance.ID + "/" + imgFile.getName());
+		File oldStateFile = new File(mRestoreDirectory + backedupInstance.ID + "/" + stateFile.getName());
 
 		backedupInstance.ImageFilePath = newImgFile.getAbsolutePath();
 		backedupInstance.StateFilePath = newStateFile.getAbsolutePath();
@@ -633,11 +621,11 @@ public class BackupManager extends Graph89ActivityBase
 		File imgFile = new File(backedupInstance.ImageFilePath);
 		File stateFile = new File(backedupInstance.StateFilePath);
 
-		File newImgFile = new File(mAppStorageDirectory + backedupInstance.ID + "/" + imgFile.getName());
-		File newStateFile = new File(mAppStorageDirectory + backedupInstance.ID + "/" + stateFile.getName());
+		File newImgFile = new File(mInstanceDirectory + backedupInstance.ID + "/" + imgFile.getName());
+		File newStateFile = new File(mInstanceDirectory + backedupInstance.ID + "/" + stateFile.getName());
 
-		File oldImgFile = new File(mBackupTMPDirectory + oldID + "/" + imgFile.getName());
-		File oldStateFile = new File(mBackupTMPDirectory + oldID + "/" + stateFile.getName());
+		File oldImgFile = new File(mRestoreDirectory + oldID + "/" + imgFile.getName());
+		File oldStateFile = new File(mRestoreDirectory + oldID + "/" + stateFile.getName());
 
 		backedupInstance.ImageFilePath = newImgFile.getAbsolutePath();
 		backedupInstance.StateFilePath = newStateFile.getAbsolutePath();
@@ -789,7 +777,6 @@ class Backup implements Serializable
 {
 	public String	BackupDescription	= null;
 	public Date		BackupDate			= null;
-	public String	CalculatorID		= null;
 	public String	ConfigJson			= null;
 	public byte[]	BackupData			= null;
 

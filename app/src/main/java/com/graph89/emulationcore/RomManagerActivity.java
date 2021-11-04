@@ -266,20 +266,12 @@ public class RomManagerActivity extends Graph89ActivityBase
 								newInstance.InitialROMFile = StringGetFileName(mBrowseText);
 								mCalculatorInstances.Add(newInstance);
 
-								String folder = Directories.GetInternalAppStorage(mThis);
+								String folder = Directories.getInstanceDirectory(mThis) + newInstance.ID;
 
-								if (folder == null)
-								{
-									DismissAddEditDialog();
-									return;
-								}
+								newInstance.ImageFilePath = folder + "/image.img";
+								newInstance.StateFilePath = folder + "/image.img.state";
 
-								String root = folder + Integer.toString(newInstance.ID);
-
-								newInstance.ImageFilePath = root + "/image.img";
-								newInstance.StateFilePath = root + "/image.img.state";
-
-								Util.CreateDirectory(root);
+								Util.CreateDirectory(folder);
 
 								int calculatorType = CalculatorTypes.GetType(calcType);
 

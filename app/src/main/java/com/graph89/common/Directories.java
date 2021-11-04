@@ -26,21 +26,21 @@ public class Directories
 {
 	public static String getTempDirectory(Graph89ActivityBase activity)
 	{
-		String tmp = null;
-		String folder = Util.GetInternalAppStorage(activity);
-
+		String folder = Util.GetInternalAppStorage(activity) + "tmp/";
 		if (folder != null)
 		{
-			tmp = folder + "tmp";
-			Util.CreateDirectory(tmp);
+			Util.CreateDirectory(folder);
 		}
-
-		return tmp;
+		return folder;
 	}
-	
-	public static String GetInternalAppStorage(Graph89ActivityBase context)
-	{
-		return Util.GetInternalAppStorage(context);
+
+	public static String getInstanceDirectory(Graph89ActivityBase activity) {
+		String folder = Util.GetInternalAppStorage(activity) + "instances/";
+		if (folder != null)
+		{
+			Util.CreateDirectory(folder);
+		}
+		return folder;
 	}
 
 	public static String getScreenShotDirectory(Graph89ActivityBase activity)
@@ -61,5 +61,15 @@ public class Directories
 	public static String getBackupDirectory(Graph89ActivityBase activity)
 	{
 		return Util.GetMediaRootFolder(activity) + "graph89/backup/";
+	}
+
+	public static String getRestoreDirectory(Graph89ActivityBase activity)
+	{
+		String folder = Util.GetInternalAppStorage(activity) + "restore/";
+		if (folder != null)
+		{
+			Util.CreateDirectory(folder);
+		}
+		return folder;
 	}
 }
