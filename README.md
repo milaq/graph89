@@ -1,12 +1,13 @@
+# Graph 89
+
 Graph89 is an emulator targeting the Android platform for TI89, TI89T, TI92, TI92+, V200, TI84+, TI84+SE, TI83, TI83+ and TI83+SE calculators.
 
-This application is distributed in the Android Play store in two versions:
-1. Free   https://play.google.com/store/apps/details?id=com.Bisha.TI89Emu
-2. Paid   https://play.google.com/store/apps/details?id=com.Bisha.TI89EmuDonation
+This is a continuation of the awesome work done by Dritan Hashorva to bring a bit of UI polish and modern feature enhancements to the project.
+It was forked from the [last version distributed by the original author](https://bitbucket.org/dhashoandroid/graph89-paid/).
 
+Kudos to him and everyone involved in the TI emulation projects, especially the TiEmu and TilEm developers.
 
-The funds gathered by the paid versions are used to support and further improve this application.
-
+## Implementation
 
 Graph89 consists of 4 distinct parts.
 
@@ -27,4 +28,3 @@ Graph89 consists of 4 distinct parts.
 
 4. 	Graph89 Android. This is the UI layer running in the Android OS. 
 	Graph89 is licensed with a GPL V3 license.
-
