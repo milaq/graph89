@@ -43,6 +43,6 @@
         android:id="@+id/controlbar_separator"
         android:layout_width="fill_parent"
         android:layout_height="3dp"
-        android:background="#006099" />
+        android:background="@color/colorPrimary" />
 
 </LinearLayout>
