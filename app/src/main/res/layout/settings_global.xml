@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceCategory
+        android:title="Application settings" >
+    </PreferenceCategory>
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="hide_statusbar"
+        android:summary="Hide the top system status bar"
+        android:title="Hide status bar" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="keep_screen_on"
+        android:summary="Always keep the screen on when the calculator is shown"
+        android:title="Keep screen on" />
+
+</PreferenceScreen>

@@ -27,7 +27,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.View;
@@ -62,9 +61,10 @@ public class ActionsList extends ListView
 	public static final int			RESET					= 6;
 	public static final int			BACKUP_MANAGER			= 7;
 	public static final int			ROM_MANAGER				= 8;
-	public static final int			CONFIGURATION_SETTINGS	= 9;
-	public static final int			WHATSNEW				= 10;
-	public static final int			ABOUT					= 11;
+	public static final int 		INSTANCE_CONFIGURATION	= 9;
+	public static final int			GLOBAL_CONFIGURATION	= 10;
+	public static final int			WHATSNEW				= 11;
+	public static final int			ABOUT					= 12;
 
 	private Context					mContext				= null;
 	private ListViewAdapter			mAdapter				= null;
@@ -81,7 +81,8 @@ public class ActionsList extends ListView
 		ActionEntries.add(new ListItem(RESET, "Reset"));
 		ActionEntries.add(new ListItem(BACKUP_MANAGER, "Backup Manager"));
 		ActionEntries.add(new ListItem(ROM_MANAGER, "ROM Manager"));
-		ActionEntries.add(new ListItem(CONFIGURATION_SETTINGS, "Configuration Settings"));
+		ActionEntries.add(new ListItem(INSTANCE_CONFIGURATION, "ROM Configuration"));
+		ActionEntries.add(new ListItem(GLOBAL_CONFIGURATION, "Settings"));
 		ActionEntries.add(new ListItem(WHATSNEW, "What's New"));
 		ActionEntries.add(new ListItem(ABOUT, "About"));
 	}
@@ -177,12 +178,18 @@ public class ActionsList extends ListView
 						activity.startActivity(intent);
 					}
 						break;
-					case CONFIGURATION_SETTINGS:
+					case INSTANCE_CONFIGURATION:
 					{
-						Intent intent = new Intent(activity, ConfigurationPage.class);
+						Intent intent = new Intent(activity, InstanceConfigurationPage.class);
 						activity.startActivity(intent);
 					}
 						break;
+					case GLOBAL_CONFIGURATION:
+					{
+						Intent intent = new Intent(activity, GlobalConfigurationPage.class);
+						activity.startActivity(intent);
+					}
+					break;
 					case WHATSNEW:
 						WhatsNew wn = new WhatsNew(activity);
 						wn.Show();

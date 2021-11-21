@@ -70,8 +70,8 @@ public class PortraitSkin extends SkinBase
 
 		int maxScreenZoom = CanvasDimensions.Width / CalculatorInfo.ScreenWidth;
 
-		ConfigurationPage.MaxScreenZoom = CanvasDimensions.Width / CalculatorInfo.ScreenWidth;
-		ConfigurationPage.DefaultScreenZoom = maxScreenZoom;
+		InstanceConfigurationPage.MaxScreenZoom = CanvasDimensions.Width / CalculatorInfo.ScreenWidth;
+		InstanceConfigurationPage.DefaultScreenZoom = maxScreenZoom;
 
 		int screenZoom = AdjustScreenZoom(EmulatorActivity.ActiveInstance.Configuration.ScreenScale, maxScreenZoom);
 

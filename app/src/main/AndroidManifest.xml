@@ -27,7 +27,10 @@
             android:name="com.graph89.controls.FilePickerActivity"
             android:label="Add ROM" />
         <activity
-            android:name="com.graph89.emulationcore.ConfigurationPage"
+            android:name="com.graph89.emulationcore.InstanceConfigurationPage"
+            android:label="ROM Configuration" />
+        <activity
+            android:name="com.graph89.emulationcore.GlobalConfigurationPage"
             android:label="Settings" />
         <activity
             android:name="com.graph89.emulationcore.BackupManager"

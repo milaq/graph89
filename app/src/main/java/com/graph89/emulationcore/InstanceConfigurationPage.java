@@ -38,10 +38,8 @@ import com.graph89.controls.AmbilWarnaPreference;
 import com.graph89.controls.SeekBarPreference;
 
 @SuppressWarnings("deprecation")
-public class ConfigurationPage extends PreferenceActivity implements OnSharedPreferenceChangeListener
+public class InstanceConfigurationPage extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
-	public static final String			CONFIG_NAME				= "Graph89";
-
 	public static int					MaxScreenZoom			= 1;
 	public static int					DefaultScreenZoom		= 1;
 
@@ -68,7 +66,7 @@ public class ConfigurationPage extends PreferenceActivity implements OnSharedPre
 		Init();
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(EmulatorActivity.Orientation);
-		addPreferencesFromResource(R.layout.settings);
+		addPreferencesFromResource(R.layout.settings_instance);
 
 		InitMembers();
 

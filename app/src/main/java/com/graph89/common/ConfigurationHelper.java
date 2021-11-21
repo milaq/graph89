@@ -24,39 +24,47 @@ import android.content.SharedPreferences;
 
 public class ConfigurationHelper
 {
-	private static final String	ConfigurationName				= "TI_EMU_DH";
-	
-	public static final String	CONF_KEY_CALCULATOR_INSTANCES	= "CalculatorInstances";
+	private static final String	ConfigurationName = "TI_EMU_DH";
 
-	public static void WriteString(Context context, String key, String value)
-	{
-		SharedPreferences settings = context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = settings.edit();
+	public static final String CONF_KEY_CALCULATOR_INSTANCES = "CalculatorInstances";
 
+	public static final String CONF_KEY_HIDE_STATUSBAR = "hide_statusbar";
+	public static final String CONF_KEY_KEEP_SCREEN_ON = "keep_screen_on";
+
+	public static final boolean CONF_DEFAULT_HIDE_STATUSBAR = false;
+	public static final boolean CONF_DEFAULT_KEEP_SCREEN_ON = false;
+
+	private static SharedPreferences getSharedPrefs(Context context) {
+		return context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
+	}
+
+	public static void writeString(Context context, String key, String value) {
+		SharedPreferences.Editor editor = getSharedPrefs(context).edit();
 		editor.putString(key, value);
 		editor.commit();
 	}
 
-	public static void WriteInt(Context context, String key, int value)
-	{
-		SharedPreferences settings = context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = settings.edit();
-
+	public static void writeInt(Context context, String key, int value) {
+		SharedPreferences.Editor editor = getSharedPrefs(context).edit();
 		editor.putInt(key, value);
 		editor.commit();
 	}
 
-	public static String GetString(Context context, String key, String defaultValue)
-	{
-		SharedPreferences settings = context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
-
-		return settings.getString(key, defaultValue);
+	public static void writeBoolean(Context context, String key, boolean value) {
+		SharedPreferences.Editor editor = getSharedPrefs(context).edit();
+		editor.putBoolean(key, value);
+		editor.commit();
 	}
 
-	public static int GetInt(Context context, String key, int defaultValue)
-	{
-		SharedPreferences settings = context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
+	public static String getString(Context context, String key, String defaultValue) {
+		return getSharedPrefs(context).getString(key, defaultValue);
+	}
 
-		return settings.getInt(key, defaultValue);
+	public static int getInt(Context context, String key, int defaultValue) {
+		return getSharedPrefs(context).getInt(key, defaultValue);
+	}
+
+	public static boolean getBoolean(Context context, String key, boolean defaultValue) {
+		return getSharedPrefs(context).getBoolean(key, defaultValue);
 	}
 }

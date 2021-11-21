@@ -28,7 +28,6 @@ import java.util.UUID;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -53,6 +52,7 @@ import com.graph89.common.CalculatorInfoV200;
 import com.graph89.common.CalculatorInstance;
 import com.graph89.common.CalculatorInstanceHelper;
 import com.graph89.common.CalculatorTypes;
+import com.graph89.common.ConfigurationHelper;
 import com.graph89.common.Dimension2D;
 import com.graph89.common.Directories;
 import com.graph89.common.EmulatorThread;
@@ -110,7 +110,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		InitScreenFlags();
 		setContentView(R.layout.emulator_main);
 		BackwardCompatibility.RunPatches(this);
 		checkPermissions();
@@ -139,6 +138,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 			InitMembers();
 		}
 
+		setScreenFlags();
 		StartGraph89();
 	}
 
@@ -560,13 +560,10 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 	private void ShowWhatsNew()
 	{
-		SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
-		String shown = settings.getString("WhatsNew1.1.3.3Shown", null);
+		String shown = ConfigurationHelper.getString(this, "WhatsNew1.1.3.3Shown", null);
 		if (shown == null)
 		{
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putString("WhatsNew1.1.3.3Shown", "Shown");
-			editor.commit();
+			ConfigurationHelper.writeString(this, "WhatsNew1.1.3.3Shown", "Shown");
 			WhatsNew wn = new WhatsNew(this);
 			wn.Show();
 		}
@@ -591,11 +588,23 @@ public class EmulatorActivity extends Graph89ActivityBase
 		return Orientation == ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;
 	}
 
-	private void InitScreenFlags()
+	private void setScreenFlags()
 	{
 		android.view.Window w = this.getWindow();
-		w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		w.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+		if (ConfigurationHelper.getBoolean(this, ConfigurationHelper.CONF_KEY_KEEP_SCREEN_ON,
+				ConfigurationHelper.CONF_DEFAULT_KEEP_SCREEN_ON)) {
+			w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		} else {
+			w.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}
+
+		if (ConfigurationHelper.getBoolean(this, ConfigurationHelper.CONF_KEY_HIDE_STATUSBAR,
+				ConfigurationHelper.CONF_DEFAULT_HIDE_STATUSBAR)) {
+			w.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		} else {
+			w.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		}
 	}
 
 	private void InitMembers()
@@ -621,13 +630,10 @@ public class EmulatorActivity extends Graph89ActivityBase
 	}
 
 	private String getUniqueId() {
-		SharedPreferences settings = getSharedPreferences("TI_EMU_DH", Context.MODE_PRIVATE);
-		String savedId = settings.getString("UNIQUE_INSTANCE_ID", null);
+		String savedId = ConfigurationHelper.getString(this, "UNIQUE_INSTANCE_ID", null);
 		if (savedId == null) {
-			SharedPreferences.Editor editor = settings.edit();
 			String generatedId = UUID.randomUUID().toString();
-			editor.putString("UNIQUE_INSTANCE_ID", generatedId);
-			editor.commit();
+			ConfigurationHelper.writeString(this, "UNIQUE_INSTANCE_ID", generatedId);
 			return generatedId;
 		} else {
 			return savedId;
