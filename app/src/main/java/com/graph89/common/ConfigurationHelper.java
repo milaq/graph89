@@ -30,6 +30,7 @@ public class ConfigurationHelper
 
 	public static final String CONF_KEY_HIDE_STATUSBAR = "hide_statusbar";
 	public static final String CONF_KEY_KEEP_SCREEN_ON = "keep_screen_on";
+	public static final String CONF_KEY_UNIQUE_ID = "unique_id";
 
 	public static final boolean CONF_DEFAULT_HIDE_STATUSBAR = false;
 	public static final boolean CONF_DEFAULT_KEEP_SCREEN_ON = false;

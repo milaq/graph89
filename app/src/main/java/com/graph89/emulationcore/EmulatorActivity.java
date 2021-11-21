@@ -630,10 +630,12 @@ public class EmulatorActivity extends Graph89ActivityBase
 	}
 
 	private String getUniqueId() {
-		String savedId = ConfigurationHelper.getString(this, "UNIQUE_INSTANCE_ID", null);
+		String savedId = ConfigurationHelper.getString(this,
+				ConfigurationHelper.CONF_KEY_UNIQUE_ID, null);
 		if (savedId == null) {
 			String generatedId = UUID.randomUUID().toString();
-			ConfigurationHelper.writeString(this, "UNIQUE_INSTANCE_ID", generatedId);
+			ConfigurationHelper.writeString(this, ConfigurationHelper.CONF_KEY_UNIQUE_ID,
+					generatedId);
 			return generatedId;
 		} else {
 			return savedId;
