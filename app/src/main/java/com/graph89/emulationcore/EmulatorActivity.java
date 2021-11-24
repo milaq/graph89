@@ -46,6 +46,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.Bisha.TI89EmuDonation.BuildConfig;
 import com.Bisha.TI89EmuDonation.R;
 import com.graph89.common.BackwardCompatibility;
 import com.graph89.common.CalculatorInfoTI84;
@@ -281,7 +282,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 
 		UIStateManagerObj.ControlBarIntstance.SetListOfCalculatorTypes(GetCalculatorInstances());
 
-		ShowWhatsNew();
+		showWhatsNew();
 
 		if (CalculatorInstances.GetInstances().size() == 0)
 		{
@@ -568,12 +569,9 @@ public class EmulatorActivity extends Graph89ActivityBase
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	}
 
-	private void ShowWhatsNew()
-	{
-		String shown = ConfigurationHelper.getString(this, "WhatsNew1.1.3.3Shown", null);
-		if (shown == null)
-		{
-			ConfigurationHelper.writeString(this, "WhatsNew1.1.3.3Shown", "Shown");
+	private void showWhatsNew() {
+		if (ConfigurationHelper.getInt(this, "whats_new_shown", 0) < BuildConfig.VERSION_CODE) {
+			ConfigurationHelper.writeInt(this, "whats_new_shown", BuildConfig.VERSION_CODE);
 			WhatsNew wn = new WhatsNew(this);
 			wn.Show();
 		}
