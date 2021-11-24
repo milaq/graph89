@@ -57,6 +57,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 
 	// Current value
 	private int					mCurrentValue;
+	private boolean				mValueInitialized 		= false;
 
 	// View elements
 	private SeekBar				mSeekBar;
@@ -76,7 +77,9 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 	protected View onCreateDialogView()
 	{
 		// Get current value from preferences
-		mCurrentValue = getPersistedInt(mDefaultValue);
+		if (!mValueInitialized) {
+			mCurrentValue = getPersistedInt(mDefaultValue);
+		}
 
 		// Inflate layout
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -178,5 +181,14 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 	public void onStopTrackingTouch(SeekBar seek)
 	{
 		// Not used
+	}
+
+	public void setCurrentValue(int value) {
+		mCurrentValue = value;
+		mValueInitialized = true;
+	}
+
+	public int getCurrentValue() {
+		return mCurrentValue;
 	}
 }

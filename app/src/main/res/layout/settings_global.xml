@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seek="com.graph89.controls.SeekBarPreference"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,5 +19,16 @@
         android:key="keep_screen_on"
         android:summary="Always keep the screen on when the calculator is shown"
         android:title="Keep screen on" />
+
+    <com.graph89.controls.SeekBarPreference
+        android:dependency="keep_screen_on"
+        android:defaultValue="5"
+        android:dialogTitle="Emulator timeout"
+        android:key="auto_off"
+        android:persistent="true"
+        android:summary="Turn off the emulator after an interval of inactivity"
+        android:title="Auto Off"
+        seek:maxValue="60"
+        seek:minValue="0" />
 
 </PreferenceScreen>

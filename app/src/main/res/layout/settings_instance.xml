@@ -116,16 +116,6 @@
 
     <PreferenceCategory android:title="Emulation Settings" >
 
-        <com.graph89.controls.SeekBarPreference
-            android:defaultValue="5"
-            android:dialogTitle="Turn off the Emulator"
-            android:key="CONF_AUTO_OFF"
-            android:persistent="true"
-            android:summary="Turn off the emulator after an interval of inactivity"
-            android:title="Auto Off"
-            seek:maxValue="31"
-            seek:minValue="3" />
-
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="CONF_SAVE_STATE"

@@ -48,7 +48,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 
 	private SeekBarPreference			mHapticFeedback			= null;
 	private SeekBarPreference			mCPUSpeed				= null;
-	private SeekBarPreference			mTimeout				= null;
 	private SeekBarPreference			mScreenScale			= null;
 
 	private ListPreference				mSkinList				= null;
@@ -105,10 +104,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		else if (key.equals(CalculatorConfiguration.ScreenScaleKey))
 		{
 			mActiveInstance.Configuration.ScreenScale = sharedPreferences.getInt(CalculatorConfiguration.ScreenScaleKey, 1);
-		}
-		else if (key.equals(CalculatorConfiguration.AutoOFFKey))
-		{
-			mActiveInstance.Configuration.AutoOFF = sharedPreferences.getInt(CalculatorConfiguration.AutoOFFKey, 5);
 		}
 		else if (key.equals(CalculatorConfiguration.SkinKey))
 		{
@@ -225,7 +220,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		editor.putBoolean(CalculatorConfiguration.AudioFeedBackKey, mActiveInstance.Configuration.AudioFeedBack);
 		editor.putBoolean(CalculatorConfiguration.ZoomModeKey, mActiveInstance.Configuration.ZoomMode);
 		editor.putInt(CalculatorConfiguration.ScreenScaleKey, mActiveInstance.Configuration.ScreenScale);
-		editor.putInt(CalculatorConfiguration.AutoOFFKey, mActiveInstance.Configuration.AutoOFF);
 
 		if (mActiveInstance.CalculatorType == CalculatorTypes.TI89 || mActiveInstance.CalculatorType == CalculatorTypes.TI89T)
 		{
@@ -267,7 +261,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		mHapticFeedback = (SeekBarPreference) findPreference(CalculatorConfiguration.HapticFeedbackKey);
 		mScreenScale = (SeekBarPreference) findPreference(CalculatorConfiguration.ScreenScaleKey);
 		mCPUSpeed = (SeekBarPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.CPUSpeedKey);
-		mTimeout = (SeekBarPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.AutoOFFKey);
 		mLcdColor = (AmbilWarnaPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.LCDColorKey);
 		mGridColor = (AmbilWarnaPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.GridColorKey);
 		mLcdType = (ListPreference) findPreference(CalculatorConfiguration.LCDTypeKey);
@@ -280,9 +273,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		mScreenScale.mDefaultValue = DefaultScreenZoom;
 
 		mCPUSpeed.ValuePost = "%";
-
-		mTimeout.ValuePost = " min";
-		mTimeout.ValueMAX = "Never";
 	}
 
 	private void Configure()

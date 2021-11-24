@@ -25,7 +25,6 @@ public class CalculatorConfiguration
 	public static final String	AudioFeedBackKey		= "CONF_AUDIO_FEEDBACK";
 	public static final String	ZoomModeKey				= "CONF_ZOOM_MODE";
 	public static final String	ScreenScaleKey			= "CONF_SCREENSCALE";
-	public static final String	AutoOFFKey				= "CONF_AUTO_OFF";
 	public static final String	SkinKey					= "CONF_SKIN";
 	public static final String	SkinKeyV200				= "CONF_SKIN_V200";
 	public static final String	SkinKeyTI84				= "CONF_SKIN_TI84";
@@ -45,7 +44,6 @@ public class CalculatorConfiguration
 	public boolean				AudioFeedBack			= false;
 	public boolean				ZoomMode				= true;
 	public int					ScreenScale				= -1;
-	public int					AutoOFF					= 5;
 	public int					Skin					= SkinDefinition.BUILD_IN_UNKNOWN;
 	public boolean				EnableGrayScale			= false;
 	public boolean				SaveStateOnExit			= true;

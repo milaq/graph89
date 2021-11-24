@@ -24,6 +24,7 @@ import java.util.Date;
 
 import com.graph89.common.CalculatorInstance;
 import com.graph89.common.CalculatorTypes;
+import com.graph89.common.ConfigurationHelper;
 import com.graph89.common.EmulatorThread;
 import com.graph89.common.SkinBase;
 import com.graph89.common.TiEmuErrorCodes;
@@ -123,6 +124,13 @@ public class TilEmThread extends EmulatorThread implements Runnable
 				boolean disableOverclock = false;
 				int turbocount = 0;
 
+				int autoOff = 0;
+				if (ConfigurationHelper.getBoolean(Activity, ConfigurationHelper.CONF_KEY_KEEP_SCREEN_ON,
+						ConfigurationHelper.CONF_DEFAULT_KEEP_SCREEN_ON)) {
+					autoOff = ConfigurationHelper.getInt(Activity,
+							ConfigurationHelper.CONF_KEY_AUTO_OFF, ConfigurationHelper.CONF_DEFAULT_AUTO_OFF);
+				}
+
 				while (true)
 				{
 					++runCntr;
@@ -204,12 +212,8 @@ public class TilEmThread extends EmulatorThread implements Runnable
 						IsSleeping = diff > 30 * 1000 && runCntr % 50 != 0 && !skin.Screen.isBusy();
 					}
 
-					if (runCntr % 40 == 0)
-					{
-						if (EmulatorActivity.ActiveInstance.Configuration.AutoOFF != 31 && diff > EmulatorActivity.ActiveInstance.Configuration.AutoOFF * 60 * 1000)
-						{
-							Activity.HandlerTerminate();
-						}
+					if (runCntr % 40 == 0 && autoOff > 0 && diff > autoOff * 60 * 1000) {
+						Activity.HandlerTerminate();
 					}
 
 					if (!IsSleeping)
