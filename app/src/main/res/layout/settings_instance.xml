@@ -128,12 +128,6 @@
 
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="CONF_OFF_ON_SCREENOFF"
-            android:summary="Exit app when the calculator is turned off by [2nd] [ON]"
-            android:title="Exit on Screen Off" />
-
-        <CheckBoxPreference
-            android:defaultValue="true"
             android:key="CONF_SAVE_STATE"
             android:summary="Save the emulator state before exiting the app"
             android:title="Save State on exit" />

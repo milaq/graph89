@@ -58,7 +58,6 @@ public class TilEmThread extends EmulatorThread implements Runnable
 		{
 			boolean prevScreenOff = true;
 			SkinBase skin = EmulatorActivity.CurrentSkin;
-			boolean turnOfOnScreenOff = EmulatorActivity.ActiveInstance.Configuration.TurnOffOnScreenOff;
 			boolean isScreenOff = false;
 
 			while (KillFlag == false)
@@ -70,15 +69,6 @@ public class TilEmThread extends EmulatorThread implements Runnable
 						skin.Screen.refresh();
 
 						isScreenOff = skin.Screen.isScreenOff();
-
-						if (firstCycleComplete && KillFlag == false && turnOfOnScreenOff && !prevScreenOff && isScreenOff)
-						{
-							if (Activity.IsTilem2ndOffPressed())
-							{
-								Activity.HandlerTerminate();
-							}
-						}
-
 						prevScreenOff = isScreenOff;
 					}
 

@@ -38,7 +38,6 @@ public class CalculatorConfiguration
 	public static final String	PixelOnKey				= "CONF_PIXEL_ON";
 	public static final String	LCDColorKey				= "CONF_LCD_COLOR";
 	public static final String	GridColorKey			= "CONF_GRID_COLOR";
-	public static final String	TurnOffOnScreenOffKey	= "CONF_OFF_ON_SCREENOFF";
 	public static final String	OrientationKey			= "CONF_ORIENTATION";
 	public static final String	LCDTypeKey				= "CONF_LCD_TYPE";
 
@@ -53,7 +52,6 @@ public class CalculatorConfiguration
 	public int					CPUSpeed				= 100;
 	public boolean				EnergySave				= true;
 	public boolean				OverclockWhenBusy		= true;
-	public boolean				TurnOffOnScreenOff		= true;
 	public String				Orientation				= "Portrait";
 	public boolean				UseLCDGrid				= false;
 

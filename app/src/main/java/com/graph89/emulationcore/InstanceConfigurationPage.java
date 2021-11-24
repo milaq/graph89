@@ -164,10 +164,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		{
 			mActiveInstance.Configuration.GridColor = sharedPreferences.getInt(CalculatorConfiguration.GridColorKey, 0xFFA5BAA0);
 		}
-		else if (key.equals(CalculatorConfiguration.TurnOffOnScreenOffKey))
-		{
-			mActiveInstance.Configuration.TurnOffOnScreenOff = sharedPreferences.getBoolean(CalculatorConfiguration.TurnOffOnScreenOffKey, true);
-		}
 		else if (key.equals(CalculatorConfiguration.OrientationKey))
 		{
 			mActiveInstance.Configuration.Orientation = sharedPreferences.getString(CalculatorConfiguration.OrientationKey, "Portrait");
@@ -250,7 +246,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		editor.putBoolean(CalculatorConfiguration.EnergySaveKey, mActiveInstance.Configuration.EnergySave);
 		editor.putBoolean(CalculatorConfiguration.SaveStateOnExitKey, mActiveInstance.Configuration.SaveStateOnExit);
 		editor.putBoolean(CalculatorConfiguration.EnableGrayScaleKey, mActiveInstance.Configuration.EnableGrayScale);
-		editor.putBoolean(CalculatorConfiguration.TurnOffOnScreenOffKey, mActiveInstance.Configuration.TurnOffOnScreenOff);
 
 		editor.putInt(CalculatorConfiguration.LCDColorKey, mActiveInstance.Configuration.LCDColor);
 		editor.putInt(CalculatorConfiguration.PixelOffKey, mActiveInstance.Configuration.PixelOff);
