@@ -21,8 +21,6 @@ package com.graph89.common;
 
 public class CalculatorConfiguration
 {
-	public static final String	HapticFeedbackKey		= "CONF_HAPTIC_FEEDBACK";
-	public static final String	AudioFeedBackKey		= "CONF_AUDIO_FEEDBACK";
 	public static final String	ZoomModeKey				= "CONF_ZOOM_MODE";
 	public static final String	ScreenScaleKey			= "CONF_SCREENSCALE";
 	public static final String	SkinKey					= "CONF_SKIN";
@@ -40,8 +38,6 @@ public class CalculatorConfiguration
 	public static final String	OrientationKey			= "CONF_ORIENTATION";
 	public static final String	LCDTypeKey				= "CONF_LCD_TYPE";
 
-	public int					HapticFeedback			= 10;
-	public boolean				AudioFeedBack			= false;
 	public boolean				ZoomMode				= true;
 	public int					ScreenScale				= -1;
 	public int					Skin					= SkinDefinition.BUILD_IN_UNKNOWN;

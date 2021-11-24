@@ -31,4 +31,20 @@
         seek:maxValue="60"
         seek:minValue="0" />
 
+    <com.graph89.controls.SeekBarPreference
+        android:defaultValue="8"
+        android:dialogTitle="Set duration"
+        android:key="haptic_feedback"
+        android:persistent="true"
+        android:summary="Key vibration"
+        android:title="Haptic Feedback"
+        seek:maxValue="30"
+        seek:minValue="0" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="audio_feedback"
+        android:summary="Make a click sound on key press"
+        android:title="Acoustic Feedback" />
+
 </PreferenceScreen>

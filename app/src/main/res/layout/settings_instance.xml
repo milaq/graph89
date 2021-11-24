@@ -9,25 +9,6 @@
         android:title="" >
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Keypress Feedback" >
-
-        <com.graph89.controls.SeekBarPreference
-            android:defaultValue="10"
-            android:dialogTitle="Set duration"
-            android:key="CONF_HAPTIC_FEEDBACK"
-            android:persistent="true"
-            android:summary="Key vibration"
-            android:title="Haptic Feedback"
-            seek:maxValue="30"
-            seek:minValue="0" />
-
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="CONF_AUDIO_FEEDBACK"
-            android:summary="Make a click sound on key press"
-            android:title="Acoustic Feedback" />
-    </PreferenceCategory>
-
     <PreferenceCategory
         android:key="CONFIG_CAT_DISPLAY_SETTINGS"
         android:title="Display Settings" >

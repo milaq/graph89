@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -37,6 +38,7 @@ import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -88,7 +90,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	public static EmulatorThread				EmulatorThreadObject			= null;
 	public static SkinBase						CurrentSkin						= null;
 
-	public static Vibrator						VibratorService					= null;
 	public static ProgressDialogControl			ProgressDialogObj				= new ProgressDialogControl();
 
 	public static Dimension2D					AndroidDeviceScreenDimension	= null;
@@ -105,7 +106,12 @@ public class EmulatorActivity extends Graph89ActivityBase
 	
 	public static int lastButtonPressed = -1;
 	public static int lastlastButtonPressed = -1;
- 
+
+	private static Vibrator vibratorService;
+	private static AudioManager	audioManager;
+	private static int hapticFeedback;
+	private static boolean audioFeedback;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -137,6 +143,11 @@ public class EmulatorActivity extends Graph89ActivityBase
 		{
 			InitMembers();
 		}
+
+		hapticFeedback = ConfigurationHelper.getInt(this, ConfigurationHelper.CONF_KEY_HAPTIC_FEEDBACK,
+				ConfigurationHelper.CONF_DEFAULT_HAPTIC_FEEDBACK);
+		audioFeedback = ConfigurationHelper.getBoolean(this, ConfigurationHelper.CONF_KEY_AUDIO_FEEDBACK,
+				ConfigurationHelper.CONF_DEFAULT_AUDIO_FEEDBACK);
 
 		setScreenFlags();
 		StartGraph89();
@@ -499,13 +510,12 @@ public class EmulatorActivity extends Graph89ActivityBase
 			{
 				LastTouched = new Date();
 
-				if (VibratorService != null && ActiveInstance.Configuration.HapticFeedback > 0) VibratorService.vibrate(ActiveInstance.Configuration.HapticFeedback);
-
-				// TODO fix sound effect
-//				if (ActiveInstance.Configuration.AudioFeedBack)
-//				{
-//					UIStateManagerObj.MessageViewIntstance.playSoundEffect(SoundEffectConstants.CLICK);
-//				}
+				if (vibratorService != null && hapticFeedback > 0) {
+					vibratorService.vibrate(hapticFeedback);
+				}
+				if (audioManager != null && audioFeedback) {
+					audioManager.playSoundEffect(SoundEffectConstants.CLICK,1.0f);
+				}
 			}
 
 			if (key == CurrentSkin.CalculatorInfo.OnKey) {
@@ -619,7 +629,8 @@ public class EmulatorActivity extends Graph89ActivityBase
 			UniqueId = getUniqueId();
 
 			UIStateManagerObj.EmulatorViewIntstance.setOnTouchListener(UIStateManagerObj.EmulatorViewIntstance);
-			VibratorService = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+			vibratorService = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+			audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
 			LastTouched = new Date();
 

@@ -46,7 +46,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 	private CalculatorInstance			mActiveInstance			= null;
 	private CalculatorInstanceHelper	mCalculatorInstances	= null;
 
-	private SeekBarPreference			mHapticFeedback			= null;
 	private SeekBarPreference			mCPUSpeed				= null;
 	private SeekBarPreference			mScreenScale			= null;
 
@@ -89,15 +88,7 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
 	{
-		if (key.equals(CalculatorConfiguration.HapticFeedbackKey))
-		{
-			mActiveInstance.Configuration.HapticFeedback = sharedPreferences.getInt(CalculatorConfiguration.HapticFeedbackKey, 10);
-		}
-		else if (key.equals(CalculatorConfiguration.AudioFeedBackKey))
-		{
-			mActiveInstance.Configuration.AudioFeedBack = sharedPreferences.getBoolean(CalculatorConfiguration.AudioFeedBackKey, false);
-		}
-		else if (key.equals(CalculatorConfiguration.ZoomModeKey))
+		if (key.equals(CalculatorConfiguration.ZoomModeKey))
 		{
 			mActiveInstance.Configuration.ZoomMode = sharedPreferences.getBoolean(CalculatorConfiguration.ZoomModeKey, false);
 		}
@@ -216,8 +207,6 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 	{
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferences.Editor editor = settings.edit();
-		editor.putInt(CalculatorConfiguration.HapticFeedbackKey, mActiveInstance.Configuration.HapticFeedback);
-		editor.putBoolean(CalculatorConfiguration.AudioFeedBackKey, mActiveInstance.Configuration.AudioFeedBack);
 		editor.putBoolean(CalculatorConfiguration.ZoomModeKey, mActiveInstance.Configuration.ZoomMode);
 		editor.putInt(CalculatorConfiguration.ScreenScaleKey, mActiveInstance.Configuration.ScreenScale);
 
@@ -258,15 +247,11 @@ public class InstanceConfigurationPage extends PreferenceActivity implements OnS
 		mSkinListTI84 = (ListPreference) findPreference(CalculatorConfiguration.SkinKeyTI84);
 		mOrientationList = (ListPreference) findPreference(CalculatorConfiguration.OrientationKey);
 
-		mHapticFeedback = (SeekBarPreference) findPreference(CalculatorConfiguration.HapticFeedbackKey);
 		mScreenScale = (SeekBarPreference) findPreference(CalculatorConfiguration.ScreenScaleKey);
 		mCPUSpeed = (SeekBarPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.CPUSpeedKey);
 		mLcdColor = (AmbilWarnaPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.LCDColorKey);
 		mGridColor = (AmbilWarnaPreference) getPreferenceScreen().findPreference(CalculatorConfiguration.GridColorKey);
 		mLcdType = (ListPreference) findPreference(CalculatorConfiguration.LCDTypeKey);
-
-		mHapticFeedback.ValuePost = " ms";
-		mHapticFeedback.ValueMIN = "OFF";
 
 		mScreenScale.ValuePost = "x";
 		mScreenScale.mMaxValue = MaxScreenZoom;

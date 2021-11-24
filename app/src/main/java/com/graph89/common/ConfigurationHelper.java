@@ -31,11 +31,15 @@ public class ConfigurationHelper
 	public static final String CONF_KEY_HIDE_STATUSBAR = "hide_statusbar";
 	public static final String CONF_KEY_KEEP_SCREEN_ON = "keep_screen_on";
 	public static final String CONF_KEY_AUTO_OFF = "auto_off";
+	public static final String CONF_KEY_HAPTIC_FEEDBACK = "haptic_feedback";
+	public static final String CONF_KEY_AUDIO_FEEDBACK = "audio_feedback";
 	public static final String CONF_KEY_UNIQUE_ID = "unique_id";
 
 	public static final boolean CONF_DEFAULT_HIDE_STATUSBAR = false;
 	public static final boolean CONF_DEFAULT_KEEP_SCREEN_ON = false;
 	public static final int CONF_DEFAULT_AUTO_OFF = 5;
+	public static final int CONF_DEFAULT_HAPTIC_FEEDBACK = 8;
+	public static final boolean CONF_DEFAULT_AUDIO_FEEDBACK = false;
 
 	private static SharedPreferences getSharedPrefs(Context context) {
 		return context.getSharedPreferences(ConfigurationName, Context.MODE_PRIVATE);
