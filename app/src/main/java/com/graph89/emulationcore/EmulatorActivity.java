@@ -416,15 +416,11 @@ public class EmulatorActivity extends Graph89ActivityBase
 		{
 			if (ActiveInstance.CalculatorType == CalculatorTypes.TI89)
 			{
-				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89_CLASSIC;
+				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89_DEFAULT;
 			}
 			else if (ActiveInstance.CalculatorType == CalculatorTypes.TI89T)
 			{
-				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89T_CLASSIC;
-			}
-			else if (CalculatorTypes.isTilem(ActiveInstance.CalculatorType))
-			{
-				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_TI84_CLASSIC;
+				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89_DEFAULT;
 			}
 			else if (ActiveInstance.CalculatorType == CalculatorTypes.V200)
 			{
@@ -440,7 +436,7 @@ public class EmulatorActivity extends Graph89ActivityBase
 			}
 			else
 			{
-				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89_CLASSIC;
+				ActiveInstance.Configuration.Skin = SkinDefinition.BUILD_IN_89_DEFAULT;
 			}
 
 			CalculatorInstances.Save();

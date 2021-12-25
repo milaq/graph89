@@ -46,24 +46,6 @@ public class SkinDefinition
 	{
 		switch (skinType)
 		{
-			case SkinDefinition.BUILD_IN_89_DEFAULT:
-				if (isPortrait)
-				{
-					ImagePath = "portrait/ti89default/skin.png";
-					MaskPath = "portrait/ti89default/buttonmask.bin";
-					ButtonLocationPath = "portrait/ti89default/buttonloaction.location";
-					InfoPath = "portrait/ti89default/info";
-					Orientation = SkinBase.ORIENTATION_PORTRAIT;
-				}
-				else
-				{
-					ImagePath = "landscape/ti89default/skin.png";
-					MaskPath = "landscape/ti89default/buttonmask.bin";
-					ButtonLocationPath = "landscape/ti89default/buttonloaction.location";
-					InfoPath = "landscape/ti89default/info";
-					Orientation = SkinBase.ORIENTATION_LANDSCAPE;
-				}
-				break;
 			case SkinDefinition.BUILD_IN_89_CLASSIC:
 				if (isPortrait)
 				{
@@ -130,6 +112,25 @@ public class SkinDefinition
 					ButtonLocationPath = "landscape/ti84classic/buttonloaction.location";
 					InfoPath = "landscape/ti84classic/info";
 					
+					Orientation = SkinBase.ORIENTATION_LANDSCAPE;
+				}
+				break;
+			default:
+			case SkinDefinition.BUILD_IN_89_DEFAULT:
+				if (isPortrait)
+				{
+					ImagePath = "portrait/ti89default/skin.png";
+					MaskPath = "portrait/ti89default/buttonmask.bin";
+					ButtonLocationPath = "portrait/ti89default/buttonloaction.location";
+					InfoPath = "portrait/ti89default/info";
+					Orientation = SkinBase.ORIENTATION_PORTRAIT;
+				}
+				else
+				{
+					ImagePath = "landscape/ti89default/skin.png";
+					MaskPath = "landscape/ti89default/buttonmask.bin";
+					ButtonLocationPath = "landscape/ti89default/buttonloaction.location";
+					InfoPath = "landscape/ti89default/info";
 					Orientation = SkinBase.ORIENTATION_LANDSCAPE;
 				}
 				break;
