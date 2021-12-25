@@ -28,35 +28,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.Bisha.TI89EmuDonation.BuildConfig;
 import com.Bisha.TI89EmuDonation.R;
 import com.graph89.emulationcore.EmulatorActivity;
 
 public class AboutScreen
 {
-	private Context		mContext;
-	private TextView	tv	= null;
+	private Context mContext;
+	private TextView tv = null;
 
-	public AboutScreen(Context context)
-	{
+	public AboutScreen(Context context) {
 		mContext = context;
 	}
 
-	public void Show()
-	{
+	public void Show() {
 		final View view = LayoutInflater.from(mContext).inflate(R.layout.aboutscreen, (ViewGroup) ((EmulatorActivity) mContext).findViewById(R.id.aboutscreen_layout));
-
 		tv = (TextView) view.findViewById(R.id.aboutscreen_text);
 		final AlertDialog addEditdialog = new AlertDialog.Builder(mContext).setView(view).setTitle("About").setPositiveButton(android.R.string.ok, null).create();
-		AddText();
-		addEditdialog.show();
-	}
 
-	private void AddText()
-	{
 		// @formatter:off
-		String text = "Graph 89 - Version: 1.1.3c\n\n" +
+		String text = "Graph 89 - Version: " + BuildConfig.VERSION_NAME + "\n\n" +
 				"Copyright \u00A9 2012-2013, Dritan Hashorva\n" +
-				"www.graph89.com\n\n" +
+				"Copyright \u00A9 2021, Micha LaQua\n\n\n" +
+
 				"TiEmu - Version: 3.0.3\n\n" +
 				"Copyright \u00A9 2000-2001, Thomas Corvazier, Romain Lievin\n" + 
 				"Copyright \u00A9 2001-2003, Romain Lievin\n"+
@@ -92,5 +86,6 @@ public class AboutScreen
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 		tv.setText(text);
 		Linkify.addLinks(tv, Linkify.WEB_URLS);
+		addEditdialog.show();
 	}
 }
