@@ -46,7 +46,6 @@ import com.graph89.controls.FilePickerActivity;
 import com.graph89.controls.ListItem;
 import com.graph89.controls.ListViewAdapter;
 import com.graph89.controls.ScreenshotTaker;
-import com.graph89.controls.WhatsNew;
 
 public class ActionsList extends ListView
 {
@@ -63,8 +62,7 @@ public class ActionsList extends ListView
 	public static final int			ROM_MANAGER				= 8;
 	public static final int 		INSTANCE_CONFIGURATION	= 9;
 	public static final int			GLOBAL_CONFIGURATION	= 10;
-	public static final int			WHATSNEW				= 11;
-	public static final int			ABOUT					= 12;
+	public static final int			ABOUT					= 11;
 
 	private Context					mContext				= null;
 	private ListViewAdapter			mAdapter				= null;
@@ -83,7 +81,6 @@ public class ActionsList extends ListView
 		ActionEntries.add(new ListItem(ROM_MANAGER, "ROM Manager"));
 		ActionEntries.add(new ListItem(INSTANCE_CONFIGURATION, "ROM Configuration"));
 		ActionEntries.add(new ListItem(GLOBAL_CONFIGURATION, "Settings"));
-		ActionEntries.add(new ListItem(WHATSNEW, "What's New"));
 		ActionEntries.add(new ListItem(ABOUT, "About"));
 	}
 
@@ -190,10 +187,6 @@ public class ActionsList extends ListView
 						activity.startActivity(intent);
 					}
 					break;
-					case WHATSNEW:
-						WhatsNew wn = new WhatsNew(activity);
-						wn.Show();
-						break;
 					case ABOUT:
 						AboutScreen a = new AboutScreen(mContext);
 						a.Show();
@@ -219,7 +212,6 @@ public class ActionsList extends ListView
 			ResetVisibility(false);
 			ActionEntries.get(BACKUP_MANAGER).IsActive = true;
 			ActionEntries.get(ROM_MANAGER).IsActive = true;
-			ActionEntries.get(WHATSNEW).IsActive = true;
 			ActionEntries.get(ABOUT).IsActive = true;
 		}
 

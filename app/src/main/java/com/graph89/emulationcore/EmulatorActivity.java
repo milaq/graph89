@@ -46,7 +46,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.Bisha.TI89EmuDonation.BuildConfig;
 import com.Bisha.TI89EmuDonation.R;
 import com.graph89.common.BackwardCompatibility;
 import com.graph89.common.CalculatorInfoTI84;
@@ -69,7 +68,6 @@ import com.graph89.common.Util;
 import com.graph89.common.V200Specific;
 import com.graph89.controls.FilePickerActivity;
 import com.graph89.controls.ReceivedFileSaver;
-import com.graph89.controls.WhatsNew;
 
 public class EmulatorActivity extends Graph89ActivityBase
 {
@@ -281,8 +279,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 		CalculatorInstances = new CalculatorInstanceHelper(this);
 
 		UIStateManagerObj.ControlBarIntstance.SetListOfCalculatorTypes(GetCalculatorInstances());
-
-		showWhatsNew();
 
 		if (CalculatorInstances.GetInstances().size() == 0)
 		{
@@ -567,14 +563,6 @@ public class EmulatorActivity extends Graph89ActivityBase
 	{
 		if (!InitComplete) return;
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-	}
-
-	private void showWhatsNew() {
-		if (ConfigurationHelper.getInt(this, "whats_new_shown", 0) < BuildConfig.VERSION_CODE) {
-			ConfigurationHelper.writeInt(this, "whats_new_shown", BuildConfig.VERSION_CODE);
-			WhatsNew wn = new WhatsNew(this);
-			wn.Show();
-		}
 	}
 
 	private List<String> GetCalculatorInstances()
